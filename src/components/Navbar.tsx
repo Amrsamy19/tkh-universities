@@ -38,11 +38,9 @@ export const Navbar = () => {
     <>
       {/* --- Desktop Navbar --- */}
       <header className="hidden lg:block fixed inset-x-0 top-0 z-50 px-12 pt-10 pointer-events-none">
-        <nav
-          className="pointer-events-auto flex flex-col w-full bg-surface-primary/70 backdrop-blur-md transition-all duration-300 rounded-4xl shadow-lg border border-white/20 overflow-hidden"
-        >
+        <nav className="pointer-events-auto flex flex-col w-full bg-surface-primary/70 backdrop-blur-md transition-all duration-300 rounded-4xl shadow-lg border border-white/20 overflow-hidden">
           {/* Top Bar */}
-          <div className="flex justify-between items-center px-5xl py-l border-b h-4 border-stroke-primary">
+          <div className="flex justify-between items-center px-5xl py-s border-b border-stroke-primary">
             <div className="flex items-center gap-xl">
               {topLinks.map((link, index) => (
                 <React.Fragment key={link.label}>
@@ -52,15 +50,13 @@ export const Navbar = () => {
                   >
                     {link.label}
                   </a>
-                  {index === 1 && (
-                    <Separator orientation="vertical" className="h-4" />
-                  )}
+                  {index === 1 && <Separator orientation="vertical" className="h-4" />}
                 </React.Fragment>
               ))}
             </div>
             <div className="flex items-center gap-6">
               <span className="flex items-center gap-xs text-caption-1 font-normal text-text-primary hover:text-text-tkh-primary bg-transparent hover:bg-transparent transition-colors cursor-pointer">
-                <Search className="w-3.5 h-3.5" />
+                <Search className="size-4.5" />
                 Search
               </span>
               <a
@@ -73,7 +69,7 @@ export const Navbar = () => {
           </div>
 
           {/* Main Bar */}
-          <div className="flex justify-between items-center ps-10 pe-6 h-16">
+          <div className="flex justify-between items-center ps-10 pe-6 py-s">
             {/* Logo Placeholder */}
             <Logo />
 
