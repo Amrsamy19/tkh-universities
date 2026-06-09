@@ -9,6 +9,8 @@ import {
 } from "lucide-react";
 import { Button } from "./ui/Button";
 import { Logo } from "../assets/svg/Logo";
+import NOVA from "../assets/svg/menu-logo-nova.svg";
+import COVENTRY from "../assets/svg/menu-logo-coventry.svg";
 
 export const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -118,11 +120,9 @@ export const Navbar = () => {
                   {/* Left Column: Universities selection */}
                   <div className="col-span-5 flex flex-col gap-m pr-xl">
                     {/* NOVA Pill */}
-                    <div className="bg-surface-primary rounded-3xl p-l shadow-sm flex items-center justify-between cursor-pointer border border-stroke-primary/30 group transition-all">
+                    <div className="bg-transparent hover:bg-surface-primary/50 rounded-3xl p-l flex items-center justify-between cursor-pointer group transition-all">
                       <div className="flex gap-l items-center">
-                        <div className="w-30 shrink-0 font-bold text-3xl tracking-tighter flex items-center">
-                          N<span className="text-green-500">O</span>VA
-                        </div>
+                        <img src={NOVA} className="w-auto h-14 shrink-0" />
                         <p className="text-caption-2 text-text-inactive leading-snug">
                           Pursue world-class European education from top-ranked
                           NOVA Lisbon
@@ -132,13 +132,9 @@ export const Navbar = () => {
                     </div>
 
                     {/* Coventry Pill */}
-                    <div className="rounded-3xl p-l flex items-center justify-between cursor-pointer hover:bg-surface-primary/50 border border-transparent transition-all group">
+                    <div className="rounded-3xl p-l flex items-center justify-between cursor-pointer hover:bg-surface-primary/50 transition-all group">
                       <div className="flex gap-l items-center">
-                        <div className="w-30 shrink-0 text-[#005596] font-bold text-xl leading-tight">
-                          Coventry
-                          <br />
-                          University
-                        </div>
+                        <img src={COVENTRY} className="w-auto h-14 shrink-0" />
                         <p className="text-caption-2 text-text-inactive leading-snug">
                           Earn a UK degree in Engineering, Computing, Business,
                           or Design.

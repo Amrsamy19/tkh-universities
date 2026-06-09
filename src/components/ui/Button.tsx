@@ -23,7 +23,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ) => {
     // Base classes for the button
     const baseClasses = cn(
-      "flex items-center justify-center rounded-[9999px] transition-all duration-300",
+      "flex items-center justify-center rounded-[9999px] transition-all duration-300 cursor-pointer",
       "disabled:opacity-50 disabled:cursor-not-allowed",
       {
         // Sizes for buttons WITH icons
@@ -46,7 +46,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       "bg-neutral-500 text-white": variant === "primary" && disabled,
 
       // Secondary
-      "bg-white text-brand-orange-200 hover:bg-neutral-50 shadow-sm":
+      "bg-white text-brand-orange-200 hover:bg-brand-orange-100 shadow-sm":
         variant === "secondary" && !disabled,
       "bg-neutral-200 text-neutral-500": variant === "secondary" && disabled,
 
