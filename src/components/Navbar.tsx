@@ -93,7 +93,7 @@ export const Navbar = () => {
                         setActiveDropdown(null);
                       }
                     }}
-                    className="flex items-center gap-xs text-caption-2 font-normal text-text-primary hover:text-text-tkh-primary transition-colors py-m cursor-pointer"
+                    className="flex items-center gap-xs text-button-2 font-medium text-text-primary hover:text-text-tkh-primary transition-colors py-m cursor-pointer"
                   >
                     {link.label}
                     {link.hasDropdown && (
@@ -176,7 +176,7 @@ export const Navbar = () => {
               <div className="bg-neutral-50 rounded-l p-m border border-stroke-primary/30">
                 <Button
                   icon={false}
-                  className="w-full flex justify-between items-center text-button-2 text-text-primary focus:outline-none bg-transparent hover:transparent  cursor-pointer group"
+                  className="w-full flex justify-between items-center text-button-2 font-medium text-text-primary focus:outline-none bg-transparent hover:transparent  cursor-pointer group"
                   onClick={() => setIsUniversitiesOpen(!isUniversitiesOpen)}
                 >
                   Universities
