@@ -11,11 +11,16 @@ import { Button } from "./ui/Button";
 import { Logo } from "../assets/svg/Logo";
 import { Separator } from "./ui/Separator";
 import { DesktopMegaMenu } from "./ui/DesktopMegaMenu";
+import NOVA from "../assets/svg/menu-logo-nova.svg";
+import COVENTRY from "../assets/svg/menu-logo-coventry.svg";
+import { studyPills, campusPills, admissionPills } from "../lib/menuData";
 
 export const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
-  const [isUniversitiesOpen, setIsUniversitiesOpen] = useState(false);
+  const [activeMobileDropdown, setActiveMobileDropdown] = useState<string | null>(
+    null,
+  );
 
   const topLinks = [
     { label: "Coventry University", href: "#" },
@@ -168,88 +173,148 @@ export const Navbar = () => {
 
             {/* Menu Links */}
             <div className="flex flex-col p-l gap-m">
-              {/* Universities Accordion */}
-              <div className="bg-neutral-50 rounded-l p-m border border-stroke-primary/30">
-                <Button
-                  icon={false}
-                  className="w-full flex justify-between items-center text-button-2 font-medium text-text-primary focus:outline-none bg-transparent hover:transparent  cursor-pointer group"
-                  onClick={() => setIsUniversitiesOpen(!isUniversitiesOpen)}
-                >
-                  Universities
-                  <div className="p-xs rounded-full bg-white group-hover:bg-brand-orange-50 transition-colors shadow-sm">
-                    {isUniversitiesOpen ? (
-                      <ChevronUp className="w-4 h-4 text-icon-primary" />
-                    ) : (
-                      <ChevronDown className="w-4 h-4 text-icon-primary" />
-                    )}
-                  </div>
-                </Button>
+              {mainLinks.map((link) => {
+                const isOpen = activeMobileDropdown === link.label;
 
-                {/* Accordion Content */}
-                <div
-                  className={`grid transition-all duration-300 ease-in-out ${
-                    isUniversitiesOpen
-                      ? "grid-rows-[1fr] opacity-100 mt-m"
-                      : "grid-rows-[0fr] opacity-0"
-                  }`}
-                >
-                  <div className="overflow-hidden flex flex-col gap-s">
-                    <a
-                      href="#"
-                      className="flex justify-between items-center bg-white p-m rounded-s shadow-sm border border-neutral-100 hover:border-brand-orange-200 group transition-all"
-                    >
-                      <div>
-                        {/* TODO: Replace with actual NOVA SVG logo */}
-                        <div className="font-bold text-h4 tracking-tighter text-black">
-                          NOVA
-                        </div>
-                        <p className="text-caption-2 text-text-secondary mt-xs group-hover:text-text-primary transition-colors leading-tight">
-                          Pursue world-class European education from top-ranked
-                          NOVA Lisbon.
-                        </p>
-                      </div>
-                      <ChevronRight className="w-4 h-4 text-icon-inactive group-hover:text-icon-tkh-primary shrink-0 ml-m" />
-                    </a>
-
-                    <a
-                      href="#"
-                      className="flex justify-between items-center bg-white p-m rounded-s shadow-sm border border-neutral-100 hover:border-brand-orange-200 group transition-all"
-                    >
-                      <div>
-                        {/* TODO: Replace with actual Coventry SVG logo */}
-                        <div className="font-bold text-h5 text-[#006E9A] leading-tight">
-                          Coventry
-                          <br />
-                          University
-                        </div>
-                        <p className="text-caption-2 text-text-secondary mt-xs group-hover:text-text-primary transition-colors leading-tight">
-                          Earn a UK degree in Engineering, Computing, Business,
-                          or Design.
-                        </p>
-                      </div>
-                      <ChevronRight className="w-4 h-4 text-icon-inactive group-hover:text-icon-tkh-primary shrink-0 ml-m" />
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              {/* Other Links */}
-              <div className="flex flex-col px-xs">
-                {mainLinks
-                  .filter((l) => l.label !== "Universities")
-                  .map((link) => (
+                if (!link.hasDropdown) {
+                  return (
                     <a
                       key={link.label}
                       href={link.href}
                       className="flex justify-between items-center py-m text-button-2 text-text-primary border-b border-stroke-primary/30 last:border-0 hover:text-text-tkh-primary transition-colors group"
                     >
                       {link.label}
-                      {link.hasDropdown && (
-                        <ChevronDown className="w-5 h-5 text-icon-inactive group-hover:text-icon-tkh-primary transition-colors" />
-                      )}
                     </a>
-                  ))}
-              </div>
+                  );
+                }
+
+                return (
+                  <div
+                    key={link.label}
+                    className="bg-neutral-50 rounded-l p-m border border-stroke-primary/30"
+                  >
+                    <Button
+                      icon={false}
+                      className="w-full flex justify-between items-center text-button-2 font-medium text-text-primary focus:outline-none bg-transparent hover:transparent cursor-pointer group"
+                      onClick={() =>
+                        setActiveMobileDropdown(isOpen ? null : link.label)
+                      }
+                    >
+                      {link.label}
+                      <div className="p-xs rounded-full bg-white group-hover:bg-brand-orange-50 transition-colors shadow-sm">
+                        {isOpen ? (
+                          <ChevronUp className="w-4 h-4 text-icon-primary" />
+                        ) : (
+                          <ChevronDown className="w-4 h-4 text-icon-primary" />
+                        )}
+                      </div>
+                    </Button>
+
+                    <div
+                      className={`grid transition-all duration-300 ease-in-out ${
+                        isOpen
+                          ? "grid-rows-[1fr] opacity-100 mt-m"
+                          : "grid-rows-[0fr] opacity-0"
+                      }`}
+                    >
+                      <div className="overflow-hidden flex flex-col gap-s">
+                        {link.label === "Universities" && (
+                          <>
+                            <a
+                              href="#"
+                              className="flex justify-between items-center bg-white p-m rounded-s shadow-sm border border-neutral-100 hover:border-brand-orange-200 group transition-all"
+                            >
+                              <div>
+                                <img
+                                  src={NOVA}
+                                  alt="NOVA"
+                                  className="h-6 w-auto mb-2"
+                                />
+                                <p className="text-caption-2 text-text-secondary mt-xs group-hover:text-text-primary transition-colors leading-tight">
+                                  Pursue world-class European education from
+                                  top-ranked NOVA Lisbon.
+                                </p>
+                              </div>
+                              <ChevronRight className="w-4 h-4 text-icon-inactive group-hover:text-icon-tkh-primary shrink-0 ml-m" />
+                            </a>
+                            <a
+                              href="#"
+                              className="flex justify-between items-center bg-white p-m rounded-s shadow-sm border border-neutral-100 hover:border-brand-orange-200 group transition-all"
+                            >
+                              <div>
+                                <img
+                                  src={COVENTRY}
+                                  alt="Coventry"
+                                  className="h-8 w-auto mb-2"
+                                />
+                                <p className="text-caption-2 text-text-secondary mt-xs group-hover:text-text-primary transition-colors leading-tight">
+                                  Earn a UK degree in Engineering, Computing,
+                                  Business, or Design.
+                                </p>
+                              </div>
+                              <ChevronRight className="w-4 h-4 text-icon-inactive group-hover:text-icon-tkh-primary shrink-0 ml-m" />
+                            </a>
+                          </>
+                        )}
+                        {link.label === "Study" &&
+                          studyPills.map((pill) => (
+                            <a
+                              key={pill.id}
+                              href="#"
+                              className="flex justify-between items-center bg-white p-m rounded-s shadow-sm border border-neutral-100 hover:border-brand-orange-200 group transition-all"
+                            >
+                              <div>
+                                <div className="font-bold text-body-2 text-black">
+                                  {pill.title}
+                                </div>
+                                <p className="text-caption-2 text-text-secondary mt-xs group-hover:text-text-primary transition-colors leading-tight">
+                                  {pill.description}
+                                </p>
+                              </div>
+                              <ChevronRight className="w-4 h-4 text-icon-inactive group-hover:text-icon-tkh-primary shrink-0 ml-m" />
+                            </a>
+                          ))}
+                        {link.label === "Campus Life" &&
+                          campusPills.map((pill) => (
+                            <a
+                              key={pill.id}
+                              href="#"
+                              className="flex justify-between items-center bg-white p-m rounded-s shadow-sm border border-neutral-100 hover:border-brand-orange-200 group transition-all"
+                            >
+                              <div>
+                                <div className="font-bold text-body-2 text-black">
+                                  {pill.title}
+                                </div>
+                                <p className="text-caption-2 text-text-secondary mt-xs group-hover:text-text-primary transition-colors leading-tight">
+                                  {pill.description}
+                                </p>
+                              </div>
+                              <ChevronRight className="w-4 h-4 text-icon-inactive group-hover:text-icon-tkh-primary shrink-0 ml-m" />
+                            </a>
+                          ))}
+                        {link.label === "Admissions" &&
+                          admissionPills.map((pill) => (
+                            <a
+                              key={pill.id}
+                              href="#"
+                              className="flex justify-between items-center bg-white p-m rounded-s shadow-sm border border-neutral-100 hover:border-brand-orange-200 group transition-all"
+                            >
+                              <div>
+                                <div className="font-bold text-body-2 text-black">
+                                  {pill.title}
+                                </div>
+                                <p className="text-caption-2 text-text-secondary mt-xs group-hover:text-text-primary transition-colors leading-tight">
+                                  {pill.description}
+                                </p>
+                              </div>
+                              <ChevronRight className="w-4 h-4 text-icon-inactive group-hover:text-icon-tkh-primary shrink-0 ml-m" />
+                            </a>
+                          ))}
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
 
               <div className="mt-l flex flex-col gap-m px-xs border-t border-stroke-primary/30 pt-l">
                 <a
