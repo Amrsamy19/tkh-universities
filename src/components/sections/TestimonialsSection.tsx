@@ -1,7 +1,11 @@
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "../ui/Button";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 export const TestimonialsSection = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
   const testimonials = [
     {
       name: "Sarah Ahmed",
@@ -23,10 +27,18 @@ export const TestimonialsSection = () => {
     }
   ];
 
+  const next = () => {
+    setCurrentIndex((prev) => (prev + 1) % testimonials.length);
+  };
+
+  const prev = () => {
+    setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+  };
+
   return (
-    <section className="py-4xl px-l lg:px-2xl w-full max-w-[1920px] mx-auto bg-brand-blue-400 rounded-[48px] my-2xl overflow-hidden relative">
+    <section className="py-4xl px-l xl:px-[120px] w-full max-w-[1920px] mx-auto bg-surface-invert rounded-[48px] my-2xl overflow-hidden relative">
       {/* Decorative background element */}
-      <div className="absolute top-0 right-0 w-1/2 h-full bg-brand-blue-300 rounded-l-full opacity-20 transform translate-x-1/3"></div>
+      <div className="absolute top-0 right-0 w-1/2 h-full bg-surface-uni-secondary-light rounded-l-full opacity-10 transform translate-x-1/3"></div>
       
       <div className="relative z-10 flex flex-col lg:flex-row gap-2xl items-center lg:items-start">
         {/* Left side: Stats */}
@@ -35,13 +47,13 @@ export const TestimonialsSection = () => {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="w-full lg:w-1/3 flex flex-col gap-l text-white"
+          className="w-full lg:w-1/3 flex flex-col gap-l text-text-invert"
         >
-          <h2 className="text-h1 text-brand-orange-200">98%</h2>
+          <h2 className="text-h1 text-text-tkh-primary">98%</h2>
           <h3 className="text-h3">
             of our graduates are employed within 6 months of graduation.
           </h3>
-          <p className="text-body-1 text-white/80 mb-m">
+          <p className="text-body-1 text-text-invert/80 mb-m">
             Our dedicated career services ensure you're ready for the professional world before you even leave campus.
           </p>
           <Button variant="secondary" className="self-start">
@@ -49,30 +61,68 @@ export const TestimonialsSection = () => {
           </Button>
         </motion.div>
 
-        {/* Right side: Cards */}
-        <div className="w-full lg:w-2/3 grid grid-cols-1 md:grid-cols-2 gap-l lg:gap-xl">
-          {testimonials.map((testimony, i) => (
-            <motion.div 
-              key={testimony.name}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.5, delay: i * 0.2 }}
-              className="bg-white rounded-[32px] p-xl flex flex-col gap-m shadow-xl relative"
-              style={i === 2 ? { gridColumn: "1 / -1" } : {}} // span full width for the 3rd item to balance the grid
+        {/* Right side: Overlapping Carousel */}
+        <div className="w-full lg:w-2/3 h-[500px] relative flex justify-center items-center">
+          <div className="absolute inset-0 flex justify-center items-center">
+            <AnimatePresence initial={false}>
+              {testimonials.map((testimony, i) => {
+                // Calculate position relative to current index
+                let offset = i - currentIndex;
+                if (offset < -1) offset += testimonials.length;
+                if (offset > 1) offset -= testimonials.length;
+                
+                // Determine layout based on offset
+                const isActive = offset === 0;
+                const isLeft = offset === -1;
+                const isRight = offset === 1;
+
+                if (!isActive && !isLeft && !isRight) return null;
+
+                return (
+                  <motion.div
+                    key={testimony.name}
+                    initial={{ opacity: 0, scale: 0.8, x: offset * 100 }}
+                    animate={{
+                      opacity: isActive ? 1 : 0.6,
+                      scale: isActive ? 1 : 0.85,
+                      x: isActive ? "0%" : isLeft ? "-45%" : "45%",
+                      zIndex: isActive ? 30 : 20,
+                    }}
+                    exit={{ opacity: 0, scale: 0.8 }}
+                    transition={{ duration: 0.5, ease: "easeInOut" }}
+                    className="absolute w-full max-w-[450px] bg-surface-primary rounded-[32px] p-2xl flex flex-col gap-m shadow-2xl"
+                  >
+                    <div className="flex items-center gap-m">
+                      <img src={testimony.image} alt={testimony.name} className="w-16 h-16 rounded-full object-cover border-2 border-stroke-tkh-primary" />
+                      <div>
+                        <h4 className="text-h6 text-text-primary">{testimony.name}</h4>
+                        <p className="text-caption-2 text-text-tkh-primary">{testimony.role}</p>
+                      </div>
+                    </div>
+                    <p className="text-body-2 text-text-secondary italic">
+                      "{testimony.text}"
+                    </p>
+                  </motion.div>
+                );
+              })}
+            </AnimatePresence>
+          </div>
+
+          {/* Controls */}
+          <div className="absolute -bottom-xl flex gap-m z-40">
+            <button 
+              onClick={prev}
+              className="w-12 h-12 rounded-full border border-stroke-primary bg-surface-primary text-text-primary flex items-center justify-center hover:bg-surface-inactive-invert transition-colors shadow-md"
             >
-              <div className="flex items-center gap-m">
-                <img src={testimony.image} alt={testimony.name} className="w-16 h-16 rounded-full object-cover" />
-                <div>
-                  <h4 className="text-h6 text-brand-blue-400">{testimony.name}</h4>
-                  <p className="text-caption-2 text-brand-orange-200">{testimony.role}</p>
-                </div>
-              </div>
-              <p className="text-body-2 text-neutral-600 italic">
-                "{testimony.text}"
-              </p>
-            </motion.div>
-          ))}
+              <ChevronLeft className="w-6 h-6" />
+            </button>
+            <button 
+              onClick={next}
+              className="w-12 h-12 rounded-full border border-stroke-primary bg-surface-primary text-text-primary flex items-center justify-center hover:bg-surface-inactive-invert transition-colors shadow-md"
+            >
+              <ChevronRight className="w-6 h-6" />
+            </button>
+          </div>
         </div>
       </div>
     </section>

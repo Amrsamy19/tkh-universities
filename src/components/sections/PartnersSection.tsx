@@ -4,10 +4,9 @@ import { Button } from "../ui/Button";
 export const PartnersSection = () => {
   const partners = [
     {
-      id: "coventry",
-      name: "Coventry University",
-      description: "Earn a UK degree in Engineering, Computing, Business, or Design.",
-      color: "brand-blue-200",
+      id: "nova",
+      name: "NOVA University",
+      image: "https://images.unsplash.com/photo-1564069114553-7215e1ff1890?q=80&w=1200&auto=format&fit=crop",
       stats: [
         { title: "5 stars", desc: "Overall Rating & Internationalization QS Stars University Ratings" },
         { title: "Queen's Award", desc: "For Enterprise International Trade 2022" },
@@ -16,10 +15,9 @@ export const PartnersSection = () => {
       link: "#"
     },
     {
-      id: "nova",
-      name: "NOVA University",
-      description: "Pursue world-class European education from top-ranked NOVA Lisbon.",
-      color: "brand-orange-200",
+      id: "coventry",
+      name: "Coventry University",
+      image: "https://images.unsplash.com/photo-1606761568499-6d2451b23c66?q=80&w=1200&auto=format&fit=crop",
       stats: [
         { title: "5 stars", desc: "Overall Rating & Internationalization QS Stars University Ratings" },
         { title: "Queen's Award", desc: "For Enterprise International Trade 2022" },
@@ -30,78 +28,56 @@ export const PartnersSection = () => {
   ];
 
   return (
-    <section className="py-4xl px-l lg:px-2xl w-full max-w-[1920px] mx-auto bg-neutral-50 rounded-[48px] my-2xl">
-      <div className="flex flex-col items-center text-center mb-2xl">
-        <motion.h2 
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-h2 text-brand-blue-400 mb-m flex flex-col leading-tight font-bold"
-        >
-          <span>The</span>
-          <span>World's</span>
-          <span>Top</span>
-          <span>Ranked</span>
-          <span>Universities</span>
-        </motion.h2>
-        <motion.p 
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-body-1 text-neutral-500 flex flex-col text-sm max-w-[150px] mx-auto leading-relaxed"
-        >
-          <span>TKH</span>
-          <span>partners</span>
-          <span>with</span>
-          <span>prestigious</span>
-          <span>European</span>
-          <span>and</span>
-          <span>UK</span>
-          <span>universities</span>
-          <span>to</span>
-          <span>bring</span>
-          <span>their</span>
-          <span>academic</span>
-          <span>excellence</span>
-          <span>to</span>
-          <span>Egypt.</span>
-        </motion.p>
+    <section className="py-4xl w-full px-m xl:px-[120px]">
+      <div className="flex flex-col items-center text-center mb-3xl px-m lg:px-xl">
+        <span className="text-body-2 font-bold text-text-tkh-primary uppercase tracking-wider mb-xs">
+          Partner with Excellence
+        </span>
+        <h2 className="text-h2 text-text-primary mb-m max-w-3xl">
+          Study with The World’s Top Ranked Universities
+        </h2>
+        <p className="text-body-1 text-text-secondary max-w-2xl mx-auto">
+          TKH partners with prestigious European and UK universities to bring their academic excellence to Egypt.
+        </p>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-xl">
+      {/* Cards Grid */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-xl px-m lg:px-xl">
         {partners.map((partner, index) => (
           <motion.div 
             key={partner.id}
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.6, delay: index * 0.2 }}
-            className="bg-white rounded-[32px] p-2xl shadow-sm border border-neutral-100 hover:shadow-xl transition-shadow flex flex-col h-full group"
+            className="bg-surface-primary rounded-[32px] overflow-hidden shadow-sm hover:shadow-xl transition-shadow flex flex-col h-full border border-stroke-primary group"
           >
-            <div className={`text-${partner.color} mb-l`}>
-              {/* Using text logo representation for now */}
-              <h3 className="text-h3 font-bold uppercase tracking-tight">{partner.name}</h3>
+            {/* Top Banner Image */}
+            <div className="w-full h-[240px] overflow-hidden relative">
+              <img 
+                src={partner.image} 
+                alt={partner.name} 
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-surface-invert/10"></div>
             </div>
             
-            <p className="text-body-2 text-neutral-600 mb-xl flex-1">
-              {partner.description}
-            </p>
-            
-            <div className="flex flex-col gap-m mb-2xl border-t border-neutral-100 pt-xl">
-              {partner.stats.map((stat, i) => (
-                <div key={i} className="flex flex-col">
-                  <span className="text-button-1 text-brand-blue-400">{stat.title}</span>
-                  <span className="text-caption-2 text-neutral-500">{stat.desc}</span>
-                </div>
-              ))}
-            </div>
-            
-            <div className="mt-auto">
-              <Button variant="outline" className="w-full justify-center group-hover:bg-brand-blue-400 group-hover:text-white transition-colors">
-                Explore {partner.name.split(' ')[0]}
-              </Button>
+            <div className="p-xl flex flex-col flex-1">
+              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-m mb-xl">
+                <h3 className="text-h3 font-bold text-text-primary uppercase tracking-tight">{partner.name}</h3>
+                <Button variant="outline" size="tablet" className="shrink-0" icon={true}>
+                  Explore {partner.name.split(' ')[0]}
+                </Button>
+              </div>
+              
+              <div className="flex flex-col gap-m border-t border-stroke-primary pt-xl flex-1">
+                {partner.stats.map((stat, i) => (
+                  <div key={i} className="flex flex-col sm:flex-row gap-xs sm:gap-m border-b border-stroke-primary/50 pb-m last:border-0 last:pb-0">
+                    <span className="text-button-1 text-text-tkh-primary whitespace-nowrap min-w-[140px]">{stat.title}</span>
+                    <span className="text-body-2 text-text-secondary">{stat.desc}</span>
+                  </div>
+                ))}
+              </div>
             </div>
           </motion.div>
         ))}
