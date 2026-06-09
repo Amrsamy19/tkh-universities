@@ -1,6 +1,14 @@
 import { Navbar } from "./Navbar";
 import { Button } from "./ui/Button";
 
+import { CampusSection } from "./sections/CampusSection";
+import { PartnersSection } from "./sections/PartnersSection";
+import { ProgramsSection } from "./sections/ProgramsSection";
+import { EventsSection } from "./sections/EventsSection";
+import { TestimonialsSection } from "./sections/TestimonialsSection";
+import { AdmissionsSteps } from "./sections/AdmissionsSteps";
+import { Footer } from "./sections/Footer";
+
 // Vite handles the static asset import for the video
 import videoPlayback from "../assets/media/videoplayback.mp4";
 
@@ -28,7 +36,6 @@ export const Home = () => {
           </div>
 
           {/* Hero Content */}
-          {/* Using standard spacing classes and custom text classes from index.css */}
           <div className="relative z-20 w-full max-w-[1920px] mx-auto px-l lg:px-2xl flex flex-col lg:flex-row lg:justify-between lg:items-end gap-2xl">
             {/* Left Side: Headline */}
             <div className="lg:max-w-[50%]">
@@ -47,7 +54,6 @@ export const Home = () => {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-m w-full">
-                {/* Explore Programs uses secondary variant (white background, orange text/icon) */}
                 <Button
                   variant="secondary"
                   size="desktop"
@@ -55,7 +61,6 @@ export const Home = () => {
                 >
                   Explore Programs
                 </Button>
-                {/* Start Virtual Campus Tour uses outline variant with no icon */}
                 <Button
                   variant="outline"
                   size="desktop"
@@ -69,10 +74,20 @@ export const Home = () => {
           </div>
         </section>
 
-        {/* Future sections will be added here */}
-      <main className="flex-1 w-full relative z-10 bg-white rounded-b-[32px]">
-        {/* Empty container for now to ensure page can grow */}
-      </main>
+        <main className="flex-1 w-full relative z-10 bg-white rounded-b-[32px] flex flex-col gap-4xl pb-0">
+          <CampusSection />
+          <div className="px-l lg:px-2xl max-w-[1920px] mx-auto w-full">
+            <PartnersSection />
+          </div>
+          <ProgramsSection />
+          <EventsSection />
+          <div className="px-l lg:px-2xl max-w-[1920px] mx-auto w-full">
+            <TestimonialsSection />
+            <AdmissionsSteps />
+          </div>
+        </main>
+        
+        <Footer />
       </div>
     </div>
   );

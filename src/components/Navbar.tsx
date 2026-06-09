@@ -35,11 +35,11 @@ export const Navbar = () => {
   return (
     <>
       {/* --- Desktop Navbar --- */}
-      <nav 
-        className="hidden lg:flex flex-col w-[calc(100%-var(--spacing-xl)*2)] mx-xl mt-xl bg-white/70 backdrop-blur-md absolute top-0 z-50 transition-all duration-300 shadow-sm rounded-[24px] overflow-hidden"
+      <nav
+        className="hidden fixed inset-x-0 px-10 pt-4 lg:top-0 lg:px-12 lg:pt-xl top-6 lg:flex flex-col w-[calc(100%-var(--spacing-xl)*2)] mt-14 bg-white/70 backdrop-blur-md absolute top-0 z-50 transition-all duration-300 rounded-xl overflow-hidden"
         onMouseLeave={() => setActiveDropdown(null)}
       >
-        {/* Top Bar */}
+        {/* Top Bar */} 
         <div className="flex justify-between items-center py-s px-2xl border-b border-neutral-200/50">
           <div className="flex items-center gap-l">
             {topLinks.map((link, index) => (
@@ -69,19 +69,9 @@ export const Navbar = () => {
         </div>
 
         {/* Main Bar */}
-        <div className="flex justify-between items-center py-s px-2xl">
+        <div className="flex justify-between items-center ps-10 pe-6">
           {/* Logo Placeholder */}
-          <div className="flex items-center gap-s">
-            <div className="text-brand-orange-200 font-bold text-3xl tracking-tighter">
-              TKH
-            </div>
-            <div className="w-[1px] h-10 bg-neutral-300 mx-xs"></div>
-            <div className="text-brand-blue-400 font-bold leading-tight">
-              The Knowledge Hub
-              <br />
-              Universities
-            </div>
-          </div>
+          <Logo />
 
           {/* Links */}
           <div className="flex items-center gap-xl">
