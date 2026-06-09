@@ -7,6 +7,9 @@ import { ProgramsSection } from "./sections/ProgramsSection";
 import { EventsSection } from "./sections/EventsSection";
 import { TestimonialsSection } from "./sections/TestimonialsSection";
 import { AdmissionsSteps } from "./sections/AdmissionsSteps";
+import { MarqueeSection } from "./sections/MarqueeSection";
+import { NewsSection } from "./sections/NewsSection";
+import { ContactSection } from "./sections/ContactSection";
 import { Footer } from "./sections/Footer";
 
 // Vite handles the static asset import for the video
@@ -14,16 +17,16 @@ import videoPlayback from "../assets/media/videoplayback.mp4";
 
 export const Home = () => {
   return (
-    <div className="min-h-screen flex flex-col font-sans relative bg-[#F3E8FF] p-m lg:p-xl">
-      <div className="relative w-full flex-1 rounded-[32px] overflow-hidden bg-white shadow-2xl flex flex-col">
+    <div className="min-h-full flex flex-col font-sans relative bg-surface-primary p-m">
+      <div className="relative w-full flex-1 overflow-hidden flex rounded-[40px] flex-col">
         <Navbar />
 
         {/* Hero Section */}
-        <section className="relative w-full h-[calc(100vh-var(--spacing-xl)*2)] min-h-[600px] flex items-end lg:pb-5xl pb-4xl pt-[120px]">
+        <section className="relative w-full h-[calc(100vh-var(--spacing-xl))] min-h-150 flex items-end">
           {/* Video Background */}
-          <div className="absolute inset-0 w-full h-full overflow-hidden">
+          <div className="absolute px-2 rounded-b-[40px] inset-0 w-full h-full overflow-hidden">
             {/* Overlay to ensure text readability */}
-            <div className="absolute inset-0 bg-neutral-900/40 z-10"></div>
+            <div className="absolute px-2 inset-0 bg-surface-invert/40 z-10"></div>
             <video
               autoPlay
               loop
@@ -36,10 +39,10 @@ export const Home = () => {
           </div>
 
           {/* Hero Content */}
-          <div className="relative z-20 w-full max-w-[1920px] mx-auto px-l lg:px-2xl flex flex-col lg:flex-row lg:justify-between lg:items-end gap-2xl">
+          <div className="relative z-20 w-full max-w-480 mx-auto p-l xl:p-20 pt-30 xl:pt-30 flex flex-col lg:flex-row lg:justify-between lg:items-end gap-l">
             {/* Left Side: Headline */}
-            <div className="lg:max-w-[50%]">
-              <h1 className="text-white text-h3 md:text-h2 2xl:text-h1 mb-0 pb-0">
+            <div className="flex-1 min-w-[500px]">
+              <h1 className="text-text-invert text-h2 xl:text-h1 mb-0 pb-0">
                 Your Gateway To
                 <br />
                 Global Education
@@ -47,8 +50,8 @@ export const Home = () => {
             </div>
 
             {/* Right Side: Description and CTAs */}
-            <div className="lg:max-w-[40%] flex flex-col gap-l">
-              <p className="text-white text-body-1">
+            <div className="flex-1 min-w-125 flex flex-col gap-l">
+              <p className="text-text-invert text-body-1">
                 Earn a globally recognized degree from top-ranked partnered
                 universities on our state-of-the-art campus located in Egypt.
               </p>
@@ -74,19 +77,18 @@ export const Home = () => {
           </div>
         </section>
 
-        <main className="flex-1 w-full relative z-10 bg-white rounded-b-[32px] flex flex-col gap-4xl pb-0">
+        <main className="flex-1 w-full relative z-10 flex flex-col gap-4xl pb-0">
           <CampusSection />
-          <div className="px-l lg:px-2xl max-w-[1920px] mx-auto w-full">
-            <PartnersSection />
-          </div>
+          <PartnersSection />
+          <MarqueeSection />
           <ProgramsSection />
           <EventsSection />
-          <div className="px-l lg:px-2xl max-w-[1920px] mx-auto w-full">
-            <TestimonialsSection />
-            <AdmissionsSteps />
-          </div>
+          <TestimonialsSection />
+          <AdmissionsSteps />
+          <NewsSection />
+          <ContactSection />
         </main>
-        
+
         <Footer />
       </div>
     </div>

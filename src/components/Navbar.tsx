@@ -35,175 +35,213 @@ export const Navbar = () => {
   return (
     <>
       {/* --- Desktop Navbar --- */}
-      <nav
-        className="hidden fixed inset-x-0 px-10 pt-4 lg:top-0 lg:px-12 lg:pt-xl top-6 lg:flex flex-col w-[calc(100%-var(--spacing-xl)*2)] mt-14 bg-white/70 backdrop-blur-md absolute top-0 z-50 transition-all duration-300 rounded-xl overflow-hidden"
-        onMouseLeave={() => setActiveDropdown(null)}
-      >
-        {/* Top Bar */} 
-        <div className="flex justify-between items-center py-s px-2xl border-b border-neutral-200/50">
-          <div className="flex items-center gap-l">
-            {topLinks.map((link, index) => (
-              <React.Fragment key={link.label}>
-                <a
-                  href={link.href}
-                  className="text-[16px] font-normal text-neutral-700 hover:text-brand-orange-200 transition-colors"
-                >
-                  {link.label}
-                </a>
-                {index === 1 && <span className="text-neutral-300">|</span>}
-              </React.Fragment>
-            ))}
-          </div>
-          <div className="flex items-center gap-l">
-            <button className="flex items-center gap-xs text-[16px] font-normal text-neutral-700 hover:text-brand-orange-200 transition-colors cursor-pointer">
-              <Search className="w-[14px] h-[14px]" />
-              Search
-            </button>
-            <a
-              href="#"
-              className="text-[16px] font-normal text-neutral-700 hover:text-brand-orange-200 transition-colors"
-            >
-              Contact Us
-            </a>
-          </div>
-        </div>
-
-        {/* Main Bar */}
-        <div className="flex justify-between items-center ps-10 pe-6">
-          {/* Logo Placeholder */}
-          <Logo />
-
-          {/* Links */}
-          <div className="flex items-center gap-xl">
-            {mainLinks.map((link) => (
-              <div key={link.label} className="group relative">
-                <a
-                  href={link.href}
-                  onMouseEnter={() => {
-                    if (link.hasDropdown) {
-                      setActiveDropdown(link.label);
-                    } else {
-                      setActiveDropdown(null);
-                    }
-                  }}
-                  onClick={(e) => {
-                    if (link.hasDropdown) {
-                      e.preventDefault();
-                    }
-                  }}
-                  className="flex items-center gap-xs text-[16px] font-normal text-brand-blue-400 hover:text-brand-orange-200 transition-colors py-m cursor-pointer"
-                >
-                  {link.label}
-                  {link.hasDropdown && (
-                    <ChevronDown
-                      className={`w-[16px] h-[16px] transition-transform ${activeDropdown === link.label ? "rotate-180" : "group-hover:rotate-180"}`}
-                    />
+      <header className="hidden lg:block fixed inset-x-0 top-0 z-50 px-12 pt-10 pointer-events-none">
+        <nav
+          className="pointer-events-auto flex flex-col w-full bg-surface-primary/70 backdrop-blur-md transition-all duration-300 rounded-4xl shadow-lg border border-white/20 overflow-hidden"
+          onMouseLeave={() => setActiveDropdown(null)}
+        >
+          {/* Top Bar */}
+          <div className="flex justify-between items-center px-5xl py-l border-b h-4 border-stroke-primary">
+            <div className="flex items-center gap-xl">
+              {topLinks.map((link, index) => (
+                <React.Fragment key={link.label}>
+                  <a
+                    href={link.href}
+                    className="text-caption-1 font-futura font-normal text-text-primary hover:text-text-tkh-primary transition-colors"
+                  >
+                    {link.label}
+                  </a>
+                  {index === 1 && (
+                    <span className="bg-stroke-primary h-4.25 w-px"></span>
                   )}
-                </a>
-              </div>
-            ))}
+                </React.Fragment>
+              ))}
+            </div>
+            <div className="flex items-center gap-6">
+              <span className="flex items-center gap-xs text-caption-1 font-normal text-text-primary hover:text-text-tkh-primary bg-transparent hover:bg-transparent transition-colors cursor-pointer">
+                <Search className="w-3.5 h-3.5" />
+                Search
+              </span>
+              <a
+                href="#"
+                className="text-caption-1 font-normal text-text-primary hover:text-text-tkh-primary transition-colors"
+              >
+                Contact Us
+              </a>
+            </div>
           </div>
 
-          <div>
+          {/* Main Bar */}
+          <div className="flex justify-between items-center ps-10 pe-6 h-16">
+            {/* Logo Placeholder */}
+            <Logo />
+
+            {/* Links */}
+            <div className="flex items-center gap-xl">
+              {mainLinks.map((link) => (
+                <div key={link.label} className="group relative">
+                  <a
+                    href={link.href}
+                    onClick={(e) => {
+                      if (link.hasDropdown) {
+                        e.preventDefault();
+                        setActiveDropdown(
+                          activeDropdown === link.label ? null : link.label,
+                        );
+                      } else {
+                        setActiveDropdown(null);
+                      }
+                    }}
+                    className="flex items-center gap-xs text-caption-2 font-normal text-text-primary hover:text-text-tkh-primary transition-colors py-m cursor-pointer"
+                  >
+                    {link.label}
+                    {link.hasDropdown && (
+                      <ChevronDown
+                        className={`w-[16px] h-[16px] transition-transform ${activeDropdown === link.label ? "rotate-180" : "group-hover:rotate-180"}`}
+                      />
+                    )}
+                  </a>
+                </div>
+              ))}
+            </div>
+
             <Button variant="primary" size="desktop">
               Apply Now
             </Button>
           </div>
-        </div>
 
-        {/* Desktop Mega Menu Dropdown */}
-        {activeDropdown === "Universities" && (
-          <div className="px-2xl pb-2xl pt-m border-t border-neutral-200/50 animate-in fade-in slide-in-from-top-4 duration-300">
-            <div className="grid grid-cols-12 gap-xl items-stretch">
-              {/* Left Column: Universities selection */}
-              <div className="col-span-5 flex flex-col gap-m pr-xl">
-                {/* NOVA Pill */}
-                <div className="bg-white rounded-[24px] p-l shadow-sm flex items-center justify-between cursor-pointer border border-neutral-100 group transition-all">
-                  <div className="flex gap-l items-center">
-                    <div className="w-[120px] shrink-0 font-bold text-3xl tracking-tighter flex items-center">
-                      N<span className="text-green-500">O</span>VA
+          {/* Desktop Mega Menu Dropdown */}
+          {activeDropdown && (
+            <div className="px-2xl pb-2xl pt-m border-t border-stroke-primary/50 animate-in fade-in slide-in-from-top-4 duration-300">
+              {activeDropdown === "Universities" && (
+                <div className="grid grid-cols-12 gap-xl items-stretch">
+                  {/* Left Column: Universities selection */}
+                  <div className="col-span-5 flex flex-col gap-m pr-xl">
+                    {/* NOVA Pill */}
+                    <div className="bg-surface-primary rounded-[24px] p-l shadow-sm flex items-center justify-between cursor-pointer border border-stroke-primary/30 group transition-all">
+                      <div className="flex gap-l items-center">
+                        <div className="w-[120px] shrink-0 font-bold text-3xl tracking-tighter flex items-center">
+                          N<span className="text-green-500">O</span>VA
+                        </div>
+                        <p className="text-caption-2 text-text-inactive leading-snug">
+                          Pursue world-class European education from top-ranked
+                          NOVA Lisbon
+                        </p>
+                      </div>
+                      <ChevronRight className="w-[20px] h-[20px] text-icon-inactive group-hover:text-icon-tkh-primary transition-colors shrink-0" />
                     </div>
-                    <p className="text-caption-2 text-neutral-500 leading-snug">
-                      Pursue world-class European education from top-ranked NOVA
-                      Lisbon
-                    </p>
-                  </div>
-                  <ChevronRight className="w-[20px] h-[20px] text-neutral-400 group-hover:text-brand-orange-200 transition-colors shrink-0" />
-                </div>
 
-                {/* Coventry Pill */}
-                <div className="rounded-[24px] p-l flex items-center justify-between cursor-pointer hover:bg-white/50 border border-transparent transition-all group">
-                  <div className="flex gap-l items-center">
-                    <div className="w-[120px] shrink-0 text-[#005596] font-bold text-xl leading-tight">
-                      Coventry
-                      <br />
-                      University
+                    {/* Coventry Pill */}
+                    <div className="rounded-[24px] p-l flex items-center justify-between cursor-pointer hover:bg-surface-primary/50 border border-transparent transition-all group">
+                      <div className="flex gap-l items-center">
+                        <div className="w-[120px] shrink-0 text-[#005596] font-bold text-xl leading-tight">
+                          Coventry
+                          <br />
+                          University
+                        </div>
+                        <p className="text-caption-2 text-text-inactive leading-snug">
+                          Earn a UK degree in Engineering, Computing, Business,
+                          or Design.
+                        </p>
+                      </div>
+                      <ChevronRight className="w-[20px] h-[20px] text-icon-inactive group-hover:text-icon-tkh-primary transition-colors shrink-0" />
                     </div>
-                    <p className="text-caption-2 text-neutral-500 leading-snug">
-                      Earn a UK degree in Engineering, Computing, Business, or
-                      Design.
-                    </p>
                   </div>
-                  <ChevronRight className="w-[20px] h-[20px] text-neutral-400 group-hover:text-brand-orange-200 transition-colors shrink-0" />
-                </div>
-              </div>
 
-              {/* Middle Column: Links */}
-              <div className="col-span-3 flex flex-col justify-center gap-l pl-xl border-l border-neutral-200/50">
-                {[
-                  "About NOVA University",
-                  "Tuition Fees",
-                  "Admission Criteria",
-                  "Schools and programs",
-                ].map((link) => (
-                  <a
-                    key={link}
-                    href="#"
-                    className="text-button-2 font-medium text-neutral-700 hover:text-brand-orange-200 transition-colors"
-                  >
-                    {link}
-                  </a>
-                ))}
-              </div>
+                  {/* Middle Column: Links */}
+                  <div className="col-span-3 flex flex-col justify-center gap-l pl-xl border-l border-stroke-primary/50">
+                    {[
+                      "About NOVA University",
+                      "Tuition Fees",
+                      "Admission Criteria",
+                      "Schools and programs",
+                    ].map((link) => (
+                      <a
+                        key={link}
+                        href="#"
+                        className="text-button-2 font-medium text-text-secondary hover:text-text-tkh-primary transition-colors"
+                      >
+                        {link}
+                      </a>
+                    ))}
+                  </div>
 
-              {/* Right Column: Image */}
-              <div className="col-span-4 relative min-h-[250px]">
-                <div
-                  className="absolute inset-0 bg-neutral-200 overflow-hidden"
-                  style={{
-                    clipPath: "polygon(15% 0, 100% 0, 100% 100%, 0% 100%)",
-                  }}
-                >
-                  {/* Placeholder image resembling campus */}
-                  <img
-                    src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?q=80&w=1000&auto=format&fit=crop"
-                    alt="NOVA University Campus"
-                    className="w-full h-full object-cover"
-                  />
+                  {/* Right Column: Image */}
+                  <div className="col-span-4 relative min-h-[250px]">
+                    <div
+                      className="absolute inset-0 bg-neutral-200 overflow-hidden"
+                      style={{
+                        clipPath: "polygon(15% 0, 100% 0, 100% 100%, 0% 100%)",
+                      }}
+                    >
+                      {/* Placeholder image resembling campus */}
+                      <img
+                        src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?q=80&w=1000&auto=format&fit=crop"
+                        alt="NOVA University Campus"
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  </div>
                 </div>
-              </div>
+              )}
+
+              {/* Other Dropdowns */}
+              {activeDropdown === "Study" && (
+                <div className="py-l flex flex-col gap-m animate-in fade-in">
+                  <h3 className="text-h4 font-bold text-text-primary">
+                    Study at TKH
+                  </h3>
+                  <p className="text-text-secondary max-w-md">
+                    Explore our wide range of undergraduate and postgraduate
+                    programs designed to prepare you for a global career.
+                  </p>
+                </div>
+              )}
+              {activeDropdown === "Campus Life" && (
+                <div className="py-l flex flex-col gap-m animate-in fade-in">
+                  <h3 className="text-h4 font-bold text-text-primary">
+                    Campus Life
+                  </h3>
+                  <p className="text-text-secondary max-w-md">
+                    Discover our vibrant student community, world-class
+                    facilities, clubs, and sports activities on campus.
+                  </p>
+                </div>
+              )}
+              {activeDropdown === "Admissions" && (
+                <div className="py-l flex flex-col gap-m animate-in fade-in">
+                  <h3 className="text-h4 font-bold text-text-primary">
+                    Admissions
+                  </h3>
+                  <p className="text-text-secondary max-w-md">
+                    Learn everything you need to know about our application
+                    process, requirements, and important deadlines.
+                  </p>
+                </div>
+              )}
             </div>
-          </div>
-        )}
-      </nav>
+          )}
+        </nav>
+      </header>
 
-      {/* --- Mobile/Tablet Floating Navbar --- */}
-      <nav className="lg:hidden absolute top-xl left-xl right-xl z-50">
-        <div className="bg-white/70 backdrop-blur-md rounded-full px-l py-m flex justify-between items-center shadow-lg border border-white/20">
+      {/* --- Mobile/Tablet Navbar --- */}
+      <header className="lg:hidden fixed top-6 inset-x-6 z-50 pointer-events-none">
+        <div className="bg-surface-primary/70 pointer-events-auto backdrop-blur-md rounded-full px-l py-m flex justify-between items-center shadow-lg border border-white/20">
           <Logo />
-          <button
+          <Button
+            icon={false}
             onClick={() => setIsMobileMenuOpen(true)}
-            className="p-xs text-brand-blue-400 hover:text-brand-orange-200 transition-colors cursor-pointer focus:outline-none"
+            className="p-xs text-icon-primary hover:text-icon-tkh-primary bg-transparent hover:transparent transition-colors cursor-pointer focus:outline-none"
             aria-label="Open mobile menu"
           >
             <Menu className="w-6 h-6" />
-          </button>
+          </Button>
         </div>
-      </nav>
+      </header>
 
       {/* --- Mobile Menu Overlay --- */}
       <div
-        className={`fixed inset-0 bg-neutral-900/40 backdrop-blur-sm z-100 lg:hidden transition-opacity duration-300 ${
+        className={`fixed inset-0 bg-surface-invert/40 backdrop-blur-sm z-100 lg:hidden transition-opacity duration-300 ${
           isMobileMenuOpen
             ? "opacity-100 pointer-events-auto"
             : "opacity-0 pointer-events-none"
@@ -218,23 +256,24 @@ export const Navbar = () => {
             {/* Header */}
             <div className="flex justify-between items-center p-l border-b border-neutral-100">
               <Logo />
-              <button
+              <Button
+                icon={false}
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="p-xs text-neutral-500 hover:text-brand-orange-200 transition-colors cursor-pointer rounded-full hover:bg-neutral-50"
+                className="p-xs text-icon-inactive hover:text-icon-tkh-primary bg-transparent hover:transparent  transition-colors cursor-pointer rounded-full hover:bg-neutral-50"
                 aria-label="Close mobile menu"
               >
                 <X className="w-6 h-6" />
-              </button>
+              </Button>
             </div>
 
             {/* Search */}
-            <div className="p-l bg-neutral-50 border-b border-neutral-100">
-              <div className="flex items-center gap-s text-neutral-500 bg-white px-m py-s rounded-full border border-neutral-200 focus-within:border-brand-orange-200 focus-within:ring-2 focus-within:ring-brand-orange-100 transition-all">
+            <div className="p-l bg-neutral-50 border-b border-stroke-primary/30">
+              <div className="flex items-center gap-s text-icon-inactive bg-white px-m py-s rounded-full border border-stroke-primary focus-within:border-stroke-tkh-primary focus-within:ring-2 focus-within:ring-surface-tkh-primary/20 transition-all">
                 <Search className="w-5 h-5" />
                 <input
                   type="text"
                   placeholder="Search"
-                  className="bg-transparent outline-none w-full text-body-2 placeholder:text-neutral-400"
+                  className="bg-transparent outline-none w-full text-body-2 placeholder:text-text-inactive"
                 />
               </div>
             </div>
@@ -242,20 +281,21 @@ export const Navbar = () => {
             {/* Menu Links */}
             <div className="flex flex-col p-l gap-m">
               {/* Universities Accordion */}
-              <div className="bg-neutral-50 rounded-l p-m border border-neutral-100">
-                <button
-                  className="w-full flex justify-between items-center text-button-2 text-brand-blue-400 focus:outline-none cursor-pointer group"
+              <div className="bg-neutral-50 rounded-l p-m border border-stroke-primary/30">
+                <Button
+                  icon={false}
+                  className="w-full flex justify-between items-center text-button-2 text-text-primary focus:outline-none bg-transparent hover:transparent  cursor-pointer group"
                   onClick={() => setIsUniversitiesOpen(!isUniversitiesOpen)}
                 >
                   Universities
                   <div className="p-xs rounded-full bg-white group-hover:bg-brand-orange-50 transition-colors shadow-sm">
                     {isUniversitiesOpen ? (
-                      <ChevronUp className="w-4 h-4 text-brand-blue-400" />
+                      <ChevronUp className="w-4 h-4 text-icon-primary" />
                     ) : (
-                      <ChevronDown className="w-4 h-4 text-brand-blue-400" />
+                      <ChevronDown className="w-4 h-4 text-icon-primary" />
                     )}
                   </div>
-                </button>
+                </Button>
 
                 {/* Accordion Content */}
                 <div
@@ -275,12 +315,12 @@ export const Navbar = () => {
                         <div className="font-bold text-h4 tracking-tighter text-black">
                           NOVA
                         </div>
-                        <p className="text-caption-2 text-neutral-500 mt-xs group-hover:text-brand-blue-400 transition-colors leading-tight">
+                        <p className="text-caption-2 text-text-secondary mt-xs group-hover:text-text-primary transition-colors leading-tight">
                           Pursue world-class European education from top-ranked
                           NOVA Lisbon.
                         </p>
                       </div>
-                      <ChevronRight className="w-4 h-4 text-neutral-300 group-hover:text-brand-orange-200 shrink-0 ml-m" />
+                      <ChevronRight className="w-4 h-4 text-icon-inactive group-hover:text-icon-tkh-primary shrink-0 ml-m" />
                     </a>
 
                     <a
@@ -294,12 +334,12 @@ export const Navbar = () => {
                           <br />
                           University
                         </div>
-                        <p className="text-caption-2 text-neutral-500 mt-xs group-hover:text-brand-blue-400 transition-colors leading-tight">
+                        <p className="text-caption-2 text-text-secondary mt-xs group-hover:text-text-primary transition-colors leading-tight">
                           Earn a UK degree in Engineering, Computing, Business,
                           or Design.
                         </p>
                       </div>
-                      <ChevronRight className="w-4 h-4 text-neutral-300 group-hover:text-brand-orange-200 shrink-0 ml-m" />
+                      <ChevronRight className="w-4 h-4 text-icon-inactive group-hover:text-icon-tkh-primary shrink-0 ml-m" />
                     </a>
                   </div>
                 </div>
@@ -313,26 +353,26 @@ export const Navbar = () => {
                     <a
                       key={link.label}
                       href={link.href}
-                      className="flex justify-between items-center py-m text-button-2 text-brand-blue-400 border-b border-neutral-100 last:border-0 hover:text-brand-orange-200 transition-colors group"
+                      className="flex justify-between items-center py-m text-button-2 text-text-primary border-b border-stroke-primary/30 last:border-0 hover:text-text-tkh-primary transition-colors group"
                     >
                       {link.label}
                       {link.hasDropdown && (
-                        <ChevronDown className="w-5 h-5 text-neutral-300 group-hover:text-brand-orange-200 transition-colors" />
+                        <ChevronDown className="w-5 h-5 text-icon-inactive group-hover:text-icon-tkh-primary transition-colors" />
                       )}
                     </a>
                   ))}
               </div>
 
-              <div className="mt-l flex flex-col gap-m px-xs border-t border-neutral-100 pt-l">
+              <div className="mt-l flex flex-col gap-m px-xs border-t border-stroke-primary/30 pt-l">
                 <a
                   href="#"
-                  className="text-body-2 text-neutral-700 hover:text-brand-orange-200 transition-colors font-medium"
+                  className="text-body-2 text-text-secondary hover:text-text-tkh-primary transition-colors font-medium"
                 >
                   Coventry University
                 </a>
                 <a
                   href="#"
-                  className="text-body-2 text-neutral-700 hover:text-brand-orange-200 transition-colors font-medium"
+                  className="text-body-2 text-text-secondary hover:text-text-tkh-primary transition-colors font-medium"
                 >
                   NOVA University
                 </a>
