@@ -138,7 +138,7 @@ export const DesktopMegaMenu = ({ activeDropdown }: DesktopMegaMenuProps) => {
               </ul>
 
               {/* Middle Column: Links */}
-              <nav className="gap-m py-l flex flex-col px-0 justify-center pl-xl border-l border-stroke-primary/50 w-64">
+              <nav className="gap-m py-l flex flex-col px-0 justify-start pl-xl border-l border-stroke-primary/50 w-64">
                 {studyLinks[activeStudy].map((link: string) => (
                   <MenuLink key={link}>{link}</MenuLink>
                 ))}
