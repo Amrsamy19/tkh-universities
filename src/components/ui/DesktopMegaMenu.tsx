@@ -3,6 +3,7 @@ import NOVA from "../../assets/svg/menu-logo-nova.svg";
 import COVENTRY from "../../assets/svg/menu-logo-coventry.svg";
 import { StudyMenuPill } from "./StudyMenuPill";
 import { UniversityMenuPill } from "./UniversityMenuPill";
+import { MenuLink } from "./MenuLink";
 import NovaMenuImg from "../../assets/media/menu-universities-nova.png";
 import CoventryMenuImg from "../../assets/media/menu-universities-coventry.png";
 import StudyMenuImg from "../../assets/media/menu-study.png";
@@ -19,7 +20,7 @@ export const DesktopMegaMenu = ({ activeDropdown }: DesktopMegaMenuProps) => {
     "UNDERGRAD" | "POSTGRAD" | "CONTINUING"
   >("UNDERGRAD");
 
-  const studyLinks = {
+  const studyLinks: Record<string, string[]> = {
     UNDERGRAD: [],
     POSTGRAD: [
       "All Programs",
@@ -75,7 +76,7 @@ export const DesktopMegaMenu = ({ activeDropdown }: DesktopMegaMenuProps) => {
               <div className="bg-stroke-primary/50 w-px self-stretch"></div>
 
               {/* Middle Column: Links */}
-              <nav className="gap-s py-m flex flex-col items-center justify-start px-0">
+              <nav className="gap-s py-m flex flex-col items-start justify-start px-0 w-64">
                 {[
                   activeUniversity === "NOVA"
                     ? "About NOVA University"
@@ -83,14 +84,8 @@ export const DesktopMegaMenu = ({ activeDropdown }: DesktopMegaMenuProps) => {
                   "Tuition Fees",
                   "Admission Criteria",
                   "Schools and programs",
-                ].map((link) => (
-                  <a
-                    key={link}
-                    href="#"
-                    className="text-button-2 font-medium text-text-primary hover:text-text-tkh-primary transition-colors py-xs"
-                  >
-                    {link}
-                  </a>
+                ].map((link: string) => (
+                  <MenuLink key={link}>{link}</MenuLink>
                 ))}
               </nav>
 
@@ -143,15 +138,9 @@ export const DesktopMegaMenu = ({ activeDropdown }: DesktopMegaMenuProps) => {
               </ul>
 
               {/* Middle Column: Links */}
-              <nav className="gap-m py-l flex flex-1 flex-col px-0 justify-start pl-xl border-l border-stroke-primary/50">
-                {studyLinks[activeStudy].map((link) => (
-                  <a
-                    key={link}
-                    href="#"
-                    className="text-button-2 font-medium text-text-primary hover:text-text-tkh-primary transition-colors py-xs"
-                  >
-                    {link}
-                  </a>
+              <nav className="gap-m py-l flex flex-col px-0 justify-center pl-xl border-l border-stroke-primary/50 w-64">
+                {studyLinks[activeStudy].map((link: string) => (
+                  <MenuLink key={link}>{link}</MenuLink>
                 ))}
               </nav>
 

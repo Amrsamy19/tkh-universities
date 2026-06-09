@@ -27,11 +27,7 @@ export const UniversityMenuPill = ({
         <p className="text-neutral-700 min-w-0 font-futura flex-1 text-[16px]">
           {description}
         </p>
-        <ChevronRight
-          className={`w-6 h-6 text-text-primary shrink-0 transition-opacity duration-300 ${
-            isActive ? "opacity-100" : "opacity-0"
-          }`}
-        />
+        <ChevronRight className="w-5 h-5 p-0! text-text-primary shrink-0 transition-opacity duration-300" />
       </div>
     </div>
   );
