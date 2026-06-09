@@ -2,7 +2,9 @@ import { Navbar } from "./Navbar";
 import { Button } from "./ui/Button";
 
 import { CampusSection } from "./sections/CampusSection";
+import { AboutSection } from "./sections/AboutSection";
 import { PartnersSection } from "./sections/PartnersSection";
+import { LifeAtTKHSection } from "./sections/LifeAtTKHSection";
 import { ProgramsSection } from "./sections/ProgramsSection";
 import { EventsSection } from "./sections/EventsSection";
 import { TestimonialsSection } from "./sections/TestimonialsSection";
@@ -41,7 +43,7 @@ export const Home = () => {
           {/* Hero Content */}
           <div className="relative z-20 w-full max-w-480 mx-auto p-l xl:p-20 pt-30 xl:pt-30 flex flex-col lg:flex-row lg:justify-between gap-l">
             {/* Left Side: Headline */}
-            <h1 className="text-h1 dt:whitespace-pre max-w-65.75 lg:max-w-none lg:min-w-200 font-bold lg:flex-1 text-text-invert">
+            <h1 className="text-h2 lg:text-h1 dt:whitespace-pre max-w-65.75 lg:max-w-none lg:min-w-200 font-bold lg:flex-1 text-text-invert">
               Your Gateway To
               <br />
               Global Education
@@ -49,23 +51,23 @@ export const Home = () => {
 
             {/* Right Side: Description and CTAs */}
             <div className="gap-l dt:whitespace-pre flex flex-col lg:min-w-125 lg:flex-1">
-              <p className="text-text-invert text-body-1">
+              <p className="text-text-invert text-body-2 lg:text-body-1">
                 Earn a globally recognized degree from top-ranked partnered
                 universities on our state-of-the-art campus located in Egypt.
               </p>
 
-              <div className="flex flex-col sm:flex-row gap-m w-full">
+              <div className="flex flex-col gap-m w-full">
                 <Button
                   variant="secondary"
-                  size="desktop"
-                  className="w-full sm:w-auto justify-center"
+                  size="mobile"
+                  className="w-full justify-center"
                 >
                   Explore Programs
                 </Button>
                 <Button
                   variant="outline"
-                  size="desktop"
-                  className="w-full sm:w-auto justify-center"
+                  size="mobile"
+                  className="w-full justify-center"
                   icon={false}
                 >
                   Start a Virtual Campus Tour
@@ -75,9 +77,17 @@ export const Home = () => {
           </div>
         </section>
 
-        <main className="flex-1 w-full relative z-10 flex flex-col gap-4xl pb-0">
-          <CampusSection />
+        <main className="flex-1 w-full relative z-10 flex flex-col gap-3xl lg:gap-4xl pb-0">
+          <div className="lg:hidden">
+            <AboutSection />
+          </div>
+          <div className="hidden lg:block">
+            <CampusSection />
+          </div>
           <PartnersSection />
+          <div className="lg:hidden">
+            <LifeAtTKHSection />
+          </div>
           <MarqueeSection />
           <ProgramsSection />
           <EventsSection />

@@ -34,8 +34,8 @@ export const NewsSection = () => {
   ];
 
   return (
-    <section className="py-4xl px-l xl:px-[48px] w-full max-w-[1920px] mx-auto overflow-hidden">
-      <div className="flex flex-col lg:flex-row justify-between items-end mb-2xl gap-l">
+    <section className="py-2xl lg:py-4xl px-0 lg:px-l xl:px-[48px] w-full max-w-[1920px] mx-auto overflow-hidden bg-surface-primary">
+      <div className="flex flex-col lg:flex-row justify-between items-end mb-xl lg:mb-2xl gap-m px-m lg:px-0">
         <motion.div 
           initial={{ opacity: 0, x: -30 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -57,7 +57,10 @@ export const NewsSection = () => {
         </motion.a>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-l">
+      <div 
+        className="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide gap-m lg:grid lg:grid-cols-4 lg:gap-l pb-m px-m lg:px-0"
+        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+      >
         {news.map((item, i) => (
           <motion.a
             href="#"
@@ -66,7 +69,7 @@ export const NewsSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.5, delay: i * 0.15 }}
-            className="group flex flex-col bg-surface-primary rounded-[32px] overflow-hidden border border-stroke-primary hover:shadow-xl transition-all h-full"
+            className="group shrink-0 w-[85vw] md:w-[45vw] lg:w-auto flex flex-col bg-surface-primary rounded-[32px] overflow-hidden border border-stroke-primary hover:shadow-xl transition-all h-full snap-start"
           >
             <div className="relative h-[240px] overflow-hidden">
               <img 

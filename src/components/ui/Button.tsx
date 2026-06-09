@@ -23,18 +23,18 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ) => {
     // Base classes for the button
     const baseClasses = cn(
-      "flex items-center justify-center rounded-[9999px] transition-all duration-300 cursor-pointer",
+      "relative flex items-center justify-center rounded-[9999px] transition-all duration-300 cursor-pointer",
       "disabled:opacity-50 disabled:cursor-not-allowed",
       {
         // Sizes for buttons WITH icons
-        "gap-s py-2 ps-6 pe-2":
+        "px-10 py-2 text-button-1":
           (size === "desktop" || size === "tablet") && icon,
-        "px-m py-xs text-button-2 gap-x-3": size === "mobile" && icon,
+        "px-10 py-s text-button-2": size === "mobile" && icon,
 
         // Sizes for buttons WITHOUT icons (symmetric padding to match height)
-        "px-xl py-m text-button-2": size === "desktop" && !icon,
-        "px-l py-s text-button-2": size === "tablet" && !icon,
-        "px-m py-s text-button-2": size === "mobile" && !icon,
+        "px-xl py-m text-button-1": size === "desktop" && !icon,
+        "px-l py-s text-button-1": size === "tablet" && !icon,
+        "px-xs py-xs text-button-2": size === "mobile" && !icon,
       },
     );
 
@@ -46,7 +46,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       "bg-neutral-500 text-white": variant === "primary" && disabled,
 
       // Secondary
-      "bg-white text-brand-orange-200 hover:bg-brand-orange-100 shadow-sm":
+      "bg-white text-brand-orange-200 hover:bg-brand-orange-100":
         variant === "secondary" && !disabled,
       "bg-neutral-200 text-neutral-500": variant === "secondary" && disabled,
 
@@ -56,7 +56,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       "text-neutral-500": variant === "tertiary" && disabled,
 
       // Outline
-      "bg-transparent border-2 border-[#FFFFFF] text-[#FFFFFF] hover:bg-white/10":
+      "bg-transparent border-2 border-[#FFFFFF] text-[#FFFFFF] hover:bg-brand-blue-700/10":
         variant === "outline" && !disabled,
       "bg-transparent border-2 border-neutral-500 text-neutral-500":
         variant === "outline" && disabled,
@@ -67,7 +67,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       "flex items-center justify-center rounded-[9999px] shrink-0 transition-transform duration-300",
       {
         "w-[32px] h-[32px]": size === "desktop" || size === "tablet",
-        "w-[24px] h-[24px]": size === "mobile",
+        "w-[40px] h-[40px]": size === "mobile",
 
         // Primary & Outline Icon
         "bg-white text-brand-orange-200":
@@ -96,13 +96,19 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         className={cn(baseClasses, variantClasses, "group", className)}
         {...props}
       >
-        <span className="whitespace-nowrap">{children}</span>
+        <span
+          className={cn("whitespace-nowrap", {
+            "mx-auto": icon, // Ensure text stays perfectly centered even with absolute icon
+          })}
+        >
+          {children}
+        </span>
         {icon && (
-          <div className={iconContainerClasses}>
+          <div className={cn(iconContainerClasses, "absolute right-2")}>
             <IconComponent
               className={cn({
-                "w-6 h-6": size === "desktop" || size === "tablet",
-                "w-4 h-4": size === "mobile",
+                "w-6 h-6":
+                  size === "desktop" || size === "tablet" || size === "mobile",
               })}
               strokeWidth={2.5}
             />

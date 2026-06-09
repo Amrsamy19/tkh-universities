@@ -24,8 +24,8 @@ export const ProgramsSection = () => {
   };
 
   return (
-    <section className="py-4xl px-l xl:px-[48px] w-full max-w-[1920px] mx-auto overflow-hidden">
-      <div className="flex flex-col lg:flex-row justify-between items-end mb-2xl gap-l">
+    <section className="py-2xl lg:py-4xl px-0 lg:px-l xl:px-[48px] w-full max-w-[1920px] mx-auto overflow-hidden bg-surface-primary">
+      <div className="flex flex-col lg:flex-row justify-between items-end mb-xl lg:mb-2xl gap-m px-m lg:px-0">
         <motion.div 
           initial={{ opacity: 0, x: -30 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -66,7 +66,7 @@ export const ProgramsSection = () => {
 
       <div 
         ref={scrollRef}
-        className="flex gap-2xl overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-l"
+        className="flex gap-m lg:gap-2xl overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-l px-m lg:px-0"
         style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
       >
         {programs.map((prog, i) => (

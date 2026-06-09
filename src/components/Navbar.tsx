@@ -18,9 +18,9 @@ import { studyPills, campusPills, admissionPills } from "../lib/menuData";
 export const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
-  const [activeMobileDropdown, setActiveMobileDropdown] = useState<string | null>(
-    null,
-  );
+  const [activeMobileDropdown, setActiveMobileDropdown] = useState<
+    string | null
+  >(null);
 
   const topLinks = [
     { label: "Coventry University", href: "#" },
@@ -55,7 +55,9 @@ export const Navbar = () => {
                   >
                     {link.label}
                   </a>
-                  {index === 1 && <Separator orientation="vertical" className="h-4" />}
+                  {index === 1 && (
+                    <Separator orientation="vertical" className="h-4" />
+                  )}
                 </React.Fragment>
               ))}
             </div>
@@ -118,13 +120,13 @@ export const Navbar = () => {
       </header>
 
       {/* --- Mobile/Tablet Navbar --- */}
-      <header className="lg:hidden fixed top-6 inset-x-6 z-50 pointer-events-none">
-        <div className="bg-surface-primary/70 pointer-events-auto backdrop-blur-md rounded-full px-l py-m flex justify-between items-center shadow-lg border border-white/20">
+      <header className="lg:hidden fixed top-8 inset-x-8 z-50 pointer-events-none">
+        <div className="bg-surface-primary/70 pointer-events-auto backdrop-blur-md rounded-full px-s py-xxs flex justify-between items-center shadow-lg border border-white/20">
           <Logo />
           <Button
             icon={false}
             onClick={() => setIsMobileMenuOpen(true)}
-            className="p-xs text-icon-primary hover:text-icon-tkh-primary bg-transparent hover:transparent transition-colors cursor-pointer focus:outline-none"
+            className="p-xs text-icon-primary bg-transparent hover:bg-transparent cursor-pointer focus:outline-none"
             aria-label="Open mobile menu"
           >
             <Menu className="w-6 h-6" />
@@ -141,8 +143,10 @@ export const Navbar = () => {
         }`}
       >
         <div
-          className={`absolute top-0 right-0 bottom-0 w-full max-w-100 bg-white shadow-2xl flex flex-col transition-transform duration-300 ease-in-out ${
-            isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
+          className={`absolute top-4 inset-x-4 bottom-4 bg-white rounded-4xl overflow-hidden shadow-2xl flex flex-col transition-all duration-300 ease-out ${
+            isMobileMenuOpen
+              ? "translate-y-0 scale-100"
+              : "translate-y-4 scale-95"
           }`}
         >
           <div className="flex-1 overflow-y-auto">

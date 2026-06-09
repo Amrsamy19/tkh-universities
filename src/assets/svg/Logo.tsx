@@ -4,6 +4,7 @@ export const Logo: React.FC = () => (
     height="32"
     viewBox="0 0 253 32"
     fill="none"
+    className="lg:w-40 lg:h-10 w-auto h-6"
     xmlns="http://www.w3.org/2000/svg"
   >
     <path
