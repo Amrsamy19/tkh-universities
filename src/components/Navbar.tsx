@@ -44,7 +44,7 @@ export const Navbar = () => {
   return (
     <>
       {/* --- Desktop Navbar --- */}
-      <header className="hidden lg:block fixed inset-x-0 top-0 z-50 px-12 pt-10 pointer-events-none">
+      <header className="hidden xl:block fixed inset-x-0 top-0 z-50 px-12 pt-10 pointer-events-none">
         <nav className="pointer-events-auto flex flex-col w-full bg-surface-primary/70 backdrop-blur-md transition-all duration-300 rounded-4xl shadow-lg border border-white/20 overflow-hidden">
           {/* Top Bar */}
           <div className="flex justify-between items-center px-5xl py-s border-b border-stroke-primary">
@@ -122,7 +122,7 @@ export const Navbar = () => {
       </header>
 
       {/* --- Mobile/Tablet Navbar --- */}
-      <header className="lg:hidden fixed top-8 inset-x-8 z-50 pointer-events-none">
+      <header className="xl:hidden fixed top-8 inset-x-8 z-50 pointer-events-none">
         <div className="pointer-events-auto bg-surface-primary/70 backdrop-blur-md  rounded-full px-s py-xxs flex justify-between items-center shadow-lg border border-white/20">
           <Logo />
           <Button
@@ -131,14 +131,14 @@ export const Navbar = () => {
             className="p-xs text-icon-primary bg-transparent hover:bg-transparent cursor-pointer focus:outline-none"
             aria-label="Open mobile menu"
           >
-            <Menu className="w-6 h-6" />
+            <Menu className="w-6 h-6 hover:text-text-tkh-primary transition-colors" />
           </Button>
         </div>
       </header>
 
       {/* --- Mobile Menu Overlay --- */}
       <div
-        className={`fixed inset-0 bg-surface-invert/40 backdrop-blur-sm z-100 lg:hidden transition-opacity duration-300 ${
+        className={`fixed inset-0 bg-surface-invert/40 backdrop-blur-sm z-100 xl:hidden transition-opacity duration-300 ${
           isMobileMenuOpen
             ? "opacity-100 pointer-events-auto"
             : "opacity-0 pointer-events-none"
