@@ -7,6 +7,7 @@ import { MenuLink } from "./MenuLink";
 import NovaMenuImg from "../../assets/media/menu-universities-nova.png";
 import CoventryMenuImg from "../../assets/media/menu-universities-coventry.png";
 import StudyMenuImg from "../../assets/media/menu-study.png";
+import CampusLifeMenuImg from "../../assets/media/menu-campus-life.png";
 
 interface DesktopMegaMenuProps {
   activeDropdown: string | null;
@@ -19,6 +20,12 @@ export const DesktopMegaMenu = ({ activeDropdown }: DesktopMegaMenuProps) => {
   const [activeStudy, setActiveStudy] = useState<
     "UNDERGRAD" | "POSTGRAD" | "CONTINUING"
   >("UNDERGRAD");
+  const [activeCampus, setActiveCampus] = useState<
+    "STUDENT_LIFE" | "SERVICES" | "SUPPORT"
+  >("STUDENT_LIFE");
+  const [activeAdmission, setActiveAdmission] = useState<
+    "ENTRY_CRITERIA" | "TUITION_FEES" | "HOW_TO_APPLY"
+  >("ENTRY_CRITERIA");
 
   const studyLinks: Record<string, string[]> = {
     UNDERGRAD: [],
@@ -39,9 +46,40 @@ export const DesktopMegaMenu = ({ activeDropdown }: DesktopMegaMenuProps) => {
     ],
   };
 
+  const campusLinks: Record<string, string[]> = {
+    STUDENT_LIFE: [
+      "Student Union",
+      "Student Activities",
+      "Development Programs",
+      "Clubs & Societies",
+      "Career Office",
+      "Policy",
+    ],
+    SERVICES: ["Accomodation", "Transportation"],
+    SUPPORT: ["Wellbeing", "Counseling", "IT Support", "Medical Support"],
+  };
+
+  const studyPills = [
+    { id: "UNDERGRAD", title: "Undergraduates", description: "Explore 20+ programs in different majors" },
+    { id: "POSTGRAD", title: "Postgraduates", description: "Explore 10+ programs in different majors" },
+    { id: "CONTINUING", title: "Continuing Education", description: "Explore 15+ programs in different majors" },
+  ] as const;
+
+  const campusPills = [
+    { id: "STUDENT_LIFE", title: "Student Life", description: "Explore our student union, diverse clubs, and vibrant campus activities." },
+    { id: "SERVICES", title: "Services", description: "Discover your home away and explore our bus routes and fees." },
+    { id: "SUPPORT", title: "Support", description: "Access wellbeing, counseling, IT help, and medical info." },
+  ] as const;
+
+  const admissionPills = [
+    { id: "ENTRY_CRITERIA", title: "Entry Criteria", description: "Review admission criteria and required documents." },
+    { id: "TUITION_FEES", title: "Tuition Fees", description: "Explore detailed program costs, check available scholarships." },
+    { id: "HOW_TO_APPLY", title: "How to Apply?", description: "Follow our step-by-step application guide." },
+  ] as const;
+
   return (
     <div
-      className={`grid transition-[grid-template-rows,opacity] duration-300 ease-out ${
+      className={`grid transition-[grid-template-rows,opacity] duration-300 ease-out h-full ${
         activeDropdown
           ? "grid-rows-[1fr] opacity-100"
           : "grid-rows-[0fr] opacity-0"
@@ -109,36 +147,25 @@ export const DesktopMegaMenu = ({ activeDropdown }: DesktopMegaMenuProps) => {
 
           {/* Other Dropdowns */}
           {activeDropdown === "Study" && (
-            <div className="flex justify-between items-stretch gap-xl min-h-88 w-full">
+            <>
               {/* Left Column: Study selection */}
               <ul className="gap-m flex w-150 shrink-0 flex-col">
-                {/* Undergraduates Pill */}
-                <StudyMenuPill
-                  title="Undergraduates"
-                  description="Explore 20+ programs in different majors"
-                  isActive={activeStudy === "UNDERGRAD"}
-                  onMouseEnter={() => setActiveStudy("UNDERGRAD")}
-                />
-
-                {/* Postgraduates Pill */}
-                <StudyMenuPill
-                  title="Postgraduates"
-                  description="Explore 10+ programs in different majors"
-                  isActive={activeStudy === "POSTGRAD"}
-                  onMouseEnter={() => setActiveStudy("POSTGRAD")}
-                />
-
-                {/* Continuing Education Pill */}
-                <StudyMenuPill
-                  title="Continuing Education"
-                  description="Explore 15+ programs in different majors"
-                  isActive={activeStudy === "CONTINUING"}
-                  onMouseEnter={() => setActiveStudy("CONTINUING")}
-                />
+                {studyPills.map((pill) => (
+                  <StudyMenuPill
+                    key={pill.id}
+                    title={pill.title}
+                    description={pill.description}
+                    isActive={activeStudy === pill.id}
+                    onMouseEnter={() => setActiveStudy(pill.id)}
+                  />
+                ))}
               </ul>
 
+              {/* Separator */}
+              <div className="bg-stroke-primary/50 w-px self-stretch"></div>
+
               {/* Middle Column: Links */}
-              <nav className="gap-m py-l flex flex-col px-0 justify-start pl-xl border-l border-stroke-primary/50 w-64">
+              <nav className="gap-m py-m flex flex-1 flex-col px-0 justify-start">
                 {studyLinks[activeStudy].map((link: string) => (
                   <MenuLink key={link}>{link}</MenuLink>
                 ))}
@@ -154,29 +181,77 @@ export const DesktopMegaMenu = ({ activeDropdown }: DesktopMegaMenuProps) => {
                   />
                 </div>
               </div>
-            </div>
+            </>
           )}
           {activeDropdown === "Campus Life" && (
-            <div className="py-xl flex flex-col gap-m w-full">
-              <h3 className="text-h4 font-bold text-text-primary">
-                Campus Life
-              </h3>
-              <p className="text-text-secondary max-w-md">
-                Discover our vibrant student community, world-class facilities,
-                clubs, and sports activities on campus.
-              </p>
-            </div>
+            <>
+              {/* Left Column: Campus Life selection */}
+              <ul className="gap-m flex w-150 shrink-0 flex-col">
+                {campusPills.map((pill) => (
+                  <StudyMenuPill
+                    key={pill.id}
+                    title={pill.title}
+                    description={pill.description}
+                    isActive={activeCampus === pill.id}
+                    onMouseEnter={() => setActiveCampus(pill.id)}
+                  />
+                ))}
+              </ul>
+
+              {/* Separator */}
+              <div className="bg-stroke-primary/50 w-px self-stretch"></div>
+
+              {/* Middle Column: Links */}
+              <nav className="gap-m py-l flex flex-col px-0 justify-start pl-xl w-full">
+                {campusLinks[activeCampus].map((link: string) => (
+                  <MenuLink key={link}>{link}</MenuLink>
+                ))}
+              </nav>
+
+              {/* Right Column: Image */}
+              <div className="relative h-73.25 w-130 shrink-0">
+                <div className="absolute inset-0 w-full h-full overflow-hidden">
+                  <img
+                    src={CampusLifeMenuImg}
+                    alt="Campus Life"
+                    className="object-cover w-full h-full"
+                  />
+                </div>
+              </div>
+            </>
           )}
           {activeDropdown === "Admissions" && (
-            <div className="py-xl flex flex-col gap-m w-full">
-              <h3 className="text-h4 font-bold text-text-primary">
-                Admissions
-              </h3>
-              <p className="text-text-secondary max-w-md">
-                Learn everything you need to know about our application process,
-                requirements, and important deadlines.
-              </p>
-            </div>
+            <>
+              {/* Left Column: Admissions selection */}
+              <ul className="gap-m flex w-150 shrink-0 flex-col">
+                {admissionPills.map((pill) => (
+                  <StudyMenuPill
+                    key={pill.id}
+                    title={pill.title}
+                    description={pill.description}
+                    isActive={activeAdmission === pill.id}
+                    onMouseEnter={() => setActiveAdmission(pill.id)}
+                  />
+                ))}
+              </ul>
+
+              {/* Separator */}
+              <div className="bg-stroke-primary/50 w-px self-stretch"></div>
+
+              {/* Right Column: Logos */}
+              <div className="gap-xl px-2xl py-l flex flex-1 flex-col items-start">
+                <img
+                  src={NOVA}
+                  alt="NOVA University"
+                  className="h-14 w-auto cursor-pointer hover:opacity-80 transition-opacity"
+                />
+                <img
+                  src={COVENTRY}
+                  alt="Coventry University"
+                  className="h-14 w-auto cursor-pointer hover:opacity-80 transition-opacity"
+                />
+              </div>
+            </>
           )}
         </div>
       </div>

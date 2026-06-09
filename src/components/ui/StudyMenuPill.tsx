@@ -16,8 +16,10 @@ export const StudyMenuPill = ({
   return (
     <div
       onMouseEnter={onMouseEnter}
-      className={`rounded-3xl gap-l flex items-center justify-between cursor-pointer transition-all duration-300 ${
-        isActive ? "bg-neutral-50/60" : "bg-transparent hover:bg-neutral-50/60"
+      className={`gap-l flex items-center justify-between cursor-pointer transition-all duration-300 ${
+        isActive
+          ? "bg-neutral-50/60 rounded-3xl"
+          : "bg-transparent hover:bg-neutral-50/60 rounded-[10px]"
       }`}
     >
       <div className="flex w-full px-xl py-m gap-m items-center justify-between">
@@ -25,15 +27,9 @@ export const StudyMenuPill = ({
           <p className="text-neutral-900 min-w-0 font-futura font-medium text-[20px]">
             {title}
           </p>
-          <p className="text-text-secondary text-[16px]">
-            {description}
-          </p>
+          <p className="text-text-secondary text-[16px]">{description}</p>
         </div>
-        <ChevronRight
-          className={`w-5 h-5 text-text-primary shrink-0 transition-opacity duration-300 ${
-            isActive ? "opacity-100" : "opacity-0"
-          }`}
-        />
+        <ChevronRight className="w-5 h-5 text-text-primary shrink-0 transition-opacity duration-300" />
       </div>
     </div>
   );
