@@ -97,7 +97,7 @@ export const Navbar = () => {
                     {link.label}
                     {link.hasDropdown && (
                       <ChevronDown
-                        className={`w-[16px] h-[16px] transition-transform ${activeDropdown === link.label ? "rotate-180" : "group-hover:rotate-180"}`}
+                        className={`w-4 h-4 transition-transform ${activeDropdown === link.label ? "rotate-180" : "group-hover:rotate-180"}`}
                       />
                     )}
                   </a>
@@ -118,9 +118,9 @@ export const Navbar = () => {
                   {/* Left Column: Universities selection */}
                   <div className="col-span-5 flex flex-col gap-m pr-xl">
                     {/* NOVA Pill */}
-                    <div className="bg-surface-primary rounded-[24px] p-l shadow-sm flex items-center justify-between cursor-pointer border border-stroke-primary/30 group transition-all">
+                    <div className="bg-surface-primary rounded-3xl p-l shadow-sm flex items-center justify-between cursor-pointer border border-stroke-primary/30 group transition-all">
                       <div className="flex gap-l items-center">
-                        <div className="w-[120px] shrink-0 font-bold text-3xl tracking-tighter flex items-center">
+                        <div className="w-30 shrink-0 font-bold text-3xl tracking-tighter flex items-center">
                           N<span className="text-green-500">O</span>VA
                         </div>
                         <p className="text-caption-2 text-text-inactive leading-snug">
@@ -128,13 +128,13 @@ export const Navbar = () => {
                           NOVA Lisbon
                         </p>
                       </div>
-                      <ChevronRight className="w-[20px] h-[20px] text-icon-inactive group-hover:text-icon-tkh-primary transition-colors shrink-0" />
+                      <ChevronRight className="w-5 h-5 text-icon-inactive group-hover:text-icon-tkh-primary transition-colors shrink-0" />
                     </div>
 
                     {/* Coventry Pill */}
-                    <div className="rounded-[24px] p-l flex items-center justify-between cursor-pointer hover:bg-surface-primary/50 border border-transparent transition-all group">
+                    <div className="rounded-3xl p-l flex items-center justify-between cursor-pointer hover:bg-surface-primary/50 border border-transparent transition-all group">
                       <div className="flex gap-l items-center">
-                        <div className="w-[120px] shrink-0 text-[#005596] font-bold text-xl leading-tight">
+                        <div className="w-30 shrink-0 text-[#005596] font-bold text-xl leading-tight">
                           Coventry
                           <br />
                           University
@@ -144,7 +144,7 @@ export const Navbar = () => {
                           or Design.
                         </p>
                       </div>
-                      <ChevronRight className="w-[20px] h-[20px] text-icon-inactive group-hover:text-icon-tkh-primary transition-colors shrink-0" />
+                      <ChevronRight className="w-5 h-5 text-icon-inactive group-hover:text-icon-tkh-primary transition-colors shrink-0" />
                     </div>
                   </div>
 
@@ -167,7 +167,7 @@ export const Navbar = () => {
                   </div>
 
                   {/* Right Column: Image */}
-                  <div className="col-span-4 relative min-h-[250px]">
+                  <div className="col-span-4 relative min-h-62.5">
                     <div
                       className="absolute inset-0 bg-neutral-200 overflow-hidden"
                       style={{
