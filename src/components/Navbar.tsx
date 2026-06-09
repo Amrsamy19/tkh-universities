@@ -198,7 +198,7 @@ export const Navbar = () => {
                 return (
                   <div
                     key={link.label}
-                    className={`transition-all duration-300 ${isOpen ? "bg-[rgba(239,241,244,0.7)] rounded-[24px] p-s" : "p-xs"}`}
+                    className={`transition-all duration-300 ${isOpen ? "bg-[rgba(239,241,244,0.7)] rounded-3xl p-s" : "p-xs"}`}
                   >
                     <button
                       className="w-full flex justify-between items-center py-s px-xs text-button-2 font-medium text-text-primary focus:outline-none bg-transparent cursor-pointer group"
