@@ -3,21 +3,23 @@
 
 @layer base {
   :root {
-    /* Responsive Spacing Tokens */
-    --space-non: 0px;
-    --space-xxs: 2px;
-    --space-xs: 4px;
-    --space-s: 6px;
-    --space-m: 8px;
-    --space-l: 16px;
-    --space-xl: 24px;
-    --space-2xl: 32px;
-    --space-3xl: 40px;
-    --space-4xl: 48px;
-    --space-5xl: 32px;
-    --space-6xl: 36px;
-    --space-7xl: 40px;
-    --space-8xl: 16px;
+    /* Spacing Tokens (8pt grid with exceptions: 0, 4, 12) */
+    --space-none: 0px;
+    --space-xxs: 4px;
+    --space-xs: 8px;
+    --space-s: 12px;
+    --space-m: 16px;
+    --space-l: 24px;
+    --space-xl: 32px;
+    --space-2xl: 40px;
+    --space-3xl: 48px;
+    --space-4xl: 56px;
+    --space-5xl: 64px;
+    --space-6xl: 72px;
+    --space-7xl: 80px;
+    --space-8xl: 96px;
+    --space-9xl: 120px;
+    --spacing-8xl-fig: 120px;
 
     /* Responsive Radius Tokens */
     --rad-non: 0px;
@@ -45,48 +47,26 @@
 
   @media (min-width: 1280px) {
     :root {
-      /* Tablet Spacing */
-      --space-xxs: 4px;
-      --space-xs: 8px;
-      --space-s: 12px;
-      --space-m: 16px;
-      --space-l: 24px;
-      --space-xl: 32px;
-      --space-2xl: 40px;
-      --space-3xl: 48px;
-      --space-4xl: 56px;
-      --space-5xl: 64px;
-      --space-6xl: 72px;
-      --space-7xl: 80px;
-      --space-8xl: 80px;
-
       /* Tablet Radius */
       --rad-s: 16px;
       --rad-l: 32px;
-    }
-  }
-
-  @media (min-width: 1920px) {
-    :root {
-      /* Desktop Spacing */
-      --space-8xl: 120px;
 
       /* Desktop Typography Sizes */
-      --fs-h1: 100px;
-      --fs-h2: 72px;
-      --fs-h3: 56px;
-      --fs-h4: 40px;
-      --fs-h5: 40px;
-      --fs-h6: 32px;
-      --fs-sub1: 32px;
-      --fs-sub2: 24px;
-      --fs-body1: 32px;
-      --fs-body2: 26px;
-      --fs-btn1: 28px;
-      --fs-btn2: 24px;
+      --fs-h1: 72px;
+      --fs-h2: 48px;
+      --fs-h3: 32px;
+      --fs-h4: 26px;
+      --fs-h5: 24px;
+      --fs-h6: 20px;
+      --fs-sub1: 18px;
+      --fs-sub2: 14px;
+      --fs-body1: 24px;
+      --fs-body2: 18px;
+      --fs-btn1: 20px;
+      --fs-btn2: 16px;
       --fs-cap1: 16px;
       --fs-cap2: 14px;
-      --fs-over: 34px;
+      --fs-over: 16px;
     }
   }
 }
@@ -127,7 +107,7 @@
   --color-neutral-50: #FFFFFF;
 
   /* Spacing Tokens */
-  --spacing-non: var(--space-non);
+  --spacing-none: var(--space-none);
   --spacing-xxs: var(--space-xxs);
   --spacing-xs: var(--space-xs);
   --spacing-s: var(--space-s);
@@ -141,6 +121,7 @@
   --spacing-6xl: var(--space-6xl);
   --spacing-7xl: var(--space-7xl);
   --spacing-8xl: var(--space-8xl);
+  --spacing-9xl: var(--space-9xl);
 
   /* Radius Tokens */
   --radius-non: var(--rad-non);
@@ -151,23 +132,65 @@
   /* Font Families */
   --font-futura: 'Futura', 'Cairo', sans-serif;
   --font-inter: 'Inter', 'Cairo', sans-serif;
+
+  /* Theme Tokens (from site.css) */
+  --color-surface-primary: var(--color-neutral-50);
+  --color-surface-invert: var(--color-neutral-900);
+  --color-surface-tkh-primary: var(--color-brand-orange-200);
+  --color-surface-uni-secondary: var(--color-brand-blue-200);
+  --color-surface-uni-secondary-light: var(--color-brand-blue-100);
+  --color-surface-brand-secondary-dark: var(--color-brand-blue-400);
+  --color-surface-positive: var(--color-status-success-light);
+  --color-surface-info: var(--color-status-info-light);
+  --color-surface-warning: var(--color-status-warning-light);
+  --color-surface-negative: var(--color-status-error-light);
+  --color-surface-inactive: var(--color-neutral-500);
+  --color-surface-inactive-invert: var(--color-neutral-200);
+  --color-surface-nova: var(--color-partner-2);
+
+  --color-text-primary: var(--color-neutral-900);
+  --color-text-secondary: var(--color-neutral-700);
+  --color-text-invert: var(--color-neutral-50);
+  --color-text-inactive: var(--color-neutral-500);
+  --color-text-tkh-primary: var(--color-brand-orange-200);
+  --color-text-uni-secondary: var(--color-brand-blue-200);
+  --color-text-positive: var(--color-status-success);
+  --color-text-info: var(--color-status-info);
+  --color-text-warning: var(--color-status-warning);
+  --color-text-negative: var(--color-status-error);
+
+  --color-icon-primary: var(--color-neutral-900);
+  --color-icon-invert: var(--color-neutral-50);
+  --color-icon-inactive: var(--color-neutral-500);
+  --color-icon-tkh-primary: var(--color-brand-orange-200);
+  --color-icon-uni-secondary: var(--color-brand-blue-200);
+  --color-icon-positive: var(--color-status-success);
+  --color-icon-info: var(--color-status-info);
+  --color-icon-warning: var(--color-status-warning);
+  --color-icon-negative: var(--color-status-error);
+
+  --color-stroke-primary: var(--color-neutral-300);
+  --color-stroke-tkh-primary: var(--color-brand-orange-200);
+  --color-stroke-uni-secondary: var(--color-brand-blue-200);
+  --color-stroke-negative: var(--color-status-error);
+  --color-stroke-inactive: var(--color-neutral-500);
 }
 
 @layer components {
   /* Typography Classes */
-  .text-h1 { font-family: var(--font-futura); font-size: var(--fs-h1); font-weight: 700; line-height: 1; }
-  .text-h2 { font-family: var(--font-futura); font-size: var(--fs-h2); font-weight: 700; line-height: 1.2; }
-  .text-h3 { font-family: var(--font-futura); font-size: var(--fs-h3); font-weight: 700; line-height: 1.2; }
-  .text-h4 { font-family: var(--font-futura); font-size: var(--fs-h4); font-weight: 700; line-height: 1.2; }
-  .text-h5 { font-family: var(--font-futura); font-size: var(--fs-h5); font-weight: 700; line-height: 1.2; }
-  .text-h6 { font-family: var(--font-futura); font-size: var(--fs-h6); font-weight: 900; line-height: 1.2; }
-  .text-subtitle-1 { font-family: var(--font-futura); font-size: var(--fs-sub1); font-weight: 300; font-stretch: condensed; line-height: 1.5; }
-  .text-subtitle-2 { font-family: var(--font-futura); font-size: var(--fs-sub2); font-weight: 300; font-stretch: condensed; line-height: 1.5; }
-  .text-body-1 { font-family: var(--font-futura); font-size: var(--fs-body1); font-weight: 400; line-height: 1.5; }
-  .text-body-2 { font-family: var(--font-futura); font-size: var(--fs-body2); font-weight: 400; line-height: 1.5; }
-  .text-button-1 { font-family: var(--font-futura); font-size: var(--fs-btn1); font-weight: 900; line-height: 1.5; }
-  .text-button-2 { font-family: var(--font-futura); font-size: var(--fs-btn2); font-weight: 900; line-height: 1.5; }
-  .text-caption-1 { font-family: var(--font-inter); font-size: var(--fs-cap1); font-weight: 600; line-height: 1.5; }
-  .text-caption-2 { font-family: var(--font-inter); font-size: var(--fs-cap2); font-weight: 500; line-height: 1.5; }
-  .text-overline { font-family: var(--font-futura); font-size: var(--fs-over); font-weight: 300; font-stretch: condensed; line-height: 1.5; text-transform: uppercase; }
+  .text-h1 { font-family: var(--font-futura); font-size: var(--fs-h1); line-height: 1; }
+  .text-h2 { font-family: var(--font-futura); font-size: var(--fs-h2); line-height: 1; }
+  .text-h3 { font-family: var(--font-futura); font-size: var(--fs-h3); line-height: 1; }
+  .text-h4 { font-family: var(--font-futura); font-size: var(--fs-h4); line-height: 1; }
+  .text-h5 { font-family: var(--font-futura); font-size: var(--fs-h5); line-height: 1; }
+  .text-h6 { font-family: var(--font-futura); font-size: var(--fs-h6); line-height: 1.2; }
+  .text-subtitle-1 { font-family: var(--font-futura); font-size: var(--fs-sub1); line-height: 1.4; }
+  .text-subtitle-2 { font-family: var(--font-futura); font-size: var(--fs-sub2); line-height: 1.4; }
+  .text-body-1 { font-family: var(--font-futura); font-size: var(--fs-body1); line-height: 1.4; }
+  .text-body-2 { font-family: var(--font-futura); font-size: var(--fs-body2); line-height: 1.4; }
+  .text-button-1 { font-family: var(--font-futura); font-size: var(--fs-btn1); line-height: 1.4; }
+  .text-button-2 { font-family: var(--font-futura); font-size: var(--fs-btn2); line-height: 1.4; }
+  .text-caption-1 { font-family: var(--font-inter); font-size: var(--fs-cap1); line-height: 1.4; }
+  .text-caption-2 { font-family: var(--font-inter); font-size: var(--fs-cap2); line-height: 1.4; }
+  .text-overline { font-family: var(--font-futura); font-size: var(--fs-over); line-height: 1.4; text-transform: uppercase; }
 }
