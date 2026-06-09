@@ -39,18 +39,16 @@ export const Home = () => {
           </div>
 
           {/* Hero Content */}
-          <div className="relative z-20 w-full max-w-480 mx-auto p-l xl:p-20 pt-30 xl:pt-30 flex flex-col lg:flex-row lg:justify-between lg:items-end gap-l">
+          <div className="relative z-20 w-full max-w-480 mx-auto p-l xl:p-20 pt-30 xl:pt-30 flex flex-col lg:flex-row lg:justify-between gap-l">
             {/* Left Side: Headline */}
-            <div className="flex-1 min-w-[500px]">
-              <h1 className="text-text-invert text-h2 xl:text-h1 mb-0 pb-0">
-                Your Gateway To
-                <br />
-                Global Education
-              </h1>
-            </div>
+            <h1 className="text-h1 dt:whitespace-pre max-w-65.75 lg:max-w-none lg:min-w-200 font-bold lg:flex-1 text-text-invert">
+              Your Gateway To
+              <br />
+              Global Education
+            </h1>
 
             {/* Right Side: Description and CTAs */}
-            <div className="flex-1 min-w-125 flex flex-col gap-l">
+            <div className="gap-l dt:whitespace-pre flex flex-col lg:min-w-125 lg:flex-1">
               <p className="text-text-invert text-body-1">
                 Earn a globally recognized degree from top-ranked partnered
                 universities on our state-of-the-art campus located in Egypt.
