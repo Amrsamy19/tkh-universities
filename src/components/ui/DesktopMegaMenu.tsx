@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { ChevronRight } from "lucide-react";
 import NOVA from "../../assets/svg/menu-logo-nova.svg";
 import COVENTRY from "../../assets/svg/menu-logo-coventry.svg";
+import { StudyMenuPill } from "./StudyMenuPill";
+import { UniversityMenuPill } from "./UniversityMenuPill";
 import NovaMenuImg from "../../assets/media/menu-universities-nova.png";
 import CoventryMenuImg from "../../assets/media/menu-universities-coventry.png";
 import StudyMenuImg from "../../assets/media/menu-study.png";
@@ -18,6 +19,25 @@ export const DesktopMegaMenu = ({ activeDropdown }: DesktopMegaMenuProps) => {
     "UNDERGRAD" | "POSTGRAD" | "CONTINUING"
   >("UNDERGRAD");
 
+  const studyLinks = {
+    UNDERGRAD: [],
+    POSTGRAD: [
+      "All Programs",
+      "Design & Media",
+      "Engineering",
+      "Physiotherapy",
+      "Psychology",
+      "Business",
+    ],
+    CONTINUING: [
+      "All Programs",
+      "Design",
+      "Engineering",
+      "Business",
+      "English",
+    ],
+  };
+
   return (
     <div
       className={`grid transition-[grid-template-rows,opacity] duration-300 ease-out ${
@@ -33,57 +53,29 @@ export const DesktopMegaMenu = ({ activeDropdown }: DesktopMegaMenuProps) => {
               {/* Left Column: Universities selection */}
               <ul className="gap-m flex w-150 shrink-0 flex-col">
                 {/* NOVA Pill */}
-                <div
+                <UniversityMenuPill
+                  imageSrc={NOVA}
+                  imageAlt="NOVA"
+                  description="Pursue world-class European education from top-ranked NOVA Lisbon"
+                  isActive={activeUniversity === "NOVA"}
                   onMouseEnter={() => setActiveUniversity("NOVA")}
-                  className={`rounded-3xl gap-l flex items-center justify-between cursor-pointer transition-all duration-300 ${
-                    activeUniversity === "NOVA"
-                      ? "bg-neutral-50/60"
-                      : "bg-transparent hover:bg-neutral-50/60"
-                  }`}
-                >
-                  <div className="flex w-full px-xl py-l gap-m items-center">
-                    <img
-                      src={NOVA}
-                      className="w-auto h-14 shrink-0"
-                      alt="NOVA"
-                    />
-                    <p className="text-neutral-700 min-w-0 font-futura flex-1 text-[16px]">
-                      Pursue world-class European education from top-ranked NOVA
-                      Lisbon
-                    </p>
-                    <ChevronRight className="w-6 h-6 text-text-primary shrink-0 transition-opacity duration-300" />
-                  </div>
-                </div>
+                />
 
                 {/* Coventry Pill */}
-                <div
+                <UniversityMenuPill
+                  imageSrc={COVENTRY}
+                  imageAlt="Coventry"
+                  description="Earn a UK degree in Engineering, Computing, Business, or Design."
+                  isActive={activeUniversity === "COVENTRY"}
                   onMouseEnter={() => setActiveUniversity("COVENTRY")}
-                  className={`rounded-3xl px-xl py-l gap-l flex items-center justify-between cursor-pointer transition-all duration-300 ${
-                    activeUniversity === "COVENTRY"
-                      ? "bg-neutral-50/60"
-                      : "bg-transparent hover:bg-neutral-50/60"
-                  }`}
-                >
-                  <div className="flex gap-l items-center">
-                    <img
-                      src={COVENTRY}
-                      className="w-auto h-14 shrink-0"
-                      alt="Coventry"
-                    />
-                    <p className="text-neutral-700 w-auto text-[16px]">
-                      Earn a UK degree in Engineering, Computing, Business, or
-                      Design.
-                    </p>
-                    <ChevronRight className="w-6 h-6 text-text-primary shrink-0 transition-opacity duration-300" />
-                  </div>
-                </div>
+                />
               </ul>
 
               {/* Separator */}
               <div className="bg-stroke-primary/50 w-px self-stretch"></div>
 
               {/* Middle Column: Links */}
-              <nav className="gap-s py-m flex flex-1 flex-col px-0">
+              <nav className="gap-s py-m flex flex-col items-center justify-start px-0">
                 {[
                   activeUniversity === "NOVA"
                     ? "About NOVA University"
@@ -126,82 +118,33 @@ export const DesktopMegaMenu = ({ activeDropdown }: DesktopMegaMenuProps) => {
               {/* Left Column: Study selection */}
               <ul className="gap-m flex w-150 shrink-0 flex-col">
                 {/* Undergraduates Pill */}
-                <div
+                <StudyMenuPill
+                  title="Undergraduates"
+                  description="Explore 20+ programs in different majors"
+                  isActive={activeStudy === "UNDERGRAD"}
                   onMouseEnter={() => setActiveStudy("UNDERGRAD")}
-                  className={`rounded-3xl gap-l flex items-center justify-between cursor-pointer transition-all duration-300 ${
-                    activeStudy === "UNDERGRAD"
-                      ? "bg-neutral-50/60"
-                      : "bg-transparent hover:bg-neutral-50/60"
-                  }`}
-                >
-                  <div className="flex w-full px-xl py-m gap-m items-center justify-between">
-                    <div className="flex flex-col gap-xs">
-                      <p className="text-neutral-700 min-w-0 font-futura font-bold text-[16px]">
-                        Undergraduates
-                      </p>
-                      <p className="text-text-secondary text-[14px]">
-                        Explore 20+ programs in different majors
-                      </p>
-                    </div>
-                    <ChevronRight className={`w-5 h-5 text-text-primary shrink-0 transition-opacity duration-300 ${activeStudy === "UNDERGRAD" ? "opacity-100" : "opacity-0"}`} />
-                  </div>
-                </div>
+                />
 
                 {/* Postgraduates Pill */}
-                <div
+                <StudyMenuPill
+                  title="Postgraduates"
+                  description="Explore 10+ programs in different majors"
+                  isActive={activeStudy === "POSTGRAD"}
                   onMouseEnter={() => setActiveStudy("POSTGRAD")}
-                  className={`rounded-3xl gap-l flex items-center justify-between cursor-pointer transition-all duration-300 ${
-                    activeStudy === "POSTGRAD"
-                      ? "bg-neutral-50/60"
-                      : "bg-transparent hover:bg-neutral-50/60"
-                  }`}
-                >
-                  <div className="flex w-full px-xl py-m gap-m items-center justify-between">
-                    <div className="flex flex-col gap-xs">
-                      <p className="text-neutral-700 min-w-0 font-futura font-bold text-[16px]">
-                        Postgraduates
-                      </p>
-                      <p className="text-text-secondary text-[14px]">
-                        Explore 10+ programs in different majors
-                      </p>
-                    </div>
-                    <ChevronRight className={`w-5 h-5 text-text-primary shrink-0 transition-opacity duration-300 ${activeStudy === "POSTGRAD" ? "opacity-100" : "opacity-0"}`} />
-                  </div>
-                </div>
+                />
 
                 {/* Continuing Education Pill */}
-                <div
+                <StudyMenuPill
+                  title="Continuing Education"
+                  description="Explore 15+ programs in different majors"
+                  isActive={activeStudy === "CONTINUING"}
                   onMouseEnter={() => setActiveStudy("CONTINUING")}
-                  className={`rounded-3xl gap-l flex items-center justify-between cursor-pointer transition-all duration-300 ${
-                    activeStudy === "CONTINUING"
-                      ? "bg-neutral-50/60"
-                      : "bg-transparent hover:bg-neutral-50/60"
-                  }`}
-                >
-                  <div className="flex w-full px-xl py-m gap-m items-center justify-between">
-                    <div className="flex flex-col gap-xs">
-                      <p className="text-neutral-700 min-w-0 font-futura font-bold text-[16px]">
-                        Continuing Education
-                      </p>
-                      <p className="text-text-secondary text-[14px]">
-                        Explore 15+ programs in different majors
-                      </p>
-                    </div>
-                    <ChevronRight className={`w-5 h-5 text-text-primary shrink-0 transition-opacity duration-300 ${activeStudy === "CONTINUING" ? "opacity-100" : "opacity-0"}`} />
-                  </div>
-                </div>
+                />
               </ul>
 
               {/* Middle Column: Links */}
-              <nav className="gap-m py-l flex flex-1 flex-col px-0 justify-center pl-xl border-l border-stroke-primary/50">
-                {[
-                  "All Programs",
-                  "Design & Media",
-                  "Engineering",
-                  "Physiotherapy",
-                  "Psychology",
-                  "Business",
-                ].map((link) => (
+              <nav className="gap-m py-l flex flex-1 flex-col px-0 justify-start pl-xl border-l border-stroke-primary/50">
+                {studyLinks[activeStudy].map((link) => (
                   <a
                     key={link}
                     href="#"
