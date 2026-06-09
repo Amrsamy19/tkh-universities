@@ -10,8 +10,7 @@ import {
 import { Button } from "./ui/Button";
 import { Logo } from "../assets/svg/Logo";
 import { Separator } from "./ui/Separator";
-import NOVA from "../assets/svg/menu-logo-nova.svg";
-import COVENTRY from "../assets/svg/menu-logo-coventry.svg";
+import { DesktopMegaMenu } from "./ui/DesktopMegaMenu";
 
 export const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -41,7 +40,6 @@ export const Navbar = () => {
       <header className="hidden lg:block fixed inset-x-0 top-0 z-50 px-12 pt-10 pointer-events-none">
         <nav
           className="pointer-events-auto flex flex-col w-full bg-surface-primary/70 backdrop-blur-md transition-all duration-300 rounded-4xl shadow-lg border border-white/20 overflow-hidden"
-          onMouseLeave={() => setActiveDropdown(null)}
         >
           {/* Top Bar */}
           <div className="flex justify-between items-center px-5xl py-l border-b h-4 border-stroke-primary">
@@ -114,109 +112,7 @@ export const Navbar = () => {
           </div>
 
           {/* Desktop Mega Menu Dropdown */}
-          {activeDropdown && (
-            <div className="px-2xl pb-2xl pt-m border-t border-stroke-primary/50 animate-in fade-in slide-in-from-top-4 duration-300">
-              {activeDropdown === "Universities" && (
-                <div className="grid grid-cols-12 gap-xl items-stretch">
-                  {/* Left Column: Universities selection */}
-                  <div className="col-span-6 flex flex-col gap-m pr-l">
-                    {/* NOVA Pill */}
-                    <div className="bg-neutral-100 rounded-4xl p-l flex items-center justify-between cursor-pointer transition-all">
-                      <div className="flex gap-l items-center">
-                        <img src={NOVA} className="w-auto h-14 shrink-0" />
-                        <p className="text-body-2 text-text-secondary leading-snug">
-                          Pursue world-class European education<br/>from top-ranked NOVA Lisbon
-                        </p>
-                      </div>
-                      <ChevronRight className="w-5 h-5 text-text-primary shrink-0" />
-                    </div>
-
-                    {/* Coventry Pill */}
-                    <div className="bg-transparent rounded-4xl p-l flex items-center justify-between cursor-pointer hover:bg-neutral-100 transition-all">
-                      <div className="flex gap-l items-center">
-                        <img src={COVENTRY} className="w-auto h-12 shrink-0" />
-                        <p className="text-body-2 text-text-secondary leading-snug">
-                          Earn a UK degree in Engineering,<br/>Computing, Business, or Design.
-                        </p>
-                      </div>
-                      <ChevronRight className="w-5 h-5 text-text-primary shrink-0" />
-                    </div>
-                  </div>
-
-                  {/* Middle Column: Links */}
-                  <div className="col-span-2 flex flex-col justify-center gap-l pl-l relative">
-                    <Separator orientation="vertical" gradient className="absolute -left-6 top-4 bottom-4 h-auto" />
-                    {[
-                      "About NOVA University",
-                      "Tuition Fees",
-                      "Admission Criteria",
-                      "Schools and programs",
-                    ].map((link) => (
-                      <a
-                        key={link}
-                        href="#"
-                        className="text-body-2 font-medium text-text-primary hover:text-text-tkh-primary transition-colors"
-                      >
-                        {link}
-                      </a>
-                    ))}
-                  </div>
-
-                  {/* Right Column: Image */}
-                  <div className="col-span-4 relative min-h-70">
-                    <div
-                      className="absolute inset-0 bg-neutral-200 overflow-hidden"
-                      style={{
-                        clipPath: "polygon(15% 0, 100% 0, 100% 100%, 0% 100%)",
-                      }}
-                    >
-                      {/* Placeholder image resembling campus */}
-                      <img
-                        src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?q=80&w=1000&auto=format&fit=crop"
-                        alt="NOVA University Campus"
-                        className="w-full h-full object-cover scale-105"
-                      />
-                    </div>
-                  </div>
-                </div>
-              )}
-
-              {/* Other Dropdowns */}
-              {activeDropdown === "Study" && (
-                <div className="py-l flex flex-col gap-m animate-in fade-in">
-                  <h3 className="text-h4 font-bold text-text-primary">
-                    Study at TKH
-                  </h3>
-                  <p className="text-text-secondary max-w-md">
-                    Explore our wide range of undergraduate and postgraduate
-                    programs designed to prepare you for a global career.
-                  </p>
-                </div>
-              )}
-              {activeDropdown === "Campus Life" && (
-                <div className="py-l flex flex-col gap-m animate-in fade-in">
-                  <h3 className="text-h4 font-bold text-text-primary">
-                    Campus Life
-                  </h3>
-                  <p className="text-text-secondary max-w-md">
-                    Discover our vibrant student community, world-class
-                    facilities, clubs, and sports activities on campus.
-                  </p>
-                </div>
-              )}
-              {activeDropdown === "Admissions" && (
-                <div className="py-l flex flex-col gap-m animate-in fade-in">
-                  <h3 className="text-h4 font-bold text-text-primary">
-                    Admissions
-                  </h3>
-                  <p className="text-text-secondary max-w-md">
-                    Learn everything you need to know about our application
-                    process, requirements, and important deadlines.
-                  </p>
-                </div>
-              )}
-            </div>
-          )}
+          <DesktopMegaMenu activeDropdown={activeDropdown} />
         </nav>
       </header>
 
