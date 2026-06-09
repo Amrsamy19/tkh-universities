@@ -13,11 +13,14 @@ import { MarqueeSection } from "./sections/MarqueeSection";
 import { NewsSection } from "./sections/NewsSection";
 import { ContactSection } from "./sections/ContactSection";
 import { Footer } from "./sections/Footer";
+import { useScreenSize } from "../hooks/useScreenSize";
 
 // Vite handles the static asset import for the video
 import videoPlayback from "../assets/media/videoplayback.mp4";
 
 export const Home = () => {
+  const screenSize = useScreenSize();
+
   return (
     <div className="min-h-full flex flex-col font-sans relative bg-surface-primary p-m">
       <div className="relative w-full flex-1 overflow-hidden flex rounded-[40px] flex-col">
@@ -56,18 +59,18 @@ export const Home = () => {
                 universities on our state-of-the-art campus located in Egypt.
               </p>
 
-              <div className="flex flex-col gap-m w-full">
+              <div className="flex flex-col lg:flex-row gap-m w-full">
                 <Button
                   variant="secondary"
-                  size="mobile"
-                  className="w-full justify-center"
+                  size={screenSize}
+                  className="w-full lg:w-auto justify-center"
                 >
                   Explore Programs
                 </Button>
                 <Button
                   variant="outline"
-                  size="mobile"
-                  className="w-full justify-center"
+                  size={screenSize}
+                  className="w-full lg:w-auto justify-center"
                   icon={false}
                 >
                   Start a Virtual Campus Tour
