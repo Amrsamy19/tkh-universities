@@ -14,6 +14,7 @@ import { DesktopMegaMenu } from "./ui/DesktopMegaMenu";
 import NOVA from "../assets/svg/menu-logo-nova.svg";
 import COVENTRY from "../assets/svg/menu-logo-coventry.svg";
 import { studyPills, campusPills, admissionPills } from "../lib/menuData";
+import { useScreenSize } from "../hooks/useScreenSize";
 
 export const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -21,6 +22,7 @@ export const Navbar = () => {
   const [activeMobileDropdown, setActiveMobileDropdown] = useState<
     string | null
   >(null);
+  const screenSize = useScreenSize();
 
   const topLinks = [
     { label: "Coventry University", href: "#" },
@@ -121,7 +123,7 @@ export const Navbar = () => {
 
       {/* --- Mobile/Tablet Navbar --- */}
       <header className="lg:hidden fixed top-8 inset-x-8 z-50 pointer-events-none">
-        <div className="bg-surface-primary/70 pointer-events-auto backdrop-blur-md rounded-full px-s py-xxs flex justify-between items-center shadow-lg border border-white/20">
+        <div className="pointer-events-auto bg-surface-primary/70 backdrop-blur-md  rounded-full px-s py-xxs flex justify-between items-center shadow-lg border border-white/20">
           <Logo />
           <Button
             icon={false}
@@ -143,7 +145,7 @@ export const Navbar = () => {
         }`}
       >
         <div
-          className={`absolute top-4 inset-x-4 bottom-4 bg-white rounded-4xl overflow-hidden shadow-2xl flex flex-col transition-all duration-300 ease-out ${
+          className={`absolute top-4 inset-x-4 bottom-4 bg-surface-primary/70 backdrop-blur-md border border-white/20 rounded-4xl overflow-hidden shadow-2xl flex flex-col transition-all duration-300 ease-out ${
             isMobileMenuOpen
               ? "translate-y-0 scale-100"
               : "translate-y-4 scale-95"
@@ -151,21 +153,20 @@ export const Navbar = () => {
         >
           <div className="flex-1 overflow-y-auto">
             {/* Header */}
-            <div className="flex justify-between items-center p-l border-b border-neutral-100">
+            <div className="flex justify-between items-center p-l">
               <Logo />
-              <Button
-                icon={false}
+              <button
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="p-xs text-icon-inactive hover:text-icon-tkh-primary bg-transparent hover:transparent  transition-colors cursor-pointer rounded-full hover:bg-neutral-50"
+                className="p-xs text-icon-inactive hover:text-icon-tkh-primary transition-colors cursor-pointer rounded-full hover:bg-neutral-50"
                 aria-label="Close mobile menu"
               >
                 <X className="w-6 h-6" />
-              </Button>
+              </button>
             </div>
 
             {/* Search */}
-            <div className="p-l bg-neutral-50 border-b border-stroke-primary/30">
-              <div className="flex items-center gap-s text-icon-inactive bg-white px-m py-s rounded-full border border-stroke-primary focus-within:border-stroke-tkh-primary focus-within:ring-2 focus-within:ring-surface-tkh-primary/20 transition-all">
+            <div className="px-l">
+              <div className="flex items-center gap-s text-icon-inactive bg-transparent px-m py-s rounded-full border border-stroke-primary focus-within:border-stroke-tkh-primary focus-within:ring-2 focus-within:ring-surface-tkh-primary/20 transition-all">
                 <Search className="w-5 h-5" />
                 <input
                   type="text"
@@ -176,48 +177,47 @@ export const Navbar = () => {
             </div>
 
             {/* Menu Links */}
-            <div className="flex flex-col p-l gap-m">
+            <div className="flex flex-col p-l">
               {mainLinks.map((link) => {
                 const isOpen = activeMobileDropdown === link.label;
 
                 if (!link.hasDropdown) {
                   return (
-                    <a
-                      key={link.label}
-                      href={link.href}
-                      className="flex justify-between items-center py-m text-button-2 text-text-primary border-b border-stroke-primary/30 last:border-0 hover:text-text-tkh-primary transition-colors group"
-                    >
-                      {link.label}
-                    </a>
+                    <div className="transition-all duration-300 p-xs">
+                      <a
+                        key={link.label}
+                        href={link.href}
+                        className="flex justify-between items-center py-s px-xs text-button-2 font-medium text-text-primary"
+                      >
+                        {link.label}
+                      </a>
+                    </div>
                   );
                 }
 
                 return (
                   <div
                     key={link.label}
-                    className="bg-neutral-50 rounded-l p-m border border-stroke-primary/30"
+                    className={`transition-all duration-300 ${isOpen ? "bg-[rgba(239,241,244,0.7)] rounded-[24px] p-s" : "p-xs"}`}
                   >
-                    <Button
-                      icon={false}
-                      className="w-full flex justify-between items-center text-button-2 font-medium text-text-primary focus:outline-none bg-transparent hover:transparent cursor-pointer group"
+                    <button
+                      className="w-full flex justify-between items-center py-s px-xs text-button-2 font-medium text-text-primary focus:outline-none bg-transparent cursor-pointer group"
                       onClick={() =>
                         setActiveMobileDropdown(isOpen ? null : link.label)
                       }
                     >
                       {link.label}
-                      <div className="p-xs rounded-full bg-white group-hover:bg-brand-orange-50 transition-colors shadow-sm">
-                        {isOpen ? (
-                          <ChevronUp className="w-4 h-4 text-icon-primary" />
-                        ) : (
-                          <ChevronDown className="w-4 h-4 text-icon-primary" />
-                        )}
-                      </div>
-                    </Button>
+                      {isOpen ? (
+                        <ChevronUp className="w-5 h-5 text-icon-primary" />
+                      ) : (
+                        <ChevronDown className="w-5 h-5 text-icon-primary" />
+                      )}
+                    </button>
 
                     <div
                       className={`grid transition-all duration-300 ease-in-out ${
                         isOpen
-                          ? "grid-rows-[1fr] opacity-100 mt-m"
+                          ? "grid-rows-[1fr] opacity-100 mt-s"
                           : "grid-rows-[0fr] opacity-0"
                       }`}
                     >
@@ -226,7 +226,7 @@ export const Navbar = () => {
                           <>
                             <a
                               href="#"
-                              className="flex justify-between items-center bg-white p-m rounded-s shadow-sm border border-neutral-100 hover:border-brand-orange-200 group transition-all"
+                              className="flex justify-between items-center p-m rounded-s group transition-all"
                             >
                               <div>
                                 <img
@@ -234,7 +234,7 @@ export const Navbar = () => {
                                   alt="NOVA"
                                   className="h-6 w-auto mb-2"
                                 />
-                                <p className="text-caption-2 text-text-secondary mt-xs group-hover:text-text-primary transition-colors leading-tight">
+                                <p className="text-sm text-text-secondary mt-xs group-hover:text-text-primary transition-colors leading-tight">
                                   Pursue world-class European education from
                                   top-ranked NOVA Lisbon.
                                 </p>
@@ -243,7 +243,7 @@ export const Navbar = () => {
                             </a>
                             <a
                               href="#"
-                              className="flex justify-between items-center bg-white p-m rounded-s shadow-sm border border-neutral-100 hover:border-brand-orange-200 group transition-all"
+                              className="flex justify-between items-center p-m rounded-s group transition-all"
                             >
                               <div>
                                 <img
@@ -251,7 +251,7 @@ export const Navbar = () => {
                                   alt="Coventry"
                                   className="h-8 w-auto mb-2"
                                 />
-                                <p className="text-caption-2 text-text-secondary mt-xs group-hover:text-text-primary transition-colors leading-tight">
+                                <p className="text-sm text-text-secondary mt-xs group-hover:text-text-primary transition-colors leading-tight">
                                   Earn a UK degree in Engineering, Computing,
                                   Business, or Design.
                                 </p>
@@ -265,13 +265,13 @@ export const Navbar = () => {
                             <a
                               key={pill.id}
                               href="#"
-                              className="flex justify-between items-center bg-white p-m rounded-s shadow-sm border border-neutral-100 hover:border-brand-orange-200 group transition-all"
+                              className="flex justify-between items-center p-m rounded-s group transition-all"
                             >
                               <div>
-                                <div className="font-bold text-body-2 text-black">
+                                <div className="font-medium text-button-2">
                                   {pill.title}
                                 </div>
-                                <p className="text-caption-2 text-text-secondary mt-xs group-hover:text-text-primary transition-colors leading-tight">
+                                <p className="text-sm text-text-secondary mt-xs group-hover:text-text-primary transition-colors leading-tight">
                                   {pill.description}
                                 </p>
                               </div>
@@ -283,13 +283,13 @@ export const Navbar = () => {
                             <a
                               key={pill.id}
                               href="#"
-                              className="flex justify-between items-center bg-white p-m rounded-s shadow-sm border border-neutral-100 hover:border-brand-orange-200 group transition-all"
+                              className="flex justify-between items-center p-m rounded-s group transition-all"
                             >
                               <div>
-                                <div className="font-bold text-body-2 text-black">
+                                <div className="font-medium text-button-2">
                                   {pill.title}
                                 </div>
-                                <p className="text-caption-2 text-text-secondary mt-xs group-hover:text-text-primary transition-colors leading-tight">
+                                <p className="text-sm text-text-secondary mt-xs group-hover:text-text-primary transition-colors leading-tight">
                                   {pill.description}
                                 </p>
                               </div>
@@ -301,13 +301,13 @@ export const Navbar = () => {
                             <a
                               key={pill.id}
                               href="#"
-                              className="flex justify-between items-center bg-white p-m rounded-s shadow-sm border border-neutral-100 hover:border-brand-orange-200 group transition-all"
+                              className="flex justify-between items-center p-m rounded-s group transition-all"
                             >
                               <div>
-                                <div className="font-bold text-body-2 text-black">
+                                <div className="font-medium text-button-2">
                                   {pill.title}
                                 </div>
-                                <p className="text-caption-2 text-text-secondary mt-xs group-hover:text-text-primary transition-colors leading-tight">
+                                <p className="text-sm text-text-secondary mt-xs group-hover:text-text-primary transition-colors leading-tight">
                                   {pill.description}
                                 </p>
                               </div>
@@ -320,19 +320,54 @@ export const Navbar = () => {
                 );
               })}
 
-              <div className="mt-l flex flex-col gap-m px-xs border-t border-stroke-primary/30 pt-l">
+              <Separator
+                orientation="horizontal"
+                className="mt-m g-stroke-primary"
+              />
+              <div className="flex flex-col gap-m pt-m pb-l">
                 <a
                   href="#"
-                  className="text-body-2 text-text-secondary hover:text-text-tkh-primary transition-colors font-medium"
+                  className="text-button-2 font-medium text-text-primary hover:text-text-tkh-primary transition-colors pl-s"
                 >
                   Coventry University
                 </a>
                 <a
                   href="#"
-                  className="text-body-2 text-text-secondary hover:text-text-tkh-primary transition-colors font-medium"
+                  className="text-button-2 font-medium text-text-primary hover:text-text-tkh-primary transition-colors pl-s"
                 >
                   NOVA University
                 </a>
+                <div className="flex gap-m pl-s">
+                  <a
+                    href="#"
+                    className="text-button-2 font-medium text-text-primary hover:text-text-tkh-primary transition-colors"
+                  >
+                    Alumni
+                  </a>
+                  <a
+                    href="#"
+                    className="text-button-2 font-medium text-text-primary hover:text-text-tkh-primary transition-colors"
+                  >
+                    News
+                  </a>
+                  <a
+                    href="#"
+                    className="text-button-2 font-medium text-text-primary hover:text-text-tkh-primary transition-colors"
+                  >
+                    Events
+                  </a>
+                </div>
+                <a
+                  href="#"
+                  className="text-button-2 font-medium text-text-primary hover:text-text-tkh-primary transition-colors pl-s"
+                >
+                  Contact Us
+                </a>
+                <div className="w-1/2">
+                  <Button variant="primary" size={screenSize}>
+                    Apply Now
+                  </Button>
+                </div>
               </div>
             </div>
           </div>
