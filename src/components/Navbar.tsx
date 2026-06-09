@@ -9,6 +9,7 @@ import {
 } from "lucide-react";
 import { Button } from "./ui/Button";
 import { Logo } from "../assets/svg/Logo";
+import { Separator } from "./ui/Separator";
 import NOVA from "../assets/svg/menu-logo-nova.svg";
 import COVENTRY from "../assets/svg/menu-logo-coventry.svg";
 
@@ -54,7 +55,7 @@ export const Navbar = () => {
                     {link.label}
                   </a>
                   {index === 1 && (
-                    <span className="bg-stroke-primary h-4.25 w-px"></span>
+                    <Separator orientation="vertical" className="h-4" />
                   )}
                 </React.Fragment>
               ))}
@@ -99,7 +100,7 @@ export const Navbar = () => {
                     {link.label}
                     {link.hasDropdown && (
                       <ChevronDown
-                        className={`w-4 h-4 transition-transform ${activeDropdown === link.label ? "rotate-180" : "group-hover:rotate-180"}`}
+                        className={`w-4 h-4 transition-transform ${activeDropdown === link.label ? "rotate-180" : ""}`}
                       />
                     )}
                   </a>
@@ -118,34 +119,33 @@ export const Navbar = () => {
               {activeDropdown === "Universities" && (
                 <div className="grid grid-cols-12 gap-xl items-stretch">
                   {/* Left Column: Universities selection */}
-                  <div className="col-span-5 flex flex-col gap-m pr-xl">
+                  <div className="col-span-6 flex flex-col gap-m pr-l">
                     {/* NOVA Pill */}
-                    <div className="bg-transparent hover:bg-surface-primary/50 rounded-3xl p-l flex items-center justify-between cursor-pointer group transition-all">
+                    <div className="bg-neutral-100 rounded-4xl p-l flex items-center justify-between cursor-pointer transition-all">
                       <div className="flex gap-l items-center">
                         <img src={NOVA} className="w-auto h-14 shrink-0" />
-                        <p className="text-caption-2 text-text-inactive leading-snug">
-                          Pursue world-class European education from top-ranked
-                          NOVA Lisbon
+                        <p className="text-body-2 text-text-secondary leading-snug">
+                          Pursue world-class European education<br/>from top-ranked NOVA Lisbon
                         </p>
                       </div>
-                      <ChevronRight className="w-5 h-5 text-icon-inactive group-hover:text-icon-tkh-primary transition-colors shrink-0" />
+                      <ChevronRight className="w-5 h-5 text-text-primary shrink-0" />
                     </div>
 
                     {/* Coventry Pill */}
-                    <div className="rounded-3xl p-l flex items-center justify-between cursor-pointer hover:bg-surface-primary/50 transition-all group">
+                    <div className="bg-transparent rounded-4xl p-l flex items-center justify-between cursor-pointer hover:bg-neutral-100 transition-all">
                       <div className="flex gap-l items-center">
-                        <img src={COVENTRY} className="w-auto h-14 shrink-0" />
-                        <p className="text-caption-2 text-text-inactive leading-snug">
-                          Earn a UK degree in Engineering, Computing, Business,
-                          or Design.
+                        <img src={COVENTRY} className="w-auto h-12 shrink-0" />
+                        <p className="text-body-2 text-text-secondary leading-snug">
+                          Earn a UK degree in Engineering,<br/>Computing, Business, or Design.
                         </p>
                       </div>
-                      <ChevronRight className="w-5 h-5 text-icon-inactive group-hover:text-icon-tkh-primary transition-colors shrink-0" />
+                      <ChevronRight className="w-5 h-5 text-text-primary shrink-0" />
                     </div>
                   </div>
 
                   {/* Middle Column: Links */}
-                  <div className="col-span-3 flex flex-col justify-center gap-l pl-xl border-l border-stroke-primary/50">
+                  <div className="col-span-2 flex flex-col justify-center gap-l pl-l relative">
+                    <Separator orientation="vertical" gradient className="absolute -left-6 top-4 bottom-4 h-auto" />
                     {[
                       "About NOVA University",
                       "Tuition Fees",
@@ -155,7 +155,7 @@ export const Navbar = () => {
                       <a
                         key={link}
                         href="#"
-                        className="text-button-2 font-medium text-text-secondary hover:text-text-tkh-primary transition-colors"
+                        className="text-body-2 font-medium text-text-primary hover:text-text-tkh-primary transition-colors"
                       >
                         {link}
                       </a>
@@ -163,7 +163,7 @@ export const Navbar = () => {
                   </div>
 
                   {/* Right Column: Image */}
-                  <div className="col-span-4 relative min-h-62.5">
+                  <div className="col-span-4 relative min-h-70">
                     <div
                       className="absolute inset-0 bg-neutral-200 overflow-hidden"
                       style={{
@@ -174,7 +174,7 @@ export const Navbar = () => {
                       <img
                         src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?q=80&w=1000&auto=format&fit=crop"
                         alt="NOVA University Campus"
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-cover scale-105"
                       />
                     </div>
                   </div>
