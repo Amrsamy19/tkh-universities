@@ -140,21 +140,21 @@ export const ProgramsSection = () => {
           onClick={() => scroll("left")}
           className={`w-12 h-12 rounded-full border flex items-center justify-center transition-colors ${
             canScrollLeft
-              ? "border-brand-orange-200 text-brand-orange-200 hover:bg-brand-orange-200 hover:text-white"
+              ? "border-brand-orange-200 text-brand-orange-200 hover:bg-brand-orange-200/15"
               : "border-stroke-primary text-text-inactive cursor-default"
           }`}
         >
-          <ChevronLeft className="w-5 h-5" />
+          <ChevronLeft className="w-8 h-8" />
         </button>
         <button
           onClick={() => scroll("right")}
           className={`w-12 h-12 rounded-full border flex items-center justify-center transition-colors ${
             canScrollRight
-              ? "border-brand-orange-200 text-brand-orange-200 hover:bg-brand-orange-200 hover:text-white"
+              ? "border-brand-orange-200 text-brand-orange-200 hover:bg-brand-orange-200/15"
               : "border-stroke-primary text-text-inactive cursor-default"
           }`}
         >
-          <ChevronRight className="w-5 h-5" />
+          <ChevronRight className="w-8 h-8" />
         </button>
       </motion.div>
     </section>

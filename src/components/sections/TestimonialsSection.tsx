@@ -98,23 +98,23 @@ export const TestimonialsSection = () => {
       </p>
 
       {/* Carousel Container */}
-      <div className="relative w-full max-w-[1200px] h-[550px] flex justify-center items-center my-l">
+      <div className="relative w-full max-w-300 h-137.5 flex justify-center items-center my-l">
         {/* Nav Buttons (Hidden on small mobile, visible on sm and up) */}
         <button
           onClick={prev}
-          className="hidden sm:flex absolute left-0 lg:left-10 z-40 w-12 h-12 rounded-full border border-brand-orange-200 text-brand-orange-200 hover:bg-brand-orange-200 hover:text-white items-center justify-center transition-colors"
+          className="hidden sm:flex absolute left-0 lg:left-10 z-40 w-12 h-12 rounded-full border border-brand-orange-200 text-brand-orange-200 hover:bg-brand-orange-200/15 items-center justify-center transition-colors"
         >
-          <ChevronLeft className="w-5 h-5" />
+          <ChevronLeft className="w-8 h-8" />
         </button>
         <button
           onClick={next}
-          className="hidden sm:flex absolute right-0 lg:right-10 z-40 w-12 h-12 rounded-full border border-brand-orange-200 text-brand-orange-200 hover:bg-brand-orange-200 hover:text-white items-center justify-center transition-colors"
+          className="hidden sm:flex absolute right-0 lg:right-10 z-40 w-12 h-12 rounded-full border border-brand-orange-200 text-brand-orange-200 hover:bg-brand-orange-200/15 items-center justify-center transition-colors"
         >
-          <ChevronRight className="w-5 h-5" />
+          <ChevronRight className="w-8 h-8" />
         </button>
 
         {/* Cards Wrapper */}
-        <div className="relative w-[340px] lg:w-[400px] h-[480px] lg:h-[540px]">
+        <div className="relative w-85 lg:w-100 h-120 lg:h-135">
           <AnimatePresence initial={false}>
             {testimonials.map((testimony, i) => {
               // Calculate relative offset for infinite carousel
@@ -154,7 +154,7 @@ export const TestimonialsSection = () => {
                     duration: 0.6,
                     ease: "circOut",
                   }}
-                  className="absolute top-0 left-0 w-full h-full border-[6px] lg:border-[8px] border-white shadow-2xl flex flex-col bg-[linear-gradient(101.46deg,#1e2749_18.07%,#101828_49.29%,#27202f_80.51%)]"
+                  className="absolute top-0 left-0 w-full h-full border-[6px] lg:border-8 border-white shadow-2xl flex flex-col bg-[linear-gradient(101.46deg,#1e2749_18.07%,#101828_49.29%,#27202f_80.51%)]"
                 >
                   {/* Card Image Area */}
                   <div className="relative w-full h-[55%] shrink-0 p-2">

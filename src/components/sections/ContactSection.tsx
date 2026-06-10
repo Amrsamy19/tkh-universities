@@ -7,7 +7,7 @@ export const ContactSection = () => {
 
   return (
     <section className="py-2xl lg:py-4xl w-[calc(100%+var(--spacing-s)*2)] -ml-s overflow-hidden">
-      <div className="flex flex-col lg:flex-row items-center justify-evenly gap-2xl lg:gap-xl p-m lg:p-4xl lg:py-[80px] items-start bg-linear-to-br from-[#F5F7FB] to-[#FDF1EE] rounded-[40px] relative z-10">
+      <div className="flex flex-col lg:flex-row justify-evenly gap-2xl lg:gap-xl p-m lg:p-4xl lg:py-20 items-start bg-linear-to-br from-[#F5F7FB] to-[#FDF1EE] rounded-[40px] relative z-10">
         {/* Left Column: Intro */}
         <motion.div
           initial={{ opacity: 0, x: -50 }}
@@ -22,7 +22,7 @@ export const ContactSection = () => {
           <h2 className="text-h2 font-bold text-text-primary my-s">
             Get In Touch!
           </h2>
-          <p className="text-body-1 text-text-secondary max-w-[400px] mb-xl">
+          <p className="text-body-1 text-text-secondary max-w-100 mb-xl">
             Have a question on mind? Leave us a message and we will contact you
             shortly.
           </p>
@@ -34,7 +34,7 @@ export const ContactSection = () => {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="flex flex-col w-full max-w-[800px]"
+          className="flex flex-col w-full max-w-200"
         >
           <form
             id="contact-form"
