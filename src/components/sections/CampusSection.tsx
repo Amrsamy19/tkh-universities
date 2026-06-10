@@ -175,7 +175,7 @@ export const CampusSection = () => {
               </div>
 
               {/* Stats Badge overlapping the image */}
-              <div className="absolute bottom-0 left-34.5 z-20">
+              <div className="absolute bottom-0 left-20 lg:left-21 xl:left-34.5 z-20">
                 <div
                   onClick={() => handleTabClick((activeTab + 1) % tabs.length)}
                   className="bg-surface-uni-secondary text-white w-35 h-35 lg:w-42.5 lg:h-42.5 flex items-end justify-start cursor-pointer hover:bg-surface-uni-secondary/90 transition-colors pointer-events-auto"
