@@ -70,7 +70,7 @@ export const NewsSection = () => {
   const screenSize = useScreenSize();
 
   return (
-    <section className="py-2xl lg:py-4xl w-full max-w-480 mx-auto overflow-hidden bg-[#F8F9FA]">
+    <section className="py-2xl lg:py-4xl w-full max-w-480 mx-auto overflow-hidden">
       {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}

@@ -34,7 +34,7 @@ export const AdmissionsSteps = () => {
   const screenSize = useScreenSize();
 
   return (
-    <section className="py-4xl xl:py-20 px-s xl:px-30 w-full max-w-480 mx-auto relative overflow-hidden bg-linear-to-br from-[#F5F7FB] to-[#FDF1EE] mt-4xl">
+    <section className="py-4xl xl:py-20 px-s xl:px-30 w-full max-w-480 mx-auto relative overflow-hidden mt-4xl">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-2xl relative z-10 items-center">
         {/* Left Column */}
         <motion.div

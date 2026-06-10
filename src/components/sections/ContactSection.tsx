@@ -7,7 +7,7 @@ export const ContactSection = () => {
 
   return (
     <section className="py-2xl lg:py-4xl w-[calc(100%+var(--spacing-s)*2)] -ml-s overflow-hidden">
-      <div className="flex flex-col lg:flex-row justify-evenly gap-2xl lg:gap-xl p-m lg:p-4xl lg:py-20 items-start bg-linear-to-br from-[#F5F7FB] to-[#FDF1EE] rounded-[40px] relative z-10">
+      <div className="flex flex-col lg:flex-row justify-evenly gap-2xl lg:gap-xl p-m lg:p-4xl lg:py-20 items-start rounded-[40px] relative z-10">
         {/* Left Column: Intro */}
         <motion.div
           initial={{ opacity: 0, x: -50 }}
