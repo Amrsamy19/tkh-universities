@@ -110,13 +110,14 @@ export const EventsSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.5, delay: i * 0.1 }}
-            className="shrink-0 w-[85vw] sm:w-105 lg:w-[960px] flex flex-col snap-start group cursor-pointer"
+            className="shrink-0 w-[85vw] sm:w-105 lg:w-240 flex flex-col snap-start group cursor-pointer"
           >
             {/* Image Container */}
             <div className="relative w-full aspect-4/3 overflow-hidden [clip-path:polygon(11.9%_0,100%_0,100%_54.1%,88.1%_100%,0_100%,0_45.9%)]">
               <img
                 src={evt.image}
                 alt={evt.title}
+                loading="lazy"
                 className="absolute inset-0 w-full h-full object-cover"
               />
 

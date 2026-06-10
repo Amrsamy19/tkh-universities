@@ -161,12 +161,14 @@ export const PartnersSection = () => {
             >
               <img
                 src={p.image}
+                loading="lazy"
                 className="absolute inset-0 w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent" />
               <div className="absolute inset-0 p-l flex flex-col justify-end">
                 <img
                   src={p.logo}
+                  loading="lazy"
                   className="absolute inset-s-6 bottom-24 h-auto object-contain w-50"
                   style={{ objectPosition: "left" }}
                 />
@@ -242,6 +244,7 @@ export const PartnersSection = () => {
               <motion.img
                 layout
                 src={p.image}
+                loading="lazy"
                 className="absolute inset-0 w-full h-full object-cover origin-center"
                 animate={{
                   rotate: isHovered ? 0 : -p.rotation,
@@ -272,6 +275,7 @@ export const PartnersSection = () => {
                   >
                     <img
                       src={p.logo}
+                      loading="lazy"
                       className={`h-16 lg:h-24 object-contain brightness-0 invert origin-left ${p.position.includes("right") ? "ml-0" : "ml-auto xl:ml-0"}`}
                       style={{
                         objectPosition: p.position.includes("right")

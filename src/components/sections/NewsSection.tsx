@@ -82,9 +82,7 @@ export const NewsSection = () => {
         <span className="text-button-2 font-medium text-white bg-brand-blue-200 mb-m px-m py-xs">
           Stay Updated
         </span>
-        <h2 className="text-h2 text-text-primary font-bold">
-          Proud News!
-        </h2>
+        <h2 className="text-h2 text-text-primary font-bold">Proud News!</h2>
         <p className="text-body-1 text-text-secondary mt-m max-w-150">
           Discover the latest achievements, partnerships, and news shaping the
           future of education at TKH.
@@ -112,15 +110,24 @@ export const NewsSection = () => {
               <img
                 src={item.image}
                 alt={item.title}
+                loading="lazy"
                 className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
               />
             </div>
 
             {/* Text Content */}
             <div className="flex flex-col gap-xs pr-m">
-              <span className={`text-caption-1 font-bold uppercase tracking-wider ${item.categoryColor}`}>{item.category}</span>
-              <h3 className="text-h5 font-bold text-text-primary group-hover:text-text-tkh-primary transition-colors line-clamp-3 leading-tight">{item.title}</h3>
-              <span className="text-body-2 text-text-inactive mt-xs">{item.date}</span>
+              <span
+                className={`text-caption-1 font-bold uppercase tracking-wider ${item.categoryColor}`}
+              >
+                {item.category}
+              </span>
+              <h3 className="text-h5 font-bold text-text-primary group-hover:text-text-tkh-primary transition-colors line-clamp-3 leading-tight">
+                {item.title}
+              </h3>
+              <span className="text-body-2 text-text-inactive mt-xs">
+                {item.date}
+              </span>
             </div>
           </motion.div>
         ))}

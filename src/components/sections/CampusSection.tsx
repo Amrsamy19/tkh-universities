@@ -115,7 +115,7 @@ export const CampusSection = () => {
             </h2>
           </div>
 
-          <div className="flex flex-col mt-l relative lg:pl-l min-h-[150px]">
+          <div className="flex flex-col mt-l relative lg:pl-l min-h-37.5">
             {/* Decorative vertical line (background track) */}
             <div className="absolute left-0 top-0 bottom-0 w-2 rounded-full bg-stroke-primary/30 block" />
             <motion.div
@@ -195,6 +195,7 @@ export const CampusSection = () => {
                   <img
                     src={tabs[activeTab].image}
                     alt={tabs[activeTab].title}
+                    loading="lazy"
                     className="w-full h-full object-cover absolute inset-0"
                   />
                   {/* Image Label Text */}

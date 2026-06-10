@@ -23,7 +23,12 @@ export const UniversityMenuPill = ({
       }`}
     >
       <div className="flex w-full px-xl py-l gap-m items-center">
-        <img src={imageSrc} className="w-auto h-14 shrink-0" alt={imageAlt} />
+        <img
+          src={imageSrc}
+          loading="lazy"
+          className="w-auto h-14 shrink-0"
+          alt={imageAlt}
+        />
         <p className="text-neutral-700 min-w-0 font-futura flex-1 text-[16px]">
           {description}
         </p>

@@ -162,6 +162,7 @@ export const TestimonialsSection = () => {
                       <img
                         src={testimony.image}
                         alt={testimony.name}
+                        loading="lazy"
                         className="w-full h-full object-cover"
                       />
                     </div>
@@ -191,6 +192,7 @@ export const TestimonialsSection = () => {
                     <img
                       src={testimony.avatar}
                       alt={testimony.name}
+                      loading="lazy"
                       className="w-12 h-12 rounded-full object-cover border-2 border-white shrink-0 mt-1"
                     />
                     <div className="min-w-0 flex flex-col">

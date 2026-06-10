@@ -231,6 +231,7 @@ export const Navbar = () => {
                                 <img
                                   src={NOVA}
                                   alt="NOVA"
+                                  loading="lazy"
                                   className="h-6 w-auto mb-2"
                                 />
                                 <p className="text-sm text-text-secondary mt-xs group-hover:text-text-primary transition-colors leading-tight">
@@ -248,6 +249,7 @@ export const Navbar = () => {
                                 <img
                                   src={COVENTRY}
                                   alt="Coventry"
+                                  loading="lazy"
                                   className="h-8 w-auto mb-2"
                                 />
                                 <p className="text-sm text-text-secondary mt-xs group-hover:text-text-primary transition-colors leading-tight">

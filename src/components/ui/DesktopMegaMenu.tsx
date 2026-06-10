@@ -120,6 +120,7 @@ export const DesktopMegaMenu = ({ activeDropdown }: DesktopMegaMenuProps) => {
                 <div className="absolute inset-0 w-full h-full overflow-hidden rounded-xl">
                   <img
                     key={activeUniversity}
+                    loading="lazy"
                     src={
                       activeUniversity === "NOVA"
                         ? NovaMenuImg
@@ -163,6 +164,7 @@ export const DesktopMegaMenu = ({ activeDropdown }: DesktopMegaMenuProps) => {
               <div className="relative h-73.25 w-130 shrink-0">
                 <div className="absolute inset-0 w-full h-full overflow-hidden">
                   <img
+                    loading="lazy"
                     src={StudyMenuImg}
                     alt="Students studying"
                     className="object-cover w-full h-full"
@@ -202,6 +204,7 @@ export const DesktopMegaMenu = ({ activeDropdown }: DesktopMegaMenuProps) => {
               <div className="relative h-73.25 w-130 shrink-0">
                 <div className="absolute inset-0 w-full h-full overflow-hidden">
                   <img
+                    loading="lazy"
                     src={CampusLifeMenuImg}
                     alt="Campus Life"
                     className="object-cover w-full h-full"
@@ -233,11 +236,13 @@ export const DesktopMegaMenu = ({ activeDropdown }: DesktopMegaMenuProps) => {
               {/* Right Column: Logos */}
               <div className="gap-xl px-2xl py-l flex flex-1 flex-col items-start">
                 <img
+                  loading="lazy"
                   src={NOVA}
                   alt="NOVA University"
                   className="h-14 w-auto cursor-pointer"
                 />
                 <img
+                  loading="lazy"
                   src={COVENTRY}
                   alt="Coventry University"
                   className="h-14 w-auto cursor-pointer"

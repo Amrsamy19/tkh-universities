@@ -43,6 +43,7 @@ export const MarqueeSection = () => {
                 <img
                   src={CoventryLogo}
                   alt="Coventry University"
+                  loading="lazy"
                   className="h-10 lg:h-18 w-auto object-contain brightness-0 invert"
                 />
               </div>
@@ -78,6 +79,7 @@ export const MarqueeSection = () => {
                 <img
                   src={NOVALogo}
                   alt="NOVA University"
+                  loading="lazy"
                   className="h-10 lg:h-18 w-auto object-contain brightness-0 invert"
                 />
               </div>
