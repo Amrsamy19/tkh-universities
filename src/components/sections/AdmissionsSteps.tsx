@@ -34,7 +34,7 @@ export const AdmissionsSteps = () => {
   const screenSize = useScreenSize();
 
   return (
-    <section className="py-4xl xl:py-[80px] px-s xl:px-[120px] w-full max-w-[1920px] mx-auto relative overflow-hidden bg-gradient-to-br from-[#F5F7FB] to-[#FDF1EE] mt-4xl">
+    <section className="py-4xl xl:py-20 px-s xl:px-30 w-full max-w-480 mx-auto relative overflow-hidden bg-linear-to-br from-[#F5F7FB] to-[#FDF1EE] mt-4xl">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-2xl relative z-10 items-center">
         {/* Left Column */}
         <motion.div
@@ -44,7 +44,7 @@ export const AdmissionsSteps = () => {
           transition={{ duration: 0.6 }}
           className="col-span-1 lg:col-span-5 flex flex-col items-start"
         >
-          <div className="bg-surface-uni-secondary text-text-invert px-m py-s text-subtitle-1 tracking-[1px] font-bold mb-m uppercase">
+          <div className="text-button-2 font-medium text-white bg-brand-blue-200 mb-m px-m py-xs">
             Take Action
           </div>
 
@@ -82,7 +82,7 @@ export const AdmissionsSteps = () => {
               </div>
 
               <div className="flex-1 flex flex-col md:flex-row md:items-center gap-m">
-                <h3 className="text-h5 font-bold text-text-primary w-auto md:w-[300px]">
+                <h3 className="text-h5 font-bold text-text-primary w-auto md:w-75">
                   {step.title}
                 </h3>
                 <p className="text-body-2 text-text-secondary">{step.desc}</p>
