@@ -48,6 +48,7 @@ const tabs = [
 
 export const CampusSection = () => {
   const [progress, setProgress] = useState(0);
+  const [direction, setDirection] = useState(1);
 
   // Derive active tab from progress (0-100)
   const activeTab = Math.min(
@@ -63,15 +64,44 @@ export const CampusSection = () => {
 
     const timer = setInterval(() => {
       setProgress((prev) => {
-        if (prev + step >= 100) return 0;
-        return prev + step;
+        let next = prev + step;
+        if (next >= 100) next = 0;
+        
+        const currentTab = Math.min(Math.floor((prev / 100) * tabs.length), tabs.length - 1);
+        const nextTab = Math.min(Math.floor((next / 100) * tabs.length), tabs.length - 1);
+        
+        if (currentTab !== nextTab) {
+          setDirection(1); // Auto-play always goes forward
+        }
+        
+        return next;
       });
     }, interval);
 
     return () => clearInterval(timer);
   }, []);
+  
   const handleTabClick = (index: number) => {
+    if (index === activeTab) return;
+    setDirection(index > activeTab ? 1 : -1);
     setProgress((index / tabs.length) * 100);
+  };
+
+  const slideVariants = {
+    enter: (dir: number) => ({
+      y: dir > 0 ? 50 : -50,
+      opacity: 0,
+    }),
+    center: {
+      zIndex: 1,
+      y: 0,
+      opacity: 1,
+    },
+    exit: (dir: number) => ({
+      zIndex: 0,
+      y: dir > 0 ? -50 : 50,
+      opacity: 0,
+    }),
   };
 
   return (
@@ -147,12 +177,14 @@ export const CampusSection = () => {
         {/* Right Column: Single Image & Badge */}
         <div className="w-full lg:w-[55%] relative flex items-center justify-end overflow-hidden mt-xl lg:mt-0">
           <div className="w-[90%] lg:w-[85%] aspect-4/3 lg:aspect-square relative">
-            <AnimatePresence mode="wait">
+            <AnimatePresence mode="wait" custom={direction}>
               <motion.div
                 key={activeTab}
-                initial={{ opacity: 0, x: 50 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -50 }}
+                custom={direction}
+                variants={slideVariants}
+                initial="enter"
+                animate="center"
+                exit="exit"
                 transition={{ duration: 0.5, ease: "easeOut" }}
                 className="absolute inset-0 w-full h-full"
               >
@@ -175,7 +207,7 @@ export const CampusSection = () => {
                 </div>
 
                 {/* Badge overlapping the image */}
-                <div className="absolute bottom-0 -left-10 lg:-left-16 z-20">
+                <div className="absolute bottom-0 left-7.5 lg:left-14 z-20">
                   <div
                     className="bg-surface-uni-secondary text-white w-32 h-32 lg:w-42.5 lg:h-42.5 flex items-end justify-start"
                     style={{
