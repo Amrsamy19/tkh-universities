@@ -110,7 +110,7 @@ export const EventsSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.5, delay: i * 0.1 }}
-            className="shrink-0 w-[85vw] sm:w-[380px] lg:w-[680px] flex flex-col snap-start group cursor-pointer"
+            className="shrink-0 w-[85vw] sm:w-[420px] lg:w-[720px] flex flex-col snap-start group cursor-pointer"
           >
             {/* Image Container */}
             <div className="relative w-full aspect-[4/3] overflow-hidden [clip-path:polygon(11.9%_0,100%_0,100%_54.1%,88.1%_100%,0_100%,0_45.9%)]">
@@ -124,7 +124,7 @@ export const EventsSection = () => {
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
 
               {/* Date Badge */}
-              <div className="absolute top-0 right-0 bg-brand-orange-200 text-white w-20 h-20 lg:w-28 lg:h-28 flex flex-col items-center justify-evenly [clip-path:polygon(11.9%_0,100%_0,100%_54.1%,88.1%_100%,0_100%,0_45.9%)] pt-1">
+              <div className="absolute top-0 right-0 bg-brand-orange-200 text-white w-20 h-20 lg:w-28 lg:h-28 flex flex-col items-center justify-evenly [clip-path:polygon(11.9%_0,100%_0,100%_54.1%,88.1%_100%,0_100%,0_45.9%)] py-1">
                 <span className="text-h3 font-bold">{evt.day}</span>
                 <span className="text-body-2 text-center leading-none">
                   {evt.month} {evt.year}
