@@ -3,7 +3,6 @@ import { Button } from "./ui/Button";
 
 import { CampusSection } from "./sections/CampusSection";
 import { PartnersSection } from "./sections/PartnersSection";
-import { LifeAtTKHSection } from "./sections/LifeAtTKHSection";
 import { ProgramsSection } from "./sections/ProgramsSection";
 import { EventsSection } from "./sections/EventsSection";
 import { TestimonialsSection } from "./sections/TestimonialsSection";
@@ -82,9 +81,6 @@ export const Home = () => {
         <main className="flex-1 w-full relative z-10 flex flex-col gap-3xl lg:gap-4xl pb-0">
           <CampusSection />
           <PartnersSection />
-          <div className="lg:hidden">
-            <LifeAtTKHSection />
-          </div>
           <MarqueeSection />
           <ProgramsSection />
           <EventsSection />
