@@ -115,7 +115,7 @@ export const Footer = () => {
         </div>
 
         {/* Middle Section: Links Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-xl">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-x-l gap-y-12 lg:gap-xl">
           <div className="flex flex-col gap-m">
             <h4 className="text-h6 font-bold mb-xs">Universities</h4>
             <a

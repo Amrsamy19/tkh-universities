@@ -7,14 +7,14 @@ export const ContactSection = () => {
 
   return (
     <section className="py-2xl lg:py-4xl w-[calc(100%+var(--spacing-s)*2)] -ml-s overflow-hidden">
-      <div className="flex flex-col lg:flex-row justify-evenly gap-2xl lg:gap-xl p-m lg:p-4xl lg:py-20 items-start rounded-[40px] relative z-10">
-        {/* Left Column: Intro */}
+      <div className="flex flex-col gap-xl p-m lg:p-4xl lg:py-20 items-center justify-center rounded-[40px] relative z-10 max-w-200 mx-auto">
+        {/* Intro */}
         <motion.div
-          initial={{ opacity: 0, x: -50 }}
-          whileInView={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="flex flex-col items-start"
+          className="flex flex-col items-center text-center"
         >
           <span className="text-button-2 font-medium text-white bg-brand-blue-200 mb-m px-m py-xs">
             Take Action
@@ -22,19 +22,19 @@ export const ContactSection = () => {
           <h2 className="text-h2 font-bold text-text-primary my-s">
             Get In Touch!
           </h2>
-          <p className="text-body-1 text-text-secondary max-w-100 mb-xl">
+          <p className="text-body-1 text-text-secondary mb-l">
             Have a question on mind? Leave us a message and we will contact you
             shortly.
           </p>
         </motion.div>
 
-        {/* Right Column: Form */}
+        {/* Form */}
         <motion.div
-          initial={{ opacity: 0, x: 50 }}
-          whileInView={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="flex flex-col w-full max-w-200"
+          className="flex flex-col w-full"
         >
           <form
             id="contact-form"
@@ -91,11 +91,11 @@ export const ContactSection = () => {
             </div>
 
             {/* Submit Button */}
-            <div className="mt-l w-full flex justify-start lg:justify-end">
+            <div className="mt-l w-full flex justify-center">
               <Button
                 variant="primary"
                 size={screenSize}
-                className="w-1/2 sm:w-auto"
+                className="w-full sm:w-auto"
               >
                 Send Message
               </Button>

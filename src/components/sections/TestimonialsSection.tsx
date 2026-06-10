@@ -99,16 +99,16 @@ export const TestimonialsSection = () => {
 
       {/* Carousel Container */}
       <div className="relative w-full max-w-300 h-137.5 flex justify-center items-center my-l">
-        {/* Nav Buttons (Hidden on small mobile, visible on sm and up) */}
+        {/* Nav Buttons (Hidden on tablet/mobile, visible on lg and up) */}
         <button
           onClick={prev}
-          className="hidden sm:flex absolute left-0 lg:left-10 z-40 w-12 h-12 rounded-full border border-brand-orange-200 text-brand-orange-200 hover:bg-brand-orange-200/15 items-center justify-center transition-colors"
+          className="hidden lg:flex absolute left-0 lg:left-10 z-40 w-12 h-12 rounded-full border border-brand-orange-200 text-brand-orange-200 hover:bg-brand-orange-200/15 items-center justify-center transition-colors bg-surface-primary/50 backdrop-blur-sm"
         >
           <ChevronLeft className="w-8 h-8" />
         </button>
         <button
           onClick={next}
-          className="hidden sm:flex absolute right-0 lg:right-10 z-40 w-12 h-12 rounded-full border border-brand-orange-200 text-brand-orange-200 hover:bg-brand-orange-200/15 items-center justify-center transition-colors"
+          className="hidden lg:flex absolute right-0 lg:right-10 z-40 w-12 h-12 rounded-full border border-brand-orange-200 text-brand-orange-200 hover:bg-brand-orange-200/15 items-center justify-center transition-colors bg-surface-primary/50 backdrop-blur-sm"
         >
           <ChevronRight className="w-8 h-8" />
         </button>
@@ -212,19 +212,19 @@ export const TestimonialsSection = () => {
         </div>
       </div>
 
-      {/* Mobile Nav Arrows (Visible only on small screens below carousel) */}
-      <div className="flex sm:hidden gap-m mt-l">
+      {/* Mobile/Tablet Nav Arrows (Visible only below lg) */}
+      <div className="flex lg:hidden gap-m mt-l justify-center w-full">
         <button
           onClick={prev}
-          className="w-12 h-12 rounded-full border border-brand-orange-200 text-brand-orange-200 hover:bg-brand-orange-200/15 hover:text-white flex items-center justify-center transition-colors"
+          className="w-12 h-12 rounded-full border border-brand-orange-200 text-brand-orange-200 hover:bg-brand-orange-200/15 flex items-center justify-center transition-colors"
         >
-          <ChevronLeft className="w-5 h-5" />
+          <ChevronLeft className="w-8 h-8" />
         </button>
         <button
           onClick={next}
-          className="w-12 h-12 rounded-full border border-brand-orange-200 text-brand-orange-200 hover:bg-brand-orange-200/15 hover:text-white flex items-center justify-center transition-colors"
+          className="w-12 h-12 rounded-full border border-brand-orange-200 text-brand-orange-200 hover:bg-brand-orange-200/15 flex items-center justify-center transition-colors"
         >
-          <ChevronRight className="w-5 h-5" />
+          <ChevronRight className="w-8 h-8" />
         </button>
       </div>
 

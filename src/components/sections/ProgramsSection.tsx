@@ -103,7 +103,7 @@ export const ProgramsSection = () => {
             className="shrink-0 snap-start cursor-pointer group"
           >
             {/* Rotated card container */}
-            <div className="w-70 h-70 lg:w-125 lg:h-125 relative overflow-hidden transition-transform duration-500 [clip-path:polygon(0_0,88.14%_0,100%_38.01%,100%_100%,11.86%_100%,0_61.99%)]">
+            <div className="w-70 h-70 lg:w-[548px] lg:h-[548px] relative overflow-hidden transition-transform duration-500 [clip-path:polygon(0_0,88.14%_0,100%_38.01%,100%_100%,11.86%_100%,0_61.99%)]">
               {/* Background Image */}
               <img
                 src={prog.image}

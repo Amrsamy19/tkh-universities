@@ -16,7 +16,7 @@ export const PartnersSection = () => {
       name: "Coventry University",
       logo: CoventryLogo,
       image: imgCoventry,
-      rotation: 4,
+      rotation: 5,
       mobileRotation: 30,
       position: "top-left",
       smallOverlayType: "stats",
@@ -41,7 +41,7 @@ export const PartnersSection = () => {
       name: "NOVA University",
       logo: NOVALogo,
       image: imgNova,
-      rotation: -4,
+      rotation: -5,
       mobileRotation: -30,
       position: "top-right",
       smallOverlayType: "logo",
@@ -57,7 +57,7 @@ export const PartnersSection = () => {
       name: "Coventry University",
       logo: NOVALogo,
       image: imgNova,
-      rotation: -4,
+      rotation: -5,
       mobileRotation: 30,
       position: "bottom-left",
       smallOverlayType: "stats",
@@ -82,7 +82,7 @@ export const PartnersSection = () => {
       name: "Coventry University",
       logo: CoventryLogo,
       image: imgCoventry,
-      rotation: 4,
+      rotation: 5,
       mobileRotation: -30,
       position: "bottom-right",
       smallOverlayType: "logo",
@@ -135,7 +135,7 @@ export const PartnersSection = () => {
   };
 
   return (
-    <section className="py-2xl lg:py-4xl w-full px-m xl:px-30 max-w-480 mx-auto overflow-hidden">
+    <section className="py-2xl lg:py-4xl w-full px-m xl:px-30 max-w-480 mx-auto overflow-hidden bg-[linear-gradient(180deg,#FDF1EE_0%,#F5F7FB_100%)]">
       {/* Mobile Layout (Flex Column) */}
       <div className="lg:hidden flex flex-col gap-l">
         <div className="mx-auto flex w-full max-w-120 flex-col items-center gap-10 text-center lg:max-w-143">
@@ -298,12 +298,12 @@ export const PartnersSection = () => {
                       opacity:
                         isHovered || p.smallOverlayType === "stats" ? 1 : 0,
                     }}
-                    className="flex gap-2 items-stretch"
+                    className="flex gap-4 items-stretch bg-black/50 rounded-2xl p-4 backdrop-blur-md"
                   >
                     {p.stats.map((stat, i) => (
                       <div
                         key={i}
-                        className="flex flex-col gap-0.5 max-w-32 rounded-xl bg-black/50 px-3 py-2.5 text-white"
+                        className="flex flex-col gap-1 max-w-32 text-white"
                       >
                         <span className="text-[14px] leading-4 font-bold">
                           {stat.title}
