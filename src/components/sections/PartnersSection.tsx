@@ -16,7 +16,8 @@ export const PartnersSection = () => {
       name: "Coventry University",
       logo: CoventryLogo,
       image: imgCoventry,
-      rotation: 5,
+      rotation: 4,
+      mobileRotation: 30,
       position: "top-left",
       smallOverlayType: "stats",
       stats: [
@@ -40,7 +41,8 @@ export const PartnersSection = () => {
       name: "NOVA University",
       logo: NOVALogo,
       image: imgNova,
-      rotation: -5,
+      rotation: -4,
+      mobileRotation: -30,
       position: "top-right",
       smallOverlayType: "logo",
       stats: [
@@ -55,7 +57,8 @@ export const PartnersSection = () => {
       name: "Coventry University",
       logo: NOVALogo,
       image: imgNova,
-      rotation: -5,
+      rotation: -4,
+      mobileRotation: 30,
       position: "bottom-left",
       smallOverlayType: "stats",
       stats: [
@@ -79,7 +82,8 @@ export const PartnersSection = () => {
       name: "Coventry University",
       logo: CoventryLogo,
       image: imgCoventry,
-      rotation: 5,
+      rotation: 4,
+      mobileRotation: -30,
       position: "bottom-right",
       smallOverlayType: "logo",
       stats: [
@@ -103,40 +107,57 @@ export const PartnersSection = () => {
   const getPositionClasses = (position: string) => {
     switch (position) {
       case "top-left":
-        return "top-[2%] left-[-35%] origin-center";
+        return "top-[-12%] left-[-35%] origin-center";
       case "top-right":
-        return "top-[8%] right-[-35%] origin-center";
+        return "top-[-12%] right-[-35%] origin-center";
       case "bottom-left":
-        return "bottom-[8%] left-[-35%] origin-center";
+        return "bottom-[-15%] left-[-35%] origin-center";
       case "bottom-right":
-        return "bottom-[2%] right-[-35%] origin-center";
+        return "bottom-[-15%] right-[-35%] origin-center";
+      default:
+        return "";
+    }
+  };
+
+  const getHoveredClasses = (position: string) => {
+    switch (position) {
+      case "top-left":
+        return "top-[2%] left-[5%] w-[60%] h-[58%]";
+      case "top-right":
+        return "top-[2%] right-[5%] w-[60%] h-[58%]";
+      case "bottom-left":
+        return "bottom-[2%] left-[5%] w-[60%] h-[58%]";
+      case "bottom-right":
+        return "bottom-[2%] right-[5%] w-[60%] h-[58%]";
       default:
         return "";
     }
   };
 
   return (
-    <section className="py-2xl lg:py-4xl w-full px-m xl:px-30 max-w-480 mx-auto bg-surface-primary overflow-hidden">
+    <section className="py-2xl lg:py-4xl w-full px-m xl:px-30 max-w-480 mx-auto overflow-hidden">
       {/* Mobile Layout (Flex Column) */}
       <div className="lg:hidden flex flex-col gap-l">
-        <div className="flex flex-col items-center text-center">
-          <span className="text-button-2 font-bold text-white bg-brand-blue-200 mb-xs px-s py-xs">
+        <div className="mx-auto flex w-full max-w-120 flex-col items-center gap-10 text-center lg:max-w-143">
+          <span className="text-button-2 font-medium text-white bg-brand-blue-200 mb-xs px-m py-s">
             Partner with Excellence
           </span>
-          <h2 className="text-h2 text-text-primary mb-xs font-bold">
-            Study with The World’s Top Ranked Universities
-          </h2>
-          <p className="text-body-2 text-text-secondary">
-            TKH partners with prestigious European and UK universities to bring
-            their academic excellence to Egypt.
-          </p>
+          <div className="flex flex-col gap-8">
+            <h2 className="text-h2 text-text-primary font-bold">
+              Study with The World’s Top Ranked Universities
+            </h2>
+            <p className="text-body-1 text-neutral-800 px-2xl">
+              TKH partners with prestigious European and UK universities to
+              bring their academic excellence to Egypt.
+            </p>
+          </div>
         </div>
 
         <div className="flex flex-col gap-m mt-m">
           {partners.map((p) => (
             <div
               key={p.id}
-              className="relative w-full h-100 rounded-3xl overflow-hidden shadow-lg"
+              className={`relative w-85 max-w-full aspect-square mx-auto rounded-3xl overflow-hidden shadow-lg ${p.mobileRotation > 0 ? `-rotate-2` : `rotate-2`}  transition-transform duration-500 ease-in-out`}
             >
               <img
                 src={p.image}
@@ -146,10 +167,10 @@ export const PartnersSection = () => {
               <div className="absolute inset-0 p-l flex flex-col justify-end">
                 <img
                   src={p.logo}
-                  className="h-16 object-contain mb-m origin-left brightness-0 invert"
+                  className="absolute inset-s-6 bottom-24 h-auto object-contain w-50"
                   style={{ objectPosition: "left" }}
                 />
-                <Button variant="primary" icon className="w-max">
+                <Button variant="secondary" icon className="w-max">
                   Explore {p.name.split(" ")[0]}
                 </Button>
               </div>
@@ -159,20 +180,24 @@ export const PartnersSection = () => {
       </div>
 
       {/* Desktop Layout (Interactive Hover Expansion) */}
-      <div className="flex flex-col lg:block relative w-full h-175 mt-xl">
+      <div className="hidden lg:block relative w-full h-225 mt-xl">
         {/* Center Text */}
-        <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none z-10">
-          <span className="text-button-2 font-bold text-white bg-brand-blue-200 mb-m px-m py-s rounded-sm shadow-sm">
+        <motion.div
+          animate={{ opacity: hoveredCard ? 0 : 1 }}
+          transition={{ duration: 0.25 }}
+          className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none z-10"
+        >
+          <span className="text-subtitle-1 font-medium tracking-[1px] text-white bg-brand-blue-200 mb-m px-m py-s">
             Partner with Excellence
           </span>
-          <h2 className="text-h2 text-text-primary mb-m max-w-125 text-center font-extrabold leading-tight">
+          <h2 className="text-h2 text-text-primary mb-m max-w-125 text-center font-bold leading-tight">
             Study with The World’s Top Ranked Universities
           </h2>
           <p className="text-body-1 text-text-secondary max-w-100 text-center">
             TKH partners with prestigious European and UK universities to bring
             their academic excellence to Egypt.
           </p>
-        </div>
+        </motion.div>
 
         {/* Interactive Cards */}
         {partners.map((p) => {
@@ -184,16 +209,33 @@ export const PartnersSection = () => {
               layout
               onMouseEnter={() => setHoveredCard(p.id)}
               onMouseLeave={() => setHoveredCard(null)}
-              className={`absolute overflow-hidden shadow-2xl cursor-pointer rounded-[40px] ${
+              className={`absolute overflow-hidden cursor-pointer rounded-[40px] ${
                 isHovered
-                  ? "inset-0 m-auto w-[90%] h-[90%] z-50"
-                  : `${getPositionClasses(p.position)} w-[80%] xl:w-[75%] h-[40%] xl:h-[42%] z-20`
+                  ? `${getHoveredClasses(p.position)} z-50`
+                  : `${getPositionClasses(p.position)} w-[60%] h-[58%] z-20`
               }`}
-              style={{
+              animate={{
                 rotate: isHovered ? 0 : p.rotation,
+                scale: isHovered ? 1 : hoveredCard ? 0.77 : 1,
+                x:
+                  !isHovered && hoveredCard
+                    ? p.position.includes("left")
+                      ? -20
+                      : 20
+                    : 0,
+                y:
+                  !isHovered && hoveredCard
+                    ? p.position.includes("top")
+                      ? -20
+                      : 20
+                    : 0,
               }}
               transition={{
                 layout: { type: "spring", stiffness: 250, damping: 30 },
+                scale: { type: "spring", stiffness: 300, damping: 25 },
+                x: { type: "spring", stiffness: 300, damping: 25 },
+                y: { type: "spring", stiffness: 300, damping: 25 },
+                opacity: { duration: 0.25 },
               }}
             >
               {/* Background Image (Counter-rotated when small to keep buildings straight) */}
@@ -210,8 +252,8 @@ export const PartnersSection = () => {
 
               {/* Dark Gradient Overlay */}
               <motion.div
-                className="absolute inset-0 bg-linear-to-t from-[#1F1916]/80 via-[#1F1916]/30 to-transparent"
-                animate={{ opacity: isHovered ? 0.9 : 0.6 }}
+                className="absolute inset-0 bg-[linear-gradient(231deg,transparent_68%,rgba(0,0,0,0.6)_97%)]"
+                animate={{ opacity: isHovered ? 1 : 0.85 }}
               />
 
               {/* Card Content */}
@@ -230,14 +272,18 @@ export const PartnersSection = () => {
                   >
                     <img
                       src={p.logo}
-                      className={`h-16 lg:h-24 object-contain brightness-0 invert origin-left ${p.position.includes('right') ? 'ml-0' : 'ml-auto xl:ml-0'}`}
-                      style={{ objectPosition: p.position.includes('right') ? 'left' : 'right' }}
+                      className={`h-16 lg:h-24 object-contain brightness-0 invert origin-left ${p.position.includes("right") ? "ml-0" : "ml-auto xl:ml-0"}`}
+                      style={{
+                        objectPosition: p.position.includes("right")
+                          ? "left"
+                          : "right",
+                      }}
                     />
                     {/* Using motion.div wrapper to ensure button doesn't shrink awkwardly during layout animation */}
                     <motion.div layout className="w-max">
                       <Button
                         variant="secondary"
-                        size="desktop"
+                        size="mobile"
                         className="rounded-full shadow-lg"
                         icon
                       >
@@ -252,14 +298,17 @@ export const PartnersSection = () => {
                       opacity:
                         isHovered || p.smallOverlayType === "stats" ? 1 : 0,
                     }}
-                    className="flex gap-6 lg:gap-10 bg-black/20 backdrop-blur-md p-l rounded-3xl border border-white/10"
+                    className="flex gap-2 items-stretch"
                   >
                     {p.stats.map((stat, i) => (
-                      <div key={i} className="flex flex-col gap-1 max-w-35">
-                        <span className="text-white font-bold text-h6 lg:text-h5 leading-tight">
+                      <div
+                        key={i}
+                        className="flex flex-col gap-0.5 max-w-32 rounded-xl bg-black/50 px-3 py-2.5 text-white"
+                      >
+                        <span className="text-[14px] leading-4 font-bold">
                           {stat.title}
                         </span>
-                        <span className="text-white/80 text-cap-1 lg:text-body-2 leading-snug">
+                        <span className="text-[10px] leading-3 text-white/80">
                           {stat.desc}
                         </span>
                       </div>
