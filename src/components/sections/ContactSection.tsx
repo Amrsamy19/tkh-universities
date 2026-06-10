@@ -6,15 +6,18 @@ export const ContactSection = () => {
   const screenSize = useScreenSize();
 
   return (
-    <section className="py-2xl lg:py-4xl w-[calc(100%+var(--spacing-s)*2)] -ml-s overflow-hidden">
-      <div className="flex flex-col gap-xl p-m lg:p-4xl lg:py-20 items-center justify-center rounded-[40px] relative z-10 max-w-200 mx-auto">
+    <section className="py-2xl lg:py-4xl w-[calc(100%+var(--spacing-s)*2)] -ml-s overflow-hidden relative">
+      {/* Subtle orange glow in the bottom right */}
+      <div className="absolute bottom-[-10%] right-[-5%] w-125 h-125 bg-brand-orange-200/10 rounded-full blur-3xl z-0 pointer-events-none"></div>
+      
+      <div className="flex flex-col lg:flex-row gap-2xl lg:gap-xl p-m lg:p-4xl lg:py-20 justify-between items-start rounded-[40px] relative z-10 w-full max-w-375 mx-auto">
         {/* Intro */}
         <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, x: -20 }}
+          whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="flex flex-col items-center text-center"
+          className="flex flex-col items-start text-left lg:max-w-md w-full"
         >
           <span className="text-button-2 font-medium text-white bg-brand-blue-200 mb-m px-m py-xs">
             Take Action
@@ -30,11 +33,11 @@ export const ContactSection = () => {
 
         {/* Form */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, x: 20 }}
+          whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="flex flex-col w-full"
+          className="flex flex-col w-full lg:max-w-225"
         >
           <form
             id="contact-form"
@@ -53,8 +56,7 @@ export const ContactSection = () => {
                 htmlFor="phone"
                 className="absolute left-0 top-1/2 -translate-y-1/2 text-body-1 text-text-secondary/80 transition-all duration-200 peer-focus:top-0 peer-focus:text-caption-1 peer-focus:-translate-y-full peer-[:not(:placeholder-shown)]:top-0 peer-[:not(:placeholder-shown)]:text-caption-1 peer-[:not(:placeholder-shown)]:-translate-y-full cursor-text"
               >
-                Your Phone Number
-                <span className="text-brand-orange-200">*</span>
+                Your Phone Number <span className="text-brand-orange-200">*</span>
               </label>
             </div>
 
@@ -70,7 +72,7 @@ export const ContactSection = () => {
                 htmlFor="email"
                 className="absolute left-0 top-1/2 -translate-y-1/2 text-body-1 text-text-secondary/80 transition-all duration-200 peer-focus:top-0 peer-focus:text-caption-1 peer-focus:-translate-y-full peer-[:not(:placeholder-shown)]:top-0 peer-[:not(:placeholder-shown)]:text-caption-1 peer-[:not(:placeholder-shown)]:-translate-y-full cursor-text"
               >
-                Your Email<span className="text-brand-orange-200">*</span>
+                Your Email <span className="text-brand-orange-200">*</span>
               </label>
             </div>
 
@@ -86,12 +88,12 @@ export const ContactSection = () => {
                 htmlFor="message"
                 className="absolute left-0 top-1/2 -translate-y-1/2 text-body-1 text-text-secondary/80 transition-all duration-200 peer-focus:top-0 peer-focus:text-caption-1 peer-focus:-translate-y-full peer-[:not(:placeholder-shown)]:top-0 peer-[:not(:placeholder-shown)]:text-caption-1 peer-[:not(:placeholder-shown)]:-translate-y-full cursor-text"
               >
-                Your Message<span className="text-brand-orange-200">*</span>
+                Your Message <span className="text-brand-orange-200">*</span>
               </label>
             </div>
 
             {/* Submit Button */}
-            <div className="mt-l w-full flex justify-center">
+            <div className="mt-l w-1/2 lg:w-full flex justify-start lg:justify-end">
               <Button
                 variant="primary"
                 size={screenSize}
