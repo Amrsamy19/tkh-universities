@@ -103,13 +103,13 @@ export const PartnersSection = () => {
   const getPositionClasses = (position: string) => {
     switch (position) {
       case "top-left":
-        return "top-0 left-0 origin-center";
+        return "top-[2%] left-[-35%] origin-center";
       case "top-right":
-        return "top-[8%] right-0 origin-center";
+        return "top-[8%] right-[-35%] origin-center";
       case "bottom-left":
-        return "bottom-[8%] left-0 origin-center";
+        return "bottom-[8%] left-[-35%] origin-center";
       case "bottom-right":
-        return "bottom-0 right-0 origin-center";
+        return "bottom-[2%] right-[-35%] origin-center";
       default:
         return "";
     }
@@ -186,8 +186,8 @@ export const PartnersSection = () => {
               onMouseLeave={() => setHoveredCard(null)}
               className={`absolute overflow-hidden shadow-2xl cursor-pointer rounded-[40px] ${
                 isHovered
-                  ? "inset-0 z-50"
-                  : `${getPositionClasses(p.position)} w-80 xl:w-150 h-55 xl:h-65 z-20`
+                  ? "inset-0 m-auto w-[90%] h-[90%] z-50"
+                  : `${getPositionClasses(p.position)} w-[80%] xl:w-[75%] h-[40%] xl:h-[42%] z-20`
               }`}
               style={{
                 rotate: isHovered ? 0 : p.rotation,
@@ -230,13 +230,13 @@ export const PartnersSection = () => {
                   >
                     <img
                       src={p.logo}
-                      className="h-16 lg:h-24 object-contain brightness-0 invert origin-left"
-                      style={{ objectPosition: "left" }}
+                      className={`h-16 lg:h-24 object-contain brightness-0 invert origin-left ${p.position.includes('right') ? 'ml-0' : 'ml-auto xl:ml-0'}`}
+                      style={{ objectPosition: p.position.includes('right') ? 'left' : 'right' }}
                     />
                     {/* Using motion.div wrapper to ensure button doesn't shrink awkwardly during layout animation */}
                     <motion.div layout className="w-max">
                       <Button
-                        variant="primary"
+                        variant="secondary"
                         size="desktop"
                         className="rounded-full shadow-lg"
                         icon
