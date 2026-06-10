@@ -177,7 +177,6 @@ export const PartnersSection = () => {
         {/* Interactive Cards */}
         {partners.map((p) => {
           const isHovered = hoveredCard === p.id;
-          const isAnyHovered = hoveredCard !== null;
 
           return (
             <motion.div
