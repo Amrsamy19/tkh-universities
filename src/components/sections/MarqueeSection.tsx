@@ -12,9 +12,9 @@ export const MarqueeSection = () => {
   return (
     <section
       ref={sectionRef}
-      className="w-full overflow-hidden py-4xl lg:py-9xl relative"
+      className="w-[calc(100%+var(--spacing-m)*2)] -ml-m overflow-hidden py-4xl lg:py-9xl relative"
     >
-      <div className="flex flex-col gap-l lg:gap-2xl">
+      <div className="flex flex-col gap-xl lg:gap-2xl">
         {/* Row 1: Coventry University logos (blue) — slides from left */}
         <motion.div
           className="-rotate-3 scale-150 origin-center"
@@ -32,7 +32,7 @@ export const MarqueeSection = () => {
               ease: "easeOut",
               delay: 0.2,
             }}
-            className="w-full flex items-center whitespace-nowrap py-6 gap-[clamp(2rem,5.2vw,6.25rem)]"
+            className="w-full flex items-center whitespace-nowrap py-4 lg:py-6 gap-[clamp(2rem,5.2vw,6.25rem)]"
             style={{ backgroundColor: "var(--color-partner-1)" }}
           >
             {Array.from({ length: repeatCount }).map((_, i) => (
@@ -40,7 +40,7 @@ export const MarqueeSection = () => {
                 <img
                   src={CoventryLogo}
                   alt="Coventry University"
-                  className="h-16 lg:h-24 w-auto object-contain brightness-0 invert"
+                  className="h-10 lg:h-18 w-auto object-contain brightness-0 invert"
                 />
               </div>
             ))}
@@ -64,15 +64,15 @@ export const MarqueeSection = () => {
               ease: "easeOut",
               delay: 0.2,
             }}
-            className="w-full flex items-center whitespace-nowrap py-6 gap-[clamp(1rem,1vw,2rem)]"
+            className="w-full flex items-center whitespace-nowrap py-4 lg:py-6"
             style={{ backgroundColor: "var(--color-partner-2)" }}
           >
             {Array.from({ length: repeatCount }).map((_, i) => (
-              <div key={`nova-${i}`} className="flex items-center shrink-0">
+              <div key={`nova-${i}`} className="flex items-center shrink-0 -mx-3 lg:-mx-5">
                 <img
                   src={NOVALogo}
                   alt="NOVA University"
-                  className="h-16 lg:h-24 w-auto object-contain brightness-0 invert"
+                  className="h-10 lg:h-18 w-auto object-contain brightness-0 invert"
                 />
               </div>
             ))}
@@ -96,7 +96,7 @@ export const MarqueeSection = () => {
               ease: "easeOut",
               delay: 0.2,
             }}
-            className="w-full flex items-center whitespace-nowrap py-6 gap-[clamp(2rem,5.2vw,6.25rem)] bg-neutral-500"
+            className="w-full flex items-center whitespace-nowrap py-4 lg:py-6 gap-[clamp(2rem,5.2vw,6.25rem)] bg-neutral-500"
           >
             {Array.from({ length: repeatCount }).map((_, i) => (
               <span
