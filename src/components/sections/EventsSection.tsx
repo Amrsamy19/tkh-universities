@@ -5,6 +5,7 @@ import { Button } from "../ui/Button";
 
 import eventsImg1 from "../../assets/media/events-slide-image-v2.jpeg";
 import eventsImg2 from "../../assets/media/events-slide-image-1-v2.jpeg";
+import { useScreenSize } from "../../hooks/useScreenSize";
 
 export const EventsSection = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -73,6 +74,8 @@ export const EventsSection = () => {
     }
   };
 
+  const screenSize = useScreenSize();
+
   return (
     <section className="py-2xl lg:py-4xl w-full max-w-[1920px] mx-auto overflow-hidden">
       {/* Header */}
@@ -83,7 +86,7 @@ export const EventsSection = () => {
         transition={{ duration: 0.6 }}
         className="flex flex-col items-center text-center mb-xl lg:mb-2xl px-m"
       >
-        <span className="text-button-2 font-medium text-white bg-brand-blue-200 mb-m px-m py-s">
+        <span className="text-button-2 font-medium text-white bg-brand-blue-200 mb-m px-m py-xs">
           Events
         </span>
         <h2 className="text-h2 text-text-primary font-bold">
@@ -107,7 +110,7 @@ export const EventsSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.5, delay: i * 0.1 }}
-            className="shrink-0 w-[85vw] sm:w-[380px] lg:w-[460px] flex flex-col snap-start group cursor-pointer"
+            className="shrink-0 w-[85vw] sm:w-[380px] lg:w-[680px] flex flex-col snap-start group cursor-pointer"
           >
             {/* Image Container */}
             <div className="relative w-full aspect-[4/3] overflow-hidden [clip-path:polygon(11.9%_0,100%_0,100%_54.1%,88.1%_100%,0_100%,0_45.9%)]">
@@ -121,8 +124,8 @@ export const EventsSection = () => {
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
 
               {/* Date Badge */}
-              <div className="absolute top-0 right-0 bg-brand-orange-200 text-white w-20 h-20 lg:w-24 lg:h-24 flex flex-col items-center justify-evenly [clip-path:polygon(11.9%_0,100%_0,100%_54.1%,88.1%_100%,0_100%,0_45.9%)]">
-                <span className="text-h4 font-bold">{evt.day}</span>
+              <div className="absolute top-0 right-0 bg-brand-orange-200 text-white w-20 h-20 lg:w-28 lg:h-28 flex flex-col items-center justify-evenly [clip-path:polygon(11.9%_0,100%_0,100%_54.1%,88.1%_100%,0_100%,0_45.9%)] pt-1">
+                <span className="text-h3 font-bold">{evt.day}</span>
                 <span className="text-body-2 text-center leading-none">
                   {evt.month} {evt.year}
                 </span>
@@ -154,28 +157,28 @@ export const EventsSection = () => {
         <div className="flex gap-s">
           <button
             onClick={() => scroll("left")}
-            className={`w-12 h-12 rounded-full border flex items-center justify-center transition-colors ${
+            className={`w-12 h-12 lg:w-14 lg:h-14 rounded-full border flex items-center justify-center transition-colors ${
               canScrollLeft
                 ? "border-brand-orange-200 text-brand-orange-200 hover:bg-brand-orange-200 hover:text-white"
                 : "border-stroke-primary text-text-inactive cursor-default"
             }`}
           >
-            <ChevronLeft className="w-5 h-5" />
+            <ChevronLeft className="w-8 h-8" />
           </button>
           <button
             onClick={() => scroll("right")}
-            className={`w-12 h-12 rounded-full border flex items-center justify-center transition-colors ${
+            className={`w-12 h-12 lg:w-14 lg:h-14 rounded-full border flex items-center justify-center transition-colors ${
               canScrollRight
                 ? "border-brand-orange-200 text-brand-orange-200 hover:bg-brand-orange-200 hover:text-white"
                 : "border-stroke-primary text-text-inactive cursor-default"
             }`}
           >
-            <ChevronRight className="w-5 h-5" />
+            <ChevronRight className="w-8 h-8" />
           </button>
         </div>
 
         {/* Explore Button */}
-        <Button variant="primary" size="mobile">
+        <Button variant="primary" size={screenSize}>
           Explore Our All Events
         </Button>
       </motion.div>
