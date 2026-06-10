@@ -118,7 +118,7 @@ export const Navbar = () => {
 
       {/* --- Mobile/Tablet Navbar --- */}
       <header className="xl:hidden fixed top-8 inset-x-8 z-50 pointer-events-none">
-        <div className="pointer-events-auto bg-surface-primary/70 backdrop-blur-md  rounded-full px-s py-xxs flex justify-between items-center shadow-lg border border-white/20">
+        <div className="pointer-events-auto bg-surface-primary/70 backdrop-blur-md rounded-full px-s py-xxs flex justify-between items-center shadow-lg border border-white/20">
           <Logo />
           <Button
             icon={false}
