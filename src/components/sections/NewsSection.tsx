@@ -1,98 +1,169 @@
+import { useRef, useState, useEffect, useCallback } from "react";
 import { motion } from "framer-motion";
-import { ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { Button } from "../ui/Button";
+
+import eventsImg1 from "../../assets/media/events-slide-image-v2.jpeg";
+import eventsImg2 from "../../assets/media/events-slide-image-1-v2.jpeg";
+import { useScreenSize } from "../../hooks/useScreenSize";
 
 export const NewsSection = () => {
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
+
+  const updateScrollState = useCallback(() => {
+    if (scrollRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
+      setCanScrollLeft(scrollLeft > 5);
+      setCanScrollRight(scrollLeft + clientWidth < scrollWidth - 5);
+    }
+  }, []);
+
+  useEffect(() => {
+    updateScrollState();
+    window.addEventListener("resize", updateScrollState);
+    return () => window.removeEventListener("resize", updateScrollState);
+  }, [updateScrollState]);
+
   const news = [
     {
-      id: 1,
-      category: "Academics",
-      title: "TKH Partners with Leading Global Tech Firm for New Lab",
-      date: "May 20, 2026",
-      image: "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?q=80&w=600&auto=format&fit=crop"
+      category: "NOVA UNIVERSITY",
+      categoryColor: "text-[#348141]", // partner-2 (green)
+      title: "Communication University of China (CUC) Delegation Visits TKH",
+      date: "December 17, 2025",
+      image: eventsImg1,
     },
     {
-      id: 2,
-      category: "Student Life",
-      title: "Annual Design Week Showcases Incredible Student Projects",
-      date: "Jun 02, 2026",
-      image: "https://images.unsplash.com/photo-1561489413-985b06da5bee?q=80&w=600&auto=format&fit=crop"
+      category: "DESIGN & MEDIA",
+      categoryColor: "text-[#2F67A2]", // partner-1 (blue)
+      title: "Cultivating Empathy Through Learning: NOVA SBE Students Explore Diversity, Equity & Inclusion",
+      date: "December 2, 2025",
+      image: eventsImg2,
     },
     {
-      id: 3,
-      category: "Research",
-      title: "Engineering Students Win National Robotics Competition",
-      date: "Jun 15, 2026",
-      image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=600&auto=format&fit=crop"
+      category: "School of Continuing Education",
+      categoryColor: "text-brand-blue-200", // brand blue
+      title: "H.E. Prof. Khaled El-Enany, TKH Board Member, Appointed as Director-General of UNESCO",
+      date: "October 7, 2025",
+      image: eventsImg1,
     },
     {
-      id: 4,
-      category: "Admissions",
-      title: "Early Action Deadline Extended for Fall 2026",
-      date: "Jul 01, 2026",
-      image: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?q=80&w=600&auto=format&fit=crop"
-    }
+      category: "NOVA UNIVERSITY",
+      categoryColor: "text-[#348141]",
+      title: "Communication University of China (CUC) Delegation Visits TKH",
+      date: "December 17, 2025",
+      image: eventsImg1,
+    },
   ];
 
-  return (
-    <section className="py-2xl lg:py-4xl px-0 lg:px-l xl:px-[48px] w-full max-w-[1920px] mx-auto overflow-hidden bg-surface-primary">
-      <div className="flex flex-col lg:flex-row justify-between items-end mb-xl lg:mb-2xl gap-m px-m lg:px-0">
-        <motion.div 
-          initial={{ opacity: 0, x: -30 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <h2 className="text-h2 text-text-primary">Proud News!</h2>
-        </motion.div>
-        
-        <motion.a 
-          href="#"
-          initial={{ opacity: 0, x: 30 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="flex items-center gap-xs text-button-2 text-text-tkh-primary hover:text-text-primary transition-colors"
-        >
-          View All News <ChevronRight className="w-5 h-5" />
-        </motion.a>
-      </div>
+  const scroll = (direction: "left" | "right") => {
+    if (scrollRef.current) {
+      const scrollAmount = 500;
+      scrollRef.current.scrollBy({
+        left: direction === "right" ? scrollAmount : -scrollAmount,
+        behavior: "smooth",
+      });
+    }
+  };
 
-      <div 
-        className="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide gap-m lg:grid lg:grid-cols-4 lg:gap-l pb-m px-m lg:px-0"
-        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+  const screenSize = useScreenSize();
+
+  return (
+    <section className="py-2xl lg:py-4xl w-full max-w-480 mx-auto overflow-hidden bg-[#F8F9FA]">
+      {/* Header */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        className="flex flex-col items-center text-center mb-xl lg:mb-2xl px-m"
+      >
+        <span className="text-button-2 font-medium text-white bg-brand-blue-200 mb-m px-m py-xs">
+          Stay Updated
+        </span>
+        <h2 className="text-h2 text-text-primary font-bold">
+          Proud News!
+        </h2>
+        <p className="text-body-1 text-text-secondary mt-m max-w-150">
+          Discover the latest achievements, partnerships, and news shaping the
+          future of education at TKH.
+        </p>
+      </motion.div>
+
+      {/* Cards Carousel */}
+      <div
+        ref={scrollRef}
+        onScroll={updateScrollState}
+        className="flex gap-m lg:gap-l overflow-x-auto scrollbar-hide pb-l px-m lg:px-l xl:px-12"
+        style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
       >
         {news.map((item, i) => (
-          <motion.a
-            href="#"
-            key={item.id}
-            initial={{ opacity: 0, y: 30 }}
+          <motion.div
+            key={`${item.title}-${i}`}
+            initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.5, delay: i * 0.15 }}
-            className="group shrink-0 w-[85vw] md:w-[45vw] lg:w-auto flex flex-col bg-surface-primary rounded-[32px] overflow-hidden border border-stroke-primary hover:shadow-xl transition-all h-full snap-start"
+            transition={{ duration: 0.5, delay: i * 0.1 }}
+            className="shrink-0 w-[85vw] sm:w-87.5 lg:w-105 flex flex-col snap-start group cursor-pointer"
           >
-            <div className="relative h-[240px] overflow-hidden">
-              <img 
-                src={item.image} 
-                alt={item.title} 
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+            {/* Image Container */}
+            <div className="relative w-full aspect-4/3 overflow-hidden [clip-path:polygon(11.9%_0,100%_0,100%_54.1%,88.1%_100%,0_100%,0_45.9%)] mb-m">
+              <img
+                src={item.image}
+                alt={item.title}
+                className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
               />
-              <div className="absolute top-m left-m bg-surface-primary/90 backdrop-blur-sm px-m py-xs rounded-full">
-                <span className="text-caption-1 font-bold text-text-uni-secondary uppercase tracking-wider">{item.category}</span>
-              </div>
             </div>
-            
-            <div className="p-xl flex flex-col flex-1">
-              <span className="text-caption-2 text-text-inactive mb-s">
-                {item.date}
-              </span>
-              <h3 className="text-h5 text-text-primary mb-xl group-hover:text-text-tkh-primary transition-colors line-clamp-3">
-                {item.title}
-              </h3>
+
+            {/* Text Content */}
+            <div className="flex flex-col gap-xs pr-m">
+              <span className={`text-caption-1 font-bold uppercase tracking-wider ${item.categoryColor}`}>{item.category}</span>
+              <h3 className="text-h5 font-bold text-text-primary group-hover:text-text-tkh-primary transition-colors line-clamp-3 leading-tight">{item.title}</h3>
+              <span className="text-body-2 text-text-inactive mt-xs">{item.date}</span>
             </div>
-          </motion.a>
+          </motion.div>
         ))}
       </div>
+
+      {/* Bottom Row: Nav Arrows (left) + Explore Button (right) */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5, delay: 0.3 }}
+        className="flex flex-col lg:flex-row items-center justify-between gap-m lg:gap-0 mt-l px-m lg:px-l xl:px-12"
+      >
+        {/* Nav Arrows */}
+        <div className="flex gap-s">
+          <button
+            onClick={() => scroll("left")}
+            className={`w-12 h-12 lg:w-14 lg:h-14 rounded-full border flex items-center justify-center transition-colors ${
+              canScrollLeft
+                ? "border-brand-orange-200 text-brand-orange-200 hover:bg-brand-orange-200/15"
+                : "border-stroke-primary text-text-inactive cursor-default"
+            }`}
+          >
+            <ChevronLeft className="w-8 h-8" />
+          </button>
+          <button
+            onClick={() => scroll("right")}
+            className={`w-12 h-12 lg:w-14 lg:h-14 rounded-full border flex items-center justify-center transition-colors ${
+              canScrollRight
+                ? "border-brand-orange-200 text-brand-orange-200 hover:bg-brand-orange-200/15"
+                : "border-stroke-primary text-text-inactive cursor-default"
+            }`}
+          >
+            <ChevronRight className="w-8 h-8" />
+          </button>
+        </div>
+
+        {/* Explore Button */}
+        <Button variant="primary" size={screenSize}>
+          Explore Our All News
+        </Button>
+      </motion.div>
     </section>
   );
 };
+
