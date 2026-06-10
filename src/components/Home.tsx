@@ -20,14 +20,14 @@ export const Home = () => {
   const screenSize = useScreenSize();
 
   return (
-    <div className="min-h-full flex flex-col font-sans relative bg-surface-primary p-m bg-[linear-gradient(229deg,#FDF1EE_11%,#F5F7FB_85%)]">
-      <div className="relative w-full flex-1 overflow-hidden flex rounded-[40px] flex-col">
+    <div className="min-h-full flex flex-col font-sans relative bg-surface-primary bg-[linear-gradient(229deg,#FDF1EE_11%,#F5F7FB_85%)]">
+      <div className="relative w-full flex-1 overflow-hidden flex rounded-[40px] flex-col p-m">
         <Navbar />
 
         {/* Hero Section */}
         <section className="relative w-full h-[calc(100vh-var(--spacing-xl))] min-h-150 flex items-end">
           {/* Video Background */}
-          <div className="absolute px-2 rounded-b-[40px] inset-0 w-full h-full overflow-hidden">
+          <div className="absolute px-2 rounded-[40px] inset-0 w-full h-full overflow-hidden">
             {/* Overlay to ensure text readability */}
             <div className="absolute px-2 inset-0 bg-surface-invert/40 z-10"></div>
             <video
