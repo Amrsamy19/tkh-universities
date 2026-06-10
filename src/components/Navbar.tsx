@@ -1,18 +1,13 @@
 import React, { useState } from "react";
-import {
-  Menu,
-  X,
-  Search,
-  ChevronDown,
-  ChevronRight,
-  ChevronUp,
-} from "lucide-react";
+import { Search, ChevronDown, ChevronRight, ChevronUp } from "lucide-react";
 import { Button } from "./ui/Button";
 import { Logo } from "../assets/svg/Logo";
 import { Separator } from "./ui/Separator";
 import { DesktopMegaMenu } from "./ui/DesktopMegaMenu";
 import NOVA from "../assets/svg/menu-logo-nova.svg";
 import COVENTRY from "../assets/svg/menu-logo-coventry.svg";
+import Menu from "../assets/svg/ArrowLineDownLeft.svg";
+import Close from "../assets/svg/Close.svg";
 import { studyPills, campusPills, admissionPills } from "../lib/menuData";
 import { useScreenSize } from "../hooks/useScreenSize";
 
@@ -131,7 +126,11 @@ export const Navbar = () => {
             className="p-xs text-icon-primary bg-transparent hover:bg-transparent cursor-pointer focus:outline-none"
             aria-label="Open mobile menu"
           >
-            <Menu className="w-6 h-6 hover:text-text-tkh-primary transition-colors" />
+            <img
+              src={Menu}
+              alt="Open mobile menu"
+              className="w-6 h-6 hover:text-text-tkh-primary transition-colors"
+            />
           </Button>
         </div>
       </header>
@@ -157,21 +156,21 @@ export const Navbar = () => {
               <Logo />
               <button
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="p-xs text-icon-inactive hover:text-icon-tkh-primary transition-colors cursor-pointer rounded-full hover:bg-neutral-50"
+                className="p-xs text-icon-inactive hover:text-icon-tkh-primary transition-colors cursor-pointer rounded-full"
                 aria-label="Close mobile menu"
               >
-                <X className="w-6 h-6" />
+                <img src={Close} alt="Close mobile menu" className="w-6 h-6" />
               </button>
             </div>
 
             {/* Search */}
-            <div className="px-l">
-              <div className="flex items-center gap-s text-icon-inactive bg-transparent px-m py-s rounded-full border border-stroke-primary focus-within:border-stroke-tkh-primary focus-within:ring-2 focus-within:ring-surface-tkh-primary/20 transition-all">
-                <Search className="w-5 h-5" />
+            <div className="px-0">
+              <div className="flex items-center gap-s text-neutral-700 bg-surface-primary/70 px-s py-s border-b border-b-neutral-700 transition-all">
+                <Search className="w-6 h-6" />
                 <input
                   type="text"
                   placeholder="Search"
-                  className="bg-transparent outline-none w-full text-body-2 placeholder:text-text-inactive"
+                  className="bg-transparent outline-none w-full text-body-2 placeholder:text-neutral-700"
                 />
               </div>
             </div>
