@@ -1,127 +1,233 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "../ui/Button";
-import NOVALogo from "../../assets/svg/menu-logo-nova.svg";
-import CoventryLogo from "../../assets/svg/menu-logo-coventry.svg";
+
+import imgNova from "../../assets/media/universities-university-image.jpeg";
+import NOVALogo from "../../assets/media/image 29.png";
+import CoventryLogo from "../../assets/media/image 30.png";
+import imgCoventry from "../../assets/media/universities-university-image-1.jpeg";
 
 export const PartnersSection = () => {
+  const [hoveredCard, setHoveredCard] = useState<string | null>(null);
+
   const partners = [
+    {
+      id: "coventry-1",
+      name: "Coventry University",
+      logo: CoventryLogo,
+      image: imgCoventry,
+      rotation: 5,
+      position: "top-left",
+      smallOverlayType: "stats",
+      stats: [
+        {
+          title: "5 stars",
+          desc: "Overall Rating & Internationalization QS Stars University Ratings",
+        },
+        {
+          title: "Queen's Award",
+          desc: "For Enterprise International Trade 2022",
+        },
+        {
+          title: "12th on world",
+          desc: "for international outlook The Young University Rankings 2024",
+        },
+      ],
+      link: "#",
+    },
     {
       id: "nova",
       name: "NOVA University",
       logo: NOVALogo,
-      image: "https://images.unsplash.com/photo-1564069114553-7215e1ff1890?q=80&w=1200&auto=format&fit=crop",
+      image: imgNova,
+      rotation: -5,
+      position: "top-right",
+      smallOverlayType: "logo",
       stats: [
-        { title: "5 stars", desc: "Overall Rating & Internationalization QS Stars University Ratings" },
-        { title: "Queen's Award", desc: "For Enterprise International Trade 2022" },
-        { title: "12th on world", desc: "for international outlook The Young University Rankings 2024" }
+        { title: "Top 10", desc: "Best Young Universities in Europe" },
+        { title: "Triple Crown", desc: "Accreditation for Business School" },
+        { title: "Global Reach", desc: "Extensive international network" },
       ],
-      link: "#"
+      link: "#",
     },
     {
-      id: "coventry",
+      id: "coventry-2",
+      name: "Coventry University",
+      logo: NOVALogo,
+      image: imgNova,
+      rotation: -5,
+      position: "bottom-left",
+      smallOverlayType: "stats",
+      stats: [
+        {
+          title: "5 stars",
+          desc: "Overall Rating & Internationalization QS Stars University Ratings",
+        },
+        {
+          title: "Queen's Award",
+          desc: "For Enterprise International Trade 2022",
+        },
+        {
+          title: "12th on world",
+          desc: "for international outlook The Young University Rankings 2024",
+        },
+      ],
+      link: "#",
+    },
+    {
+      id: "coventry-3",
       name: "Coventry University",
       logo: CoventryLogo,
-      image: "https://images.unsplash.com/photo-1606761568499-6d2451b23c66?q=80&w=1200&auto=format&fit=crop",
+      image: imgCoventry,
+      rotation: 5,
+      position: "bottom-right",
+      smallOverlayType: "logo",
       stats: [
-        { title: "5 stars", desc: "Overall Rating & Internationalization QS Stars University Ratings" },
-        { title: "Queen's Award", desc: "For Enterprise International Trade 2022" },
-        { title: "12th on world", desc: "for international outlook The Young University Rankings 2024" }
+        {
+          title: "5 stars",
+          desc: "Overall Rating & Internationalization QS Stars University Ratings",
+        },
+        {
+          title: "Queen's Award",
+          desc: "For Enterprise International Trade 2022",
+        },
+        {
+          title: "12th on world",
+          desc: "for international outlook The Young University Rankings 2024",
+        },
       ],
-      link: "#"
-    }
+      link: "#",
+    },
   ];
 
+  const getPositionClasses = (position: string) => {
+    switch (position) {
+      case "top-left": return "top-0 left-0 origin-center";
+      case "top-right": return "top-[8%] right-0 origin-center";
+      case "bottom-left": return "bottom-[8%] left-0 origin-center";
+      case "bottom-right": return "bottom-0 right-0 origin-center";
+      default: return "";
+    }
+  };
+
   return (
-    <section className="py-2xl lg:py-4xl w-full px-m lg:px-m xl:px-[120px] bg-surface-primary">
-      <div className="flex flex-col items-center text-center mb-xl lg:mb-3xl px-0 lg:px-xl">
-        <span className="hidden lg:block text-body-2 font-bold text-text-tkh-primary uppercase tracking-wider mb-xs">
-          Partner with Excellence
-        </span>
-        <span className="lg:hidden text-body-2 font-bold text-text-tkh-primary uppercase tracking-wider mb-xs bg-surface-inactive/50 px-s py-xs rounded-full">
-          Study With Us
-        </span>
-        
-        <h2 className="hidden lg:block text-h2 text-text-primary mb-m max-w-3xl">
-          Study with The World’s Top Ranked Universities
-        </h2>
-        <h2 className="lg:hidden text-h2 text-text-primary mb-xs">
-          Find your path
-        </h2>
-        
-        <p className="hidden lg:block text-body-1 text-text-secondary max-w-2xl mx-auto">
-          TKH partners with prestigious European and UK universities to bring their academic excellence to Egypt.
-        </p>
-        <p className="lg:hidden text-body-1 text-text-secondary max-w-xs mx-auto">
-          from 20+ programs across our partner universities
-        </p>
+    <section className="py-2xl lg:py-4xl w-full px-m xl:px-30 max-w-480 mx-auto bg-surface-primary overflow-hidden">
+      
+      {/* Mobile Layout (Flex Column) */}
+      <div className="lg:hidden flex flex-col gap-l">
+         <div className="flex flex-col items-center text-center">
+            <span className="text-button-2 font-bold text-white bg-brand-blue-200 mb-xs px-s py-xs">
+              Partner with Excellence
+            </span>
+            <h2 className="text-h2 text-text-primary mb-xs font-bold">
+              Study with The World’s Top Ranked Universities
+            </h2>
+            <p className="text-body-2 text-text-secondary">
+              TKH partners with prestigious European and UK universities to bring their academic excellence to Egypt.
+            </p>
+         </div>
+
+         <div className="flex flex-col gap-m mt-m">
+            {partners.map(p => (
+               <div key={p.id} className="relative w-full h-[400px] rounded-3xl overflow-hidden shadow-lg">
+                  <img src={p.image} className="absolute inset-0 w-full h-full object-cover" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                  <div className="absolute inset-0 p-l flex flex-col justify-end">
+                     <img src={p.logo} className="h-16 object-contain mb-m origin-left brightness-0 invert" style={{ objectPosition: 'left' }} />
+                     <Button variant="primary" icon className="w-max">Explore {p.name.split(' ')[0]}</Button>
+                  </div>
+               </div>
+            ))}
+         </div>
       </div>
 
-      {/* Cards Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-m lg:gap-xl px-0 lg:px-xl">
-        {partners.map((partner, index) => (
-          <motion.div 
-            key={partner.id}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.6, delay: index * 0.2 }}
-            className="bg-surface-primary rounded-[32px] lg:rounded-[32px] overflow-hidden shadow-sm hover:shadow-xl transition-shadow flex flex-col h-[400px] lg:h-full border border-stroke-primary group relative"
-          >
-            {/* Desktop Top Banner Image */}
-            <div className="hidden lg:block w-full h-[240px] overflow-hidden relative">
-              <img 
-                src={partner.image} 
-                alt={partner.name} 
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-              />
-              <div className="absolute inset-0 bg-surface-invert/10"></div>
-            </div>
+      {/* Desktop Layout (Interactive Hover Expansion) */}
+      <div className="hidden lg:block relative w-full h-[700px] mt-xl">
+         
+         {/* Center Text */}
+         <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none z-10">
+            <span className="text-button-2 font-bold text-white bg-brand-blue-200 mb-m px-m py-s rounded-sm shadow-sm">
+              Partner with Excellence
+            </span>
+            <h2 className="text-h2 text-text-primary mb-m max-w-[500px] text-center font-extrabold leading-tight">
+              Study with The World’s Top Ranked Universities
+            </h2>
+            <p className="text-body-1 text-text-secondary max-w-[400px] text-center">
+              TKH partners with prestigious European and UK universities to bring their academic excellence to Egypt.
+            </p>
+         </div>
 
-            {/* Mobile Full Background Image */}
-            <div className="lg:hidden absolute inset-0 z-0">
-              <img 
-                src={partner.image} 
-                alt={partner.name} 
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-surface-invert/90 via-surface-invert/20 to-transparent"></div>
-            </div>
-            
-            {/* Mobile Card Content */}
-            <div className="lg:hidden relative z-10 flex flex-col h-full justify-between p-xl">
-              <div className="bg-surface-primary/90 backdrop-blur-sm w-16 h-16 rounded-[16px] flex items-center justify-center p-2 shadow-md">
-                <img src={partner.logo} alt={partner.name} className="w-full h-auto" />
-              </div>
-              <div className="flex justify-between items-end">
-                <div className="bg-surface-primary rounded-full px-m py-s flex items-center shadow-md">
-                  <span className="text-button-2 font-bold text-text-primary">Learn More</span>
-                </div>
-                <div className="w-12 h-12 bg-surface-primary rounded-full flex items-center justify-center shadow-md text-text-tkh-primary">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
-                </div>
-              </div>
-            </div>
-            
-            {/* Desktop Card Content */}
-            <div className="hidden lg:flex p-xl flex-col flex-1 relative z-10 bg-surface-primary">
-              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-m mb-xl">
-                <h3 className="text-h3 font-bold text-text-primary uppercase tracking-tight">{partner.name}</h3>
-                <Button variant="outline" size="tablet" className="shrink-0" icon={true}>
-                  Explore {partner.name.split(' ')[0]}
-                </Button>
-              </div>
-              
-              <div className="flex flex-col gap-m border-t border-stroke-primary pt-xl flex-1">
-                {partner.stats.map((stat, i) => (
-                  <div key={i} className="flex flex-col sm:flex-row gap-xs sm:gap-m border-b border-stroke-primary/50 pb-m last:border-0 last:pb-0">
-                    <span className="text-button-1 text-text-tkh-primary whitespace-nowrap min-w-[140px]">{stat.title}</span>
-                    <span className="text-body-2 text-text-secondary">{stat.desc}</span>
+         {/* Interactive Cards */}
+         {partners.map((p) => {
+           const isHovered = hoveredCard === p.id;
+           const isAnyHovered = hoveredCard !== null;
+           
+           return (
+             <motion.div
+               key={p.id}
+               layout
+               onMouseEnter={() => setHoveredCard(p.id)}
+               onMouseLeave={() => setHoveredCard(null)}
+               className={`absolute overflow-hidden shadow-2xl cursor-pointer ${
+                 isHovered ? "inset-0 z-50 rounded-[40px]" : `${getPositionClasses(p.position)} w-[320px] xl:w-[380px] h-[220px] xl:h-[260px] z-20 rounded-[40px]`
+               }`}
+               style={{
+                 rotate: isHovered ? 0 : p.rotation
+               }}
+               transition={{ layout: { type: "spring", stiffness: 250, damping: 30 } }}
+             >
+               {/* Background Image (Counter-rotated when small to keep buildings straight) */}
+               <motion.img
+                 layout
+                 src={p.image}
+                 className="absolute inset-0 w-full h-full object-cover origin-center"
+                 animate={{ rotate: isHovered ? 0 : -p.rotation, scale: isHovered ? 1 : 1.25 }}
+                 transition={{ type: "spring", stiffness: 250, damping: 30 }}
+               />
+               
+               {/* Dark Gradient Overlay */}
+               <motion.div 
+                 className="absolute inset-0 bg-gradient-to-t from-[#1F1916]/80 via-[#1F1916]/30 to-transparent"
+                 animate={{ opacity: isHovered ? 0.9 : 0.6 }}
+               />
+
+               {/* Card Content */}
+               <motion.div layout className="absolute inset-0 flex flex-col justify-end p-8 lg:p-10 z-30">
+                  <div className="flex justify-between items-end w-full">
+                    
+                    {/* Logo & Button (Left Side) */}
+                    <motion.div 
+                      animate={{ opacity: isHovered || p.smallOverlayType === "logo" ? 1 : 0 }} 
+                      className="flex flex-col gap-6 items-start"
+                    >
+                      <img src={p.logo} className="h-16 lg:h-24 object-contain brightness-0 invert origin-left" style={{ objectPosition: 'left' }} />
+                      {/* Using motion.div wrapper to ensure button doesn't shrink awkwardly during layout animation */}
+                      <motion.div layout className="w-max">
+                         <Button variant="primary" size="desktop" className="rounded-full shadow-lg" icon>
+                           Explore {p.name.split(' ')[0]}
+                         </Button>
+                      </motion.div>
+                    </motion.div>
+                    
+                    {/* Stats (Right Side) */}
+                    <motion.div 
+                      animate={{ opacity: isHovered || p.smallOverlayType === "stats" ? 1 : 0 }}
+                      className="flex gap-6 lg:gap-10 bg-black/20 backdrop-blur-md p-l rounded-3xl border border-white/10"
+                    >
+                      {p.stats.map((stat, i) => (
+                        <div key={i} className="flex flex-col gap-1 max-w-[140px]">
+                          <span className="text-white font-bold text-h6 lg:text-h5 leading-tight">{stat.title}</span>
+                          <span className="text-white/80 text-cap-1 lg:text-body-2 leading-snug">{stat.desc}</span>
+                        </div>
+                      ))}
+                    </motion.div>
+
                   </div>
-                ))}
-              </div>
-            </div>
-          </motion.div>
-        ))}
+               </motion.div>
+
+             </motion.div>
+           );
+         })}
       </div>
     </section>
   );
