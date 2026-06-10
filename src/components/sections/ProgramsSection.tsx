@@ -103,7 +103,7 @@ export const ProgramsSection = () => {
             className="shrink-0 snap-start cursor-pointer group"
           >
             {/* Rotated card container */}
-            <div className="w-[500px] h-[500px] relative overflow-hidden transition-transform duration-500 [clip-path:polygon(0_0,88.14%_0,100%_38.01%,100%_100%,11.86%_100%,0_61.99%)]">
+            <div className="w-[280px] h-[280px] lg:w-[500px] lg:h-[500px] relative overflow-hidden transition-transform duration-500 [clip-path:polygon(0_0,88.14%_0,100%_38.01%,100%_100%,11.86%_100%,0_61.99%)]">
               {/* Background Image */}
               <img
                 src={prog.image}
@@ -115,7 +115,7 @@ export const ProgramsSection = () => {
               <div className="absolute inset-0 bg-[linear-gradient(to_top,#101828_0%,#101828b5_30%,#1018286b_40%,transparent_52%)]" />
 
               {/* Card Content */}
-              <div className="absolute inset-0 flex flex-col justify-end py-l lg:py-xl lg:pl-5xl">
+              <div className="absolute inset-0 flex flex-col justify-end py-l lg:py-xl left-10 lg:left-18">
                 <h3 className="text-h3 font-bold text-white mb-xxs">
                   {prog.title}
                 </h3>
