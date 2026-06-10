@@ -36,7 +36,10 @@ export const MarqueeSection = () => {
             style={{ backgroundColor: "var(--color-partner-1)" }}
           >
             {Array.from({ length: repeatCount }).map((_, i) => (
-              <div key={`coventry-${i}`} className="flex items-center shrink-0">
+              <div
+                key={`coventry-${i}`}
+                className="flex items-center shrink-0 -mx-2 lg:-mx-4"
+              >
                 <img
                   src={CoventryLogo}
                   alt="Coventry University"
@@ -68,7 +71,10 @@ export const MarqueeSection = () => {
             style={{ backgroundColor: "var(--color-partner-2)" }}
           >
             {Array.from({ length: repeatCount }).map((_, i) => (
-              <div key={`nova-${i}`} className="flex items-center shrink-0 -mx-3 lg:-mx-5">
+              <div
+                key={`nova-${i}`}
+                className="flex items-center shrink-0 -mx-3 lg:-mx-5"
+              >
                 <img
                   src={NOVALogo}
                   alt="NOVA University"
@@ -96,12 +102,12 @@ export const MarqueeSection = () => {
               ease: "easeOut",
               delay: 0.2,
             }}
-            className="w-full flex items-center whitespace-nowrap py-4 lg:py-6 gap-[clamp(2rem,5.2vw,6.25rem)] bg-neutral-500"
+            className="w-full flex items-center whitespace-nowrap py-6 lg:py-10 gap-[clamp(2rem,5.2vw,6.25rem)] bg-neutral-500"
           >
             {Array.from({ length: repeatCount }).map((_, i) => (
               <span
                 key={`text-${i}`}
-                className="text-h4 lg:text-h1 font-bold text-white whitespace-nowrap uppercase tracking-[0.01em] shrink-0"
+                className="text-h4 lg:text-h1 font-bold text-white whitespace-nowrap uppercase tracking-[0.01em] shrink-0 -mx-1 lg:-mx-3"
               >
                 New Partnerships Soon
               </span>
