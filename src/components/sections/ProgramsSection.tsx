@@ -66,7 +66,7 @@ export const ProgramsSection = () => {
   };
 
   return (
-    <section className="py-2xl lg:py-4xl w-full max-w-[1920px] mx-auto overflow-hidden">
+    <section className="py-2xl lg:py-4xl w-full max-w-480 mx-auto overflow-hidden">
       {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -103,7 +103,7 @@ export const ProgramsSection = () => {
             className="shrink-0 snap-start cursor-pointer group"
           >
             {/* Rotated card container */}
-            <div className="w-[280px] h-[280px] lg:w-[500px] lg:h-[500px] relative overflow-hidden transition-transform duration-500 [clip-path:polygon(0_0,88.14%_0,100%_38.01%,100%_100%,11.86%_100%,0_61.99%)]">
+            <div className="w-70 h-70 lg:w-125 lg:h-125 relative overflow-hidden transition-transform duration-500 [clip-path:polygon(0_0,88.14%_0,100%_38.01%,100%_100%,11.86%_100%,0_61.99%)]">
               {/* Background Image */}
               <img
                 src={prog.image}
@@ -116,10 +116,12 @@ export const ProgramsSection = () => {
 
               {/* Card Content */}
               <div className="absolute inset-0 flex flex-col justify-end py-l lg:py-xl left-10 lg:left-18">
-                <h3 className="text-h3 font-bold text-white mb-xxs">
+                <h3 className="text-h4 lg:text-h3 font-bold text-white mb-xxs">
                   {prog.title}
                 </h3>
-                <p className="text-body-2 text-white/80">{prog.count}</p>
+                <p className="text-body-2 lg:text-body-1 text-white/80">
+                  {prog.count}
+                </p>
               </div>
             </div>
           </motion.a>
