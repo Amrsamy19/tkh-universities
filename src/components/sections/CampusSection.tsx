@@ -89,18 +89,15 @@ export const CampusSection = () => {
 
   const slideVariants = {
     enter: (dir: number) => ({
-      y: dir > 0 ? 50 : -50,
-      opacity: 0,
+      y: dir > 0 ? "100%" : "-100%",
     }),
     center: {
       zIndex: 1,
       y: 0,
-      opacity: 1,
     },
     exit: (dir: number) => ({
       zIndex: 0,
-      y: dir > 0 ? -50 : 50,
-      opacity: 0,
+      y: dir > 0 ? "-100%" : "100%",
     }),
   };
 
@@ -176,8 +173,8 @@ export const CampusSection = () => {
 
         {/* Right Column: Single Image & Badge */}
         <div className="w-full lg:w-[55%] relative flex items-center justify-end overflow-hidden mt-xl lg:mt-0">
-          <div className="w-[90%] lg:w-[85%] aspect-4/3 lg:aspect-square relative">
-            <AnimatePresence mode="wait" custom={direction}>
+          <div className="w-[90%] lg:w-[85%] aspect-4/3 lg:aspect-square relative overflow-hidden">
+            <AnimatePresence custom={direction}>
               <motion.div
                 key={activeTab}
                 custom={direction}
