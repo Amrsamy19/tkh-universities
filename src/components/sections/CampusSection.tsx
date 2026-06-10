@@ -141,49 +141,56 @@ export const CampusSection = () => {
         </div>
 
         {/* Right Column: Images & Stats grid */}
-        <div className="w-full lg:w-[55%] relative flex items-center justify-end">
-          {/* Main Mask Group for Images */}
-          <div
-            className="w-[90%] aspect-4/3 lg:aspect-square overflow-hidden relative group"
-            style={{
-              clipPath:
-                "polygon(0 0,87.97% 0,100% 37.84%,100% 100%,11.77% 100%,0 61.52%)",
-            }}
-          >
-            <AnimatePresence>
-              <motion.img
-                key={activeTab}
-                src={tabs[activeTab].image}
-                alt={tabs[activeTab].title}
-                initial={{ y: "100%" }}
-                animate={{ y: "0%" }}
-                exit={{ y: "-100%" }}
-                transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
-                className="w-full h-full object-cover absolute inset-0"
-              />
-            </AnimatePresence>
+        <div className="w-full lg:w-[55%] relative flex items-center justify-end overflow-hidden">
+          {/* Invisible placeholder to maintain layout height */}
+          <div className="w-[90%] aspect-4/3 lg:aspect-square invisible relative" />
 
-            {/* Top Left Tag inside Image */}
-            <span className="text-subtitle-1 text-white absolute inset-s-[3.2%] top-[5.6%]">
-              {tabs[activeTab].title}
-            </span>
-          </div>
-
-          {/* Stats Badge overlapping the image */}
-          <div className="absolute bottom-0 left-34.5 z-20">
-            <div
-              onClick={() => handleTabClick((activeTab + 1) % tabs.length)}
-              className="bg-surface-uni-secondary text-white w-35 h-35 lg:w-42.5 lg:h-42.5 flex items-end justify-start cursor-pointer hover:bg-surface-uni-secondary/90 transition-colors"
-              style={{
-                clipPath:
-                  "polygon(0 0,87.97% 0,100% 37.84%,100% 100%,11.77% 100%,0 61.52%)",
-              }}
+          <AnimatePresence>
+            <motion.div
+              key={activeTab}
+              initial={{ y: "100%" }}
+              animate={{ y: "0%" }}
+              exit={{ y: "-100%" }}
+              transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
+              className="absolute inset-0 flex items-center justify-end"
             >
-              <span className="text-content-invert rtl:font-body ps-[7%] pb-[14%] font-futura text-5xl font-semibold whitespace-nowrap">
-                {tabs[activeTab].stat}
-              </span>
-            </div>
-          </div>
+              {/* Main Mask Group for Images */}
+              <div
+                className="w-[90%] aspect-4/3 lg:aspect-square overflow-hidden relative group"
+                style={{
+                  clipPath:
+                    "polygon(0 0,87.97% 0,100% 37.84%,100% 100%,11.77% 100%,0 61.52%)",
+                }}
+              >
+                <img
+                  src={tabs[activeTab].image}
+                  alt={tabs[activeTab].title}
+                  className="w-full h-full object-cover absolute inset-0"
+                />
+
+                {/* Top Left Tag inside Image */}
+                <span className="text-subtitle-1 text-white absolute inset-s-[3.2%] top-[5.6%]">
+                  {tabs[activeTab].title}
+                </span>
+              </div>
+
+              {/* Stats Badge overlapping the image */}
+              <div className="absolute bottom-0 left-34.5 z-20">
+                <div
+                  onClick={() => handleTabClick((activeTab + 1) % tabs.length)}
+                  className="bg-surface-uni-secondary text-white w-35 h-35 lg:w-42.5 lg:h-42.5 flex items-end justify-start cursor-pointer hover:bg-surface-uni-secondary/90 transition-colors pointer-events-auto"
+                  style={{
+                    clipPath:
+                      "polygon(0 0,87.97% 0,100% 37.84%,100% 100%,11.77% 100%,0 61.52%)",
+                  }}
+                >
+                  <span className="text-content-invert rtl:font-body ps-[7%] pb-[14%] font-futura text-5xl font-semibold whitespace-nowrap">
+                    {tabs[activeTab].stat}
+                  </span>
+                </div>
+              </div>
+            </motion.div>
+          </AnimatePresence>
         </div>
       </div>
     </section>
