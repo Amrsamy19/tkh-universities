@@ -1,147 +1,184 @@
-import { useRef } from "react";
+import { useRef, useState, useEffect, useCallback } from "react";
 import { motion } from "framer-motion";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "../ui/Button";
-import { MapPin, ChevronLeft, ChevronRight } from "lucide-react";
+
+import eventsImg1 from "../../assets/media/events-slide-image-v2.jpeg";
+import eventsImg2 from "../../assets/media/events-slide-image-1-v2.jpeg";
 
 export const EventsSection = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
+
+  const updateScrollState = useCallback(() => {
+    if (scrollRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
+      setCanScrollLeft(scrollLeft > 5);
+      setCanScrollRight(scrollLeft + clientWidth < scrollWidth - 5);
+    }
+  }, []);
+
+  useEffect(() => {
+    updateScrollState();
+    window.addEventListener("resize", updateScrollState);
+    return () => window.removeEventListener("resize", updateScrollState);
+  }, [updateScrollState]);
 
   const events = [
     {
       title: "NOVA Open Day!",
-      description: "Join us for an Open Day! Discover opportunities and meet our campus. Explore your future with us!",
-      day: "15",
-      month: "Jan",
+      description:
+        "Join us for an Open Day! Discover opportunities and meet our campus. Explore your future with us!",
+      day: "23",
+      month: "April",
       year: "2026",
-      location: "TKH Campus",
-      image: "https://images.unsplash.com/photo-1523580494863-6f3031224c94?q=80&w=1000&auto=format&fit=crop"
+      image: eventsImg1,
     },
     {
       title: "Cairo Innovation Hub",
       description: "Visit our Campus! Learn about programs and meet campus.",
-      day: "02",
-      month: "Feb",
+      day: "23",
+      month: "April",
       year: "2026",
-      location: "Innovation Zone",
-      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=1000&auto=format&fit=crop"
+      image: eventsImg2,
     },
     {
       title: "Design & Media Summit",
-      description: "A day of talks, portfolios, and studios. Meet faculty and current students.",
-      day: "20",
-      month: "Feb",
+      description:
+        "A day of talks, portfolios, and studios. Meet faculty and current students.",
+      day: "23",
+      month: "April",
       year: "2026",
-      location: "Media Studio",
-      image: "https://images.unsplash.com/photo-1561489413-985b06da5bee?q=80&w=1000&auto=format&fit=crop"
+      image: eventsImg1,
     },
     {
       title: "Scholarship Info Day",
-      description: "Learn about funding, eligibility, and how to apply for the 2026 intake.",
-      day: "10",
-      month: "Mar",
+      description:
+        "Learn about funding, eligibility, and how to apply for the 2026 intake.",
+      day: "15",
+      month: "May",
       year: "2026",
-      location: "Main Auditorium",
-      image: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?q=80&w=1000&auto=format&fit=crop"
-    }
+      image: eventsImg2,
+    },
   ];
 
-  const scroll = (direction: 'left' | 'right') => {
+  const scroll = (direction: "left" | "right") => {
     if (scrollRef.current) {
-      const scrollAmount = 960 + 32; // card width + gap
+      const scrollAmount = 500;
       scrollRef.current.scrollBy({
-        left: direction === 'right' ? scrollAmount : -scrollAmount,
-        behavior: 'smooth'
+        left: direction === "right" ? scrollAmount : -scrollAmount,
+        behavior: "smooth",
       });
     }
   };
 
   return (
-    <section className="py-2xl lg:py-4xl px-0 lg:px-l xl:px-[48px] w-full max-w-[1920px] mx-auto overflow-hidden bg-surface-primary">
-      <div className="flex flex-col lg:flex-row justify-between items-end mb-xl lg:mb-2xl gap-m px-m lg:px-0">
-        <motion.div 
-          initial={{ opacity: 0, x: -30 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <h2 className="text-h2 text-text-primary">Upcoming Events</h2>
-        </motion.div>
-        
-        <motion.div
-          initial={{ opacity: 0, x: 30 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="flex items-center gap-m"
-        >
-          <div className="hidden sm:flex gap-s mr-m">
-            <button 
-              onClick={() => scroll('left')}
-              className="w-12 h-12 rounded-full border border-stroke-primary flex items-center justify-center text-text-primary hover:bg-surface-inactive-invert transition-colors"
-            >
-              <ChevronLeft className="w-6 h-6" />
-            </button>
-            <button 
-              onClick={() => scroll('right')}
-              className="w-12 h-12 rounded-full border border-stroke-primary flex items-center justify-center text-text-primary hover:bg-surface-inactive-invert transition-colors"
-            >
-              <ChevronRight className="w-6 h-6" />
-            </button>
-          </div>
-          <Button variant="outline">Explore All Events</Button>
-        </motion.div>
-      </div>
+    <section className="py-2xl lg:py-4xl w-full max-w-[1920px] mx-auto overflow-hidden">
+      {/* Header */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        className="flex flex-col items-center text-center mb-xl lg:mb-2xl px-m"
+      >
+        <span className="text-button-2 font-medium text-white bg-brand-blue-200 mb-m px-m py-s">
+          Events
+        </span>
+        <h2 className="text-h2 text-text-primary font-bold">
+          Don't Miss Our
+          <br />
+          Upcoming Events!
+        </h2>
+      </motion.div>
 
-      <div 
+      {/* Cards Carousel */}
+      <div
         ref={scrollRef}
-        className="flex gap-m lg:gap-2xl overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-l px-m lg:px-0"
-        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+        onScroll={updateScrollState}
+        className="flex gap-m lg:gap-l overflow-x-auto scrollbar-hide pb-l px-m lg:px-l xl:px-[48px]"
+        style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
       >
         {events.map((evt, i) => (
-          <motion.div 
-            key={evt.title}
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
+          <motion.div
+            key={`${evt.title}-${i}`}
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.5, delay: i * 0.1 }}
-            className="group shrink-0 w-[85vw] lg:w-[960px] flex flex-col md:flex-row bg-surface-primary rounded-[32px] overflow-hidden border border-stroke-primary hover:shadow-xl transition-all h-auto md:h-[400px] snap-start"
+            className="shrink-0 w-[85vw] sm:w-[380px] lg:w-[460px] flex flex-col snap-start group cursor-pointer"
           >
-            <div className="relative w-full md:w-[45%] h-[240px] md:h-full overflow-hidden">
-              <img 
-                src={evt.image} 
-                alt={evt.title} 
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+            {/* Image Container */}
+            <div className="relative w-full aspect-[4/3] overflow-hidden [clip-path:polygon(11.9%_0,100%_0,100%_54.1%,88.1%_100%,0_100%,0_45.9%)]">
+              <img
+                src={evt.image}
+                alt={evt.title}
+                className="absolute inset-0 w-full h-full object-cover"
               />
-              {/* Numbered date badge */}
-              <div className="absolute top-m left-m bg-surface-primary shadow-lg rounded-[16px] px-m py-xs flex flex-col items-center justify-center min-w-[72px]">
-                <span className="text-h4 font-bold text-text-tkh-primary leading-none mb-1">{evt.day}</span>
-                <span className="text-caption-1 font-bold text-text-primary uppercase leading-none">{evt.month}</span>
+
+              {/* Dark Gradient Overlay for Text Readability */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+
+              {/* Date Badge */}
+              <div className="absolute top-0 right-0 bg-brand-orange-200 text-white w-20 h-20 lg:w-24 lg:h-24 flex flex-col items-center justify-evenly [clip-path:polygon(11.9%_0,100%_0,100%_54.1%,88.1%_100%,0_100%,0_45.9%)]">
+                <span className="text-h4 font-bold">{evt.day}</span>
+                <span className="text-body-2 text-center leading-none">
+                  {evt.month} {evt.year}
+                </span>
               </div>
-            </div>
-            
-            <div className="p-xl lg:p-3xl flex flex-col flex-1 justify-center w-full md:w-[55%]">
-              <div className="flex items-center gap-xs text-caption-1 font-bold text-text-inactive mb-m uppercase tracking-wider">
-                <MapPin className="w-4 h-4" />
-                {evt.location}
-              </div>
-              
-              <h3 className="text-h3 text-text-primary mb-m group-hover:text-text-tkh-primary transition-colors line-clamp-2">
-                {evt.title}
-              </h3>
-              
-              <p className="text-body-1 text-text-secondary mb-2xl line-clamp-3">
-                {evt.description}
-              </p>
-              
-              <div className="mt-auto">
-                <Button variant="secondary" size="tablet" className="w-full sm:w-auto justify-center">
-                  Know More
-                </Button>
+
+              {/* Text Content on Image */}
+              <div className="absolute inset-x-0 bottom-0 p-l lg:p-xl pb-xl lg:pb-2xl">
+                <h3 className="text-h3 font-bold text-white mb-xs">
+                  {evt.title}
+                </h3>
+                <p className="text-body-2 text-white/80 pr-m">
+                  {evt.description}
+                </p>
               </div>
             </div>
           </motion.div>
         ))}
       </div>
+
+      {/* Bottom Row: Nav Arrows (left) + Explore Button (right) */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5, delay: 0.3 }}
+        className="flex flex-col lg:flex-row items-center justify-between gap-m lg:gap-0 mt-l px-m lg:px-l xl:px-[100px]"
+      >
+        {/* Nav Arrows */}
+        <div className="flex gap-s">
+          <button
+            onClick={() => scroll("left")}
+            className={`w-12 h-12 rounded-full border flex items-center justify-center transition-colors ${
+              canScrollLeft
+                ? "border-brand-orange-200 text-brand-orange-200 hover:bg-brand-orange-200 hover:text-white"
+                : "border-stroke-primary text-text-inactive cursor-default"
+            }`}
+          >
+            <ChevronLeft className="w-5 h-5" />
+          </button>
+          <button
+            onClick={() => scroll("right")}
+            className={`w-12 h-12 rounded-full border flex items-center justify-center transition-colors ${
+              canScrollRight
+                ? "border-brand-orange-200 text-brand-orange-200 hover:bg-brand-orange-200 hover:text-white"
+                : "border-stroke-primary text-text-inactive cursor-default"
+            }`}
+          >
+            <ChevronRight className="w-5 h-5" />
+          </button>
+        </div>
+
+        {/* Explore Button */}
+        <Button variant="primary" size="mobile">
+          Explore Our All Events
+        </Button>
+      </motion.div>
     </section>
   );
 };
