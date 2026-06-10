@@ -123,13 +123,13 @@ export const Navbar = () => {
           <Button
             icon={false}
             onClick={() => setIsMobileMenuOpen(true)}
-            className="p-xs text-icon-primary bg-transparent hover:bg-transparent cursor-pointer focus:outline-none"
+            className="px-xs text-icon-primary bg-transparent hover:bg-transparent cursor-pointer focus:outline-none"
             aria-label="Open mobile menu"
           >
             <img
               src={Menu}
               alt="Open mobile menu"
-              className="w-6 h-6 hover:text-text-tkh-primary transition-colors"
+              className="w-6 h-6"
             />
           </Button>
         </div>
