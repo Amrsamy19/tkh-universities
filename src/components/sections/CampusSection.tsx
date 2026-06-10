@@ -38,7 +38,7 @@ const tabs = [
     content:
       "Join a vibrant community to lead activities, join societies, and participate in global programs like Student Ambassador.",
     image: experienceImg5,
-    stat: "30+",
+    stat: "20k+",
   },
 ];
 
@@ -150,15 +150,15 @@ export const CampusSection = () => {
                 "polygon(0 0,87.97% 0,100% 37.84%,100% 100%,11.77% 100%,0 61.52%)",
             }}
           >
-            <AnimatePresence mode="wait">
+            <AnimatePresence>
               <motion.img
                 key={activeTab}
                 src={tabs[activeTab].image}
                 alt={tabs[activeTab].title}
-                initial={{ opacity: 0, scale: 1.05 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.5 }}
+                initial={{ y: "100%" }}
+                animate={{ y: "0%" }}
+                exit={{ y: "-100%" }}
+                transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
                 className="w-full h-full object-cover absolute inset-0"
               />
             </AnimatePresence>
@@ -172,13 +172,14 @@ export const CampusSection = () => {
           {/* Stats Badge overlapping the image */}
           <div className="absolute bottom-0 left-34.5 z-20">
             <div
-              className="bg-surface-uni-secondary text-white w-35 h-35 lg:w-42.5 lg:h-42.5 flex items-end justify-start"
+              onClick={() => handleTabClick((activeTab + 1) % tabs.length)}
+              className="bg-surface-uni-secondary text-white w-35 h-35 lg:w-42.5 lg:h-42.5 flex items-end justify-start cursor-pointer hover:bg-surface-uni-secondary/90 transition-colors"
               style={{
                 clipPath:
                   "polygon(0 0,87.97% 0,100% 37.84%,100% 100%,11.77% 100%,0 61.52%)",
               }}
             >
-              <span className="text-content-invert rtl:font-body ps-[10%] pb-[14%] font-futura text-5xl font-semibold whitespace-nowrap">
+              <span className="text-content-invert rtl:font-body ps-[7%] pb-[14%] font-futura text-5xl font-semibold whitespace-nowrap">
                 {tabs[activeTab].stat}
               </span>
             </div>
