@@ -114,7 +114,7 @@ export const TestimonialsSection = () => {
         </button>
 
         {/* Cards Wrapper */}
-        <div className="relative w-85 lg:w-100 h-120 lg:h-135">
+        <div className="relative w-85 lg:w-120 h-120 lg:h-115">
           <AnimatePresence initial={false}>
             {testimonials.map((testimony, i) => {
               // Calculate relative offset for infinite carousel

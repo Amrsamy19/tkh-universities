@@ -20,7 +20,7 @@ export const Home = () => {
   const screenSize = useScreenSize();
 
   return (
-    <div className="min-h-full flex flex-col font-sans relative bg-surface-primary bg-[linear-gradient(229deg,#FDF1EE_11%,#F5F7FB_85%)]">
+    <div className="min-h-full flex flex-col font-sans relative bg-surface-primary">
       <div className="relative w-full flex-1 overflow-hidden flex rounded-t-[40px] flex-col p-m pb-0">
         <Navbar />
 

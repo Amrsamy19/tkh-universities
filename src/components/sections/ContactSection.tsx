@@ -7,9 +7,6 @@ export const ContactSection = () => {
 
   return (
     <section className="py-2xl lg:py-4xl w-[calc(100%+var(--spacing-s)*2)] -ml-s overflow-hidden relative">
-      {/* Subtle orange glow in the bottom right */}
-      <div className="absolute bottom-[-10%] right-[-5%] w-125 h-125 bg-brand-orange-200/10 rounded-full blur-3xl z-0 pointer-events-none"></div>
-      
       <div className="flex flex-col lg:flex-row gap-2xl lg:gap-xl p-m lg:p-4xl lg:py-20 justify-between items-start rounded-[40px] relative z-10 w-full max-w-375 mx-auto">
         {/* Intro */}
         <motion.div

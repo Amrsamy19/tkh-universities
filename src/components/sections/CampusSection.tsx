@@ -115,7 +115,7 @@ export const CampusSection = () => {
             </h2>
           </div>
 
-          <div className="flex flex-col mt-l relative lg:pl-l min-h-37.5">
+          <div className="flex flex-col gap-3 mt-l relative lg:pl-l min-h-37.5">
             {/* Decorative vertical line (background track) */}
             <div className="absolute left-0 top-0 bottom-0 w-2 rounded-full bg-stroke-primary/30 block" />
             <motion.div
@@ -149,7 +149,7 @@ export const CampusSection = () => {
                         exit={{ height: 0, opacity: 0 }}
                         className="overflow-hidden"
                       >
-                        <p className="text-body-1 text-text-secondary leading-relaxed pt-xs pb-s">
+                        <p className="text-body-2 text-text-secondary leading-relaxed pt-xs pb-s">
                           {tab.content}
                         </p>
                       </motion.div>
