@@ -23,7 +23,7 @@ export const HeroSection = () => {
       </div>
 
       {/* Hero Content */}
-      <div className="relative z-20 w-full p-l xl:p-7xl flex flex-col xl:flex-row xl:flex-wrap xl:items-end gap-l">
+      <div className="relative z-20 w-full p-l lg:p-7xl flex flex-col lg:flex-row lg:flex-wrap lg:items-end gap-l">
         {/* Left Side: Headline */}
         <h1 className="text-h1 lg:min-w-125 font-bold lg:flex-1 text-text-invert">
           Your Gateway To
@@ -32,7 +32,7 @@ export const HeroSection = () => {
         </h1>
 
         {/* Right Side: Description and CTAs */}
-        <div className="gap-l flex flex-col xl:min-w-125 xl:flex-1">
+        <div className="gap-l flex flex-col lg:min-w-125 lg:flex-1">
           <p className="text-text-invert text-body-1">
             Earn a globally recognized degree from top-ranked partnered
             universities on our state-of-the-art campus located in Egypt.
