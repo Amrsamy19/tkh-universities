@@ -8,9 +8,9 @@ export const HeroSection = () => {
   return (
     <section className="relative w-full h-[calc(100vh-var(--spacing-xl))] min-h-150 flex items-end">
       {/* Video Background */}
-      <div className="absolute inset-0 overflow-hidden mx-m rounded-[32px]">
+      <div className="absolute inset-0 overflow-hidden mx-m rounded-4xl">
         {/* Overlay to ensure text readability */}
-        <div className="absolute inset-0 bg-surface-invert/40 z-10 rounded-[32px]"></div>
+        <div className="absolute inset-0 bg-surface-invert/40 z-10 rounded-4xl"></div>
         <video
           autoPlay
           loop

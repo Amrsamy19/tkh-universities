@@ -98,23 +98,23 @@ export const TestimonialsSection = () => {
       </p>
 
       {/* Carousel Container */}
-      <div className="relative w-full max-w-300 h-137.5 flex justify-center items-center my-l">
+      <div className="relative w-full max-w-300 h-137.5 flex justify-center items-center">
         {/* Nav Buttons (Hidden on tablet/mobile, visible on lg and up) */}
         <button
           onClick={prev}
-          className="hidden lg:flex absolute left-0 lg:left-10 z-40 w-12 h-12 rounded-full border border-brand-orange-200 text-brand-orange-200 hover:bg-brand-orange-200/15 items-center justify-center transition-colors bg-surface-primary/50 backdrop-blur-sm"
+          className="hidden lg:flex absolute left-20 xl:-left-40 z-40 w-12 h-12 rounded-full border border-brand-orange-200 text-brand-orange-200 hover:bg-brand-orange-200/15 items-center justify-center transition-colors bg-surface-primary/50 backdrop-blur-sm"
         >
           <ChevronLeft className="w-8 h-8" />
         </button>
         <button
           onClick={next}
-          className="hidden lg:flex absolute right-0 lg:right-10 z-40 w-12 h-12 rounded-full border border-brand-orange-200 text-brand-orange-200 hover:bg-brand-orange-200/15 items-center justify-center transition-colors bg-surface-primary/50 backdrop-blur-sm"
+          className="hidden lg:flex absolute right-20 xl:-right-40 z-40 w-12 h-12 rounded-full border border-brand-orange-200 text-brand-orange-200 hover:bg-brand-orange-200/15 items-center justify-center transition-colors bg-surface-primary/50 backdrop-blur-sm"
         >
           <ChevronRight className="w-8 h-8" />
         </button>
 
         {/* Cards Wrapper */}
-        <div className="relative w-85 lg:w-120 h-120 lg:h-115">
+        <div className="relative w-85 lg:w-175 h-120 lg:h-180">
           <AnimatePresence initial={false}>
             {testimonials.map((testimony, i) => {
               // Calculate relative offset for infinite carousel
@@ -133,7 +133,7 @@ export const TestimonialsSection = () => {
               const spreadX =
                 typeof window !== "undefined" && window.innerWidth < 1024
                   ? 80
-                  : 160;
+                  : 180;
 
               const x = offset * spreadX;
               const y = Math.abs(offset) * 30; // Push down the sides to create an arc
@@ -157,7 +157,7 @@ export const TestimonialsSection = () => {
                   className="absolute top-0 left-0 w-full h-full border-[6px] lg:border-8 border-white shadow-2xl flex flex-col bg-[linear-gradient(101.46deg,#1e2749_18.07%,#101828_49.29%,#27202f_80.51%)]"
                 >
                   {/* Card Image Area */}
-                  <div className="relative w-full h-[55%] shrink-0 p-2">
+                  <div className="relative w-full h-[60%] shrink-0 p-2">
                     <div className="w-full h-full [clip-path:polygon(0_0,88%_0,100%_37%,100%_100%,12%_100%,0_62%)]">
                       <img
                         src={testimony.image}
@@ -199,10 +199,10 @@ export const TestimonialsSection = () => {
                       <h4 className="text-button-1 font-bold truncate text-white">
                         {testimony.name}
                       </h4>
-                      <p className="text-subtitle-2 text-white/90 truncate mb-s">
+                      <p className="text-subtitle-2 text-white/90 mb-xs">
                         {testimony.role}
                       </p>
-                      <p className="text-caption-2 lg:text-body-2 text-white/90 line-clamp-4 pr-1">
+                      <p className="text-caption-2 line-clamp-3 leading-normal">
                         {testimony.text}
                       </p>
                     </div>
