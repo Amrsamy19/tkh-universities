@@ -297,7 +297,7 @@ export const PartnersSection = () => {
                   </motion.div>
 
                   {/* Stats (Right Side) */}
-                  <div className="flex gap-2">
+                  <div className="flex gap-m flex-1 justify-end ml-l">
                     {p.stats.map((stat, i) => (
                       <motion.div
                         key={i}
@@ -305,16 +305,16 @@ export const PartnersSection = () => {
                           opacity:
                             isHovered || p.smallOverlayType === "stats" ? 1 : 0,
                         }}
-                        className="flex h-18 bg-black/50 rounded-2xl p-4 backdrop-blur-md"
+                        className="flex-1 bg-[rgba(0,0,0,0.5)] rounded-2xl p-m max-w-[270px]"
                       >
                         <div
                           key={i}
-                          className="flex flex-col gap-2 max-w-full text-white"
+                          className="flex flex-col gap-2 text-white"
                         >
-                          <span className="text-subtitle-2 leading-2 font-bold">
+                          <span className="text-body-1 font-bold text-white">
                             {stat.title}
                           </span>
-                          <span className="text-[10px] leading-3 max-w-45 text-white/80">
+                          <span className="text-caption-2 text-white/90 line-clamp-3">
                             {stat.desc}
                           </span>
                         </div>
