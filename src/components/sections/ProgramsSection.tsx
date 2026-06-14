@@ -1,6 +1,6 @@
 import { useRef, useState, useEffect, useCallback } from "react";
 import { motion } from "framer-motion";
-import { ChevronRight, ChevronLeft } from "lucide-react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 
 import majors1 from "../../assets/media/majors-1.jpeg";
 import majors2 from "../../assets/media/majors-2.jpeg";
@@ -123,9 +123,7 @@ export const ProgramsSection = () => {
                 <h3 className="text-h3 lg:text-h3 font-bold text-white mb-xxs">
                   {prog.title}
                 </h3>
-                <p className="text-body-1 text-white">
-                  {prog.count}
-                </p>
+                <p className="text-body-1 text-white">{prog.count}</p>
               </div>
             </div>
           </motion.a>
@@ -148,7 +146,7 @@ export const ProgramsSection = () => {
               : "border-stroke-primary text-text-inactive cursor-default"
           }`}
         >
-          <ChevronLeft className="w-8 h-8" />
+          <ArrowLeft className="w-7 h-7" />
         </button>
         <button
           onClick={() => scroll("right")}
@@ -158,7 +156,7 @@ export const ProgramsSection = () => {
               : "border-stroke-primary text-text-inactive cursor-default"
           }`}
         >
-          <ChevronRight className="w-8 h-8" />
+          <ArrowRight className="w-7 h-7" />
         </button>
       </motion.div>
     </section>

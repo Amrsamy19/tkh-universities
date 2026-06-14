@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import { Button } from "../ui/Button";
 
 // Assets
@@ -107,13 +107,13 @@ export const TestimonialsSection = () => {
           onClick={prev}
           className="hidden lg:flex absolute left-20 xl:-left-40 z-40 w-12 h-12 rounded-full border border-brand-orange-200 text-brand-orange-200 hover:bg-brand-orange-200/15 items-center justify-center transition-colors bg-surface-primary/50 backdrop-blur-sm"
         >
-          <ChevronLeft className="w-8 h-8" />
+          <ArrowLeft className="w-7 h-7" />
         </button>
         <button
           onClick={next}
           className="hidden lg:flex absolute right-20 xl:-right-40 z-40 w-12 h-12 rounded-full border border-brand-orange-200 text-brand-orange-200 hover:bg-brand-orange-200/15 items-center justify-center transition-colors bg-surface-primary/50 backdrop-blur-sm"
         >
-          <ChevronRight className="w-8 h-8" />
+          <ArrowRight className="w-7 h-7" />
         </button>
 
         {/* Cards Wrapper */}
@@ -223,13 +223,13 @@ export const TestimonialsSection = () => {
           onClick={prev}
           className="w-12 h-12 rounded-full border border-brand-orange-200 text-brand-orange-200 hover:bg-brand-orange-200/15 flex items-center justify-center transition-colors"
         >
-          <ChevronLeft className="w-8 h-8" />
+          <ArrowLeft className="w-7 h-7" />
         </button>
         <button
           onClick={next}
           className="w-12 h-12 rounded-full border border-brand-orange-200 text-brand-orange-200 hover:bg-brand-orange-200/15 flex items-center justify-center transition-colors"
         >
-          <ChevronRight className="w-8 h-8" />
+          <ArrowRight className="w-7 h-7" />
         </button>
       </div>
 

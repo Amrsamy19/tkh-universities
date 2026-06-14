@@ -1,6 +1,6 @@
 import { useRef, useState, useEffect, useCallback } from "react";
 import { motion } from "framer-motion";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import { Button } from "../ui/Button";
 
 import eventsImg1 from "../../assets/media/events-slide-image-v2.jpeg";
@@ -37,14 +37,16 @@ export const NewsSection = () => {
     {
       category: "DESIGN & MEDIA",
       categoryColor: "text-[#2F67A2]", // partner-1 (blue)
-      title: "Cultivating Empathy Through Learning: NOVA SBE Students Explore Diversity, Equity & Inclusion",
+      title:
+        "Cultivating Empathy Through Learning: NOVA SBE Students Explore Diversity, Equity & Inclusion",
       date: "December 2, 2025",
       image: eventsImg2,
     },
     {
       category: "School of Continuing Education",
       categoryColor: "text-brand-blue-200", // brand blue
-      title: "H.E. Prof. Khaled El-Enany, TKH Board Member, Appointed as Director-General of UNESCO",
+      title:
+        "H.E. Prof. Khaled El-Enany, TKH Board Member, Appointed as Director-General of UNESCO",
       date: "October 7, 2025",
       image: eventsImg1,
     },
@@ -149,7 +151,7 @@ export const NewsSection = () => {
                 : "border-stroke-primary text-text-inactive cursor-default"
             }`}
           >
-            <ChevronLeft className="w-8 h-8" />
+            <ArrowLeft className="w-7 h-7" />
           </button>
           <button
             onClick={() => scroll("right")}
@@ -159,7 +161,7 @@ export const NewsSection = () => {
                 : "border-stroke-primary text-text-inactive cursor-default"
             }`}
           >
-            <ChevronRight className="w-8 h-8" />
+            <ArrowRight className="w-7 h-7" />
           </button>
         </div>
 
@@ -171,4 +173,3 @@ export const NewsSection = () => {
     </section>
   );
 };
-
