@@ -12,7 +12,7 @@ export const MarqueeSection = () => {
   return (
     <section
       ref={sectionRef}
-      className="w-[calc(100%+var(--spacing-m)*2)] -ml-m overflow-hidden py-4xl lg:py-9xl relative"
+      className="w-[calc(100%+var(--spacing-m)*2)] -ml-m overflow-hidden py-4xl lg:py-9xl relative bg-[linear-gradient(152.417deg,#f5f7fb_26.64%,#fdf1ee_76.114%)]"
     >
       <div className="flex flex-col gap-xl lg:gap-2xl">
         {/* Row 1: Coventry University logos (blue) — slides from left */}

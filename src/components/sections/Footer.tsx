@@ -10,7 +10,7 @@ export const Footer = () => {
   const screenSize = useScreenSize();
 
   return (
-    <footer className="w-[calc(100%+var(--spacing-m)*2)] -ml-m bg-[linear-gradient(116.841deg,#1E2749_18.073%,#101828_49.291%,#27202F_80.509%)] text-white pt-4xl pb-2xl px-m lg:px-l xl:px-30 mt-4xl relative z-20">
+    <footer className="bg-[linear-gradient(116.841deg,#1E2749_18.073%,#101828_49.291%,#27202F_80.509%)] text-white pt-4xl pb-2xl px-m lg:px-l xl:px-30 relative z-20">
       <div className="max-w-480 mx-auto flex flex-col gap-4xl">
         {/* Top Section */}
         <div className="flex flex-col lg:flex-row justify-between items-start gap-2xl lg:gap-xl">

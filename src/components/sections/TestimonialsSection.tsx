@@ -81,10 +81,7 @@ export const TestimonialsSection = () => {
   const screenSize = useScreenSize();
 
   return (
-    <section className="py-2xl lg:py-4xl w-[calc(100%+var(--spacing-m)*2)] -ml-m relative flex flex-col items-center">
-      {/* Blue Spotlight Background */}
-      <div className="absolute left-[-20%] top-[10%] w-275 h-262.5 bg-[#5B83C2] opacity-10 blur-[120px] rounded-[100%] pointer-events-none -z-10" />
-
+    <section className="py-2xl lg:py-4xl w-[calc(100%+var(--spacing-m)*2)] -ml-m relative flex flex-col items-center bg-[linear-gradient(223.11deg,#fdf1ee_11.129%,#f5f7fb_85.186%)]">
       {/* Header */}
       <span className="text-button-2 font-medium text-white bg-brand-blue-200 mb-m px-m py-xs">
         Build Your Career

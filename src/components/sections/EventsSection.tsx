@@ -77,17 +77,14 @@ export const EventsSection = () => {
   const screenSize = useScreenSize();
 
   return (
-    <section className="py-2xl lg:py-4xl w-full max-w-480 mx-auto relative">
-      {/* Orange Spotlight Background */}
-      <div className="absolute right-[-20%] top-[10%] w-180 h-190 bg-[#E84925] opacity-10 blur-[120px] rounded-full pointer-events-none -z-10" />
-
+    <section className="py-2xl lg:py-4xl w-full max-w-480 mx-auto relative bg-[linear-gradient(143.766deg,#f5f7fb_26.64%,#fdf1ee_76.114%)]">
       {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="flex flex-col items-center text-center mb-xl lg:mb-2xl px-m"
+        className="flex flex-col items-center text-center mb-xl lg:mb-2xl px-m relative z-10"
       >
         <span className="text-button-2 font-medium text-white bg-brand-blue-200 mb-m px-m py-xs">
           Events

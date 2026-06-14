@@ -66,17 +66,14 @@ export const ProgramsSection = () => {
   };
 
   return (
-    <section className="py-2xl lg:py-4xl w-full max-w-480 mx-auto relative">
-      {/* Blue Spotlight Background */}
-      <div className="absolute left-[-20%] top-[10%] w-275 h-262.5 bg-[#5B83C2] opacity-10 blur-[120px] rounded-[100%] pointer-events-none -z-10" />
-
+    <section className="py-2xl lg:py-4xl w-full max-w-480 mx-auto relative bg-[linear-gradient(214.92deg,#fdf1ee_11.129%,#f5f7fb_85.186%)]">
       {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="flex flex-col items-center text-center mb-xl lg:mb-2xl px-m"
+        className="flex flex-col items-center text-center mb-xl lg:mb-2xl px-m relative z-10"
       >
         <span className="text-button-2 font-medium text-white bg-brand-blue-200 mb-m px-m py-s">
           Choose Your Future

@@ -135,7 +135,7 @@ export const PartnersSection = () => {
   };
 
   return (
-    <section className="py-2xl lg:py-4xl w-full px-m xl:px-0 max-w-480 mx-auto overflow-hidden">
+    <section className="py-2xl lg:py-4xl w-full px-m xl:px-0 max-w-480 mx-auto overflow-hidden bg-[linear-gradient(229.328deg,#fdf1ee_11.129%,#f5f7fb_85.186%)]">
       {/* Mobile Layout (Flex Column) */}
       <div className="lg:hidden flex flex-col gap-l">
         <div className="mx-auto flex w-full max-w-120 flex-col items-center gap-10 text-center lg:max-w-143">
