@@ -5,27 +5,27 @@ import { useScreenSize } from "../../hooks/useScreenSize";
 export const AdmissionsSteps = () => {
   const steps = [
     {
-      num: "1",
+      num: "01",
       title: "Apply Online",
       desc: "Complete our simple online application form",
     },
     {
-      num: "2",
+      num: "02",
       title: "Upload Docs",
       desc: "Upload your academic and identity documents",
     },
     {
-      num: "3",
+      num: "03",
       title: "Screening & Interview",
       desc: "You'll be scheduled for an interview",
     },
     {
-      num: "4",
+      num: "04",
       title: "Placement Test",
       desc: "You'll be invited to on-campus placement test",
     },
     {
-      num: "5",
+      num: "05",
       title: "Acceptance Offer",
       desc: "You'll receive our final acceptance offer",
     },
@@ -75,7 +75,7 @@ export const AdmissionsSteps = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="flex flex-col md:flex-row md:items-center py-l border-b border-stroke-primary px-0 gap-m"
+              className="flex flex-col md:flex-row md:items-center w-full py-xl px-2xl border-b border-stroke-primary gap-m"
             >
               <div className="w-10 h-10 rounded-full bg-surface-uni-secondary text-text-invert flex items-center justify-center text-button-1 font-bold shrink-0">
                 {step.num}

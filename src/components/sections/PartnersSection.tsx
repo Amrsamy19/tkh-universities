@@ -153,7 +153,7 @@ export const PartnersSection = () => {
           </div>
         </div>
 
-        <div className="flex flex-col gap-m mt-m">
+        <div className="flex flex-col gap-2xl mt-m">
           {partners.map((p) => (
             <div
               key={p.id}

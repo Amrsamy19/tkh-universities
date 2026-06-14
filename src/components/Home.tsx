@@ -17,18 +17,16 @@ export const Home = () => {
     <div className="min-h-full flex flex-col font-sans relative bg-surface-primary">
       <div className="relative w-full flex-1 overflow-hidden flex rounded-t-[40px] flex-col p-m pb-0">
         <Navbar />
-        <main className="flex-1 w-full relative z-10 flex flex-col gap-3xl lg:gap-4xl">
-          <HeroSection />
-          <CampusSection />
-          <PartnersSection />
-          <MarqueeSection />
-          <ProgramsSection />
-          <EventsSection />
-          <TestimonialsSection />
-          <AdmissionsSteps />
-          <NewsSection />
-          <ContactSection />
-        </main>
+        <HeroSection />
+        <CampusSection />
+        <PartnersSection />
+        <MarqueeSection />
+        <ProgramsSection />
+        <EventsSection />
+        <TestimonialsSection />
+        <AdmissionsSteps />
+        <NewsSection />
+        <ContactSection />
 
         <Footer />
       </div>

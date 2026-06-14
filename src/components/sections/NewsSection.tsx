@@ -93,7 +93,7 @@ export const NewsSection = () => {
       <div
         ref={scrollRef}
         onScroll={updateScrollState}
-        className="flex gap-m lg:gap-l overflow-x-auto scrollbar-hide pb-l px-m lg:px-l xl:px-12"
+        className="flex gap-m lg:gap-l overflow-x-auto scrollbar-hide pb-l px-m lg:px-l xl:px-4xl"
         style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
       >
         {news.map((item, i) => (
@@ -103,7 +103,7 @@ export const NewsSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.5, delay: i * 0.1 }}
-            className="shrink-0 w-[85vw] sm:w-87.5 lg:w-105 flex flex-col snap-start group cursor-pointer"
+            className="shrink-0 w-[85vw] sm:w-87.5 lg:w-135 px- flex flex-col snap-start group cursor-pointer"
           >
             {/* Image Container */}
             <div className="relative w-full aspect-4/3 overflow-hidden [clip-path:polygon(11.9%_0,100%_0,100%_54.1%,88.1%_100%,0_100%,0_45.9%)] mb-m">
@@ -117,9 +117,7 @@ export const NewsSection = () => {
 
             {/* Text Content */}
             <div className="flex flex-col gap-xs pr-m">
-              <span
-                className={`text-caption-1 font-bold uppercase tracking-wider ${item.categoryColor}`}
-              >
+              <span className={`text-body-2 ${item.categoryColor}`}>
                 {item.category}
               </span>
               <h3 className="text-h5 font-bold text-text-primary group-hover:text-text-tkh-primary transition-colors line-clamp-3 leading-tight">
@@ -139,7 +137,7 @@ export const NewsSection = () => {
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5, delay: 0.3 }}
-        className="flex flex-col lg:flex-row items-center justify-between gap-m lg:gap-0 mt-l px-m lg:px-l xl:px-12"
+        className="flex flex-col lg:flex-row items-center justify-between gap-m lg:gap-0 mt-l px-m lg:px-l xl:px-30"
       >
         {/* Nav Arrows */}
         <div className="flex gap-s">
