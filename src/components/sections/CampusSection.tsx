@@ -102,7 +102,10 @@ export const CampusSection = () => {
   };
 
   return (
-    <section className="py-4xl px-l xl:px-30 w-full max-w-480 mx-auto overflow-hidden">
+    <section className="py-4xl px-l xl:px-30 w-full max-w-480 mx-auto relative">
+      {/* Orange Spotlight Background */}
+      <div className="absolute right-[-20%] top-[10%] w-[720px] h-[760px] bg-[#E84925] opacity-10 blur-[120px] rounded-full pointer-events-none -z-10" />
+      
       <div className="flex flex-col lg:flex-row gap-2xl lg:items-center">
         {/* Left Column: Text */}
         <div className="w-full lg:w-[45%] flex flex-col gap-xs">

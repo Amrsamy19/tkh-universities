@@ -77,7 +77,10 @@ export const EventsSection = () => {
   const screenSize = useScreenSize();
 
   return (
-    <section className="py-2xl lg:py-4xl w-full max-w-480 mx-auto overflow-hidden">
+    <section className="py-2xl lg:py-4xl w-full max-w-480 mx-auto relative">
+      {/* Orange Spotlight Background */}
+      <div className="absolute right-[-20%] top-[10%] w-180 h-190 bg-[#E84925] opacity-10 blur-[120px] rounded-full pointer-events-none -z-10" />
+
       {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}

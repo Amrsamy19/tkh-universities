@@ -30,12 +30,12 @@ export const ProgramsSection = () => {
   const programs = [
     {
       title: "Design & Media",
-      count: "3 Programs",
+      count: "7 Programs",
       image: majors1,
     },
     {
       title: "Engineering",
-      count: "5 Programs",
+      count: "9 Programs",
       image: majors2,
     },
     {
@@ -66,7 +66,10 @@ export const ProgramsSection = () => {
   };
 
   return (
-    <section className="py-2xl lg:py-4xl w-full max-w-480 mx-auto overflow-hidden">
+    <section className="py-2xl lg:py-4xl w-full max-w-480 mx-auto relative">
+      {/* Blue Spotlight Background */}
+      <div className="absolute left-[-20%] top-[10%] w-275 h-262.5 bg-[#5B83C2] opacity-10 blur-[120px] rounded-[100%] pointer-events-none -z-10" />
+
       {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -116,11 +119,11 @@ export const ProgramsSection = () => {
               <div className="absolute inset-0 bg-[linear-gradient(to_top,#101828_0%,#101828b5_30%,#1018286b_40%,transparent_52%)]" />
 
               {/* Card Content */}
-              <div className="absolute inset-0 flex flex-col justify-end py-l lg:py-xl left-10 lg:left-18">
-                <h3 className="text-h4 lg:text-h3 font-bold text-white mb-xxs">
+              <div className="absolute inset-0 flex flex-col justify-end py-l lg:py-xl left-10 lg:left-20">
+                <h3 className="text-h3 lg:text-h3 font-bold text-white mb-xxs">
                   {prog.title}
                 </h3>
-                <p className="text-body-2 lg:text-body-1 text-white/80">
+                <p className="text-body-1 text-white">
                   {prog.count}
                 </p>
               </div>
