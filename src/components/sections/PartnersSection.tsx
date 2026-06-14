@@ -305,7 +305,7 @@ export const PartnersSection = () => {
                           opacity:
                             isHovered || p.smallOverlayType === "stats" ? 1 : 0,
                         }}
-                        className="flex-1 bg-[rgba(0,0,0,0.5)] rounded-2xl p-m max-w-[270px]"
+                        className="flex-1 bg-[rgba(0,0,0,0.5)] rounded-2xl p-m max-w-67.5"
                       >
                         <div
                           key={i}

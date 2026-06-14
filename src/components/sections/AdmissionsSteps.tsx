@@ -34,7 +34,10 @@ export const AdmissionsSteps = () => {
   const screenSize = useScreenSize();
 
   return (
-    <section className="py-4xl xl:py-20 px-s xl:px-30 w-full max-w-480 mx-auto relative overflow-hidden mt-4xl">
+    <section className="py-4xl xl:py-20 px-s xl:px-30 w-full max-w-480 mx-auto relative mt-4xl">
+      {/* Orange Spotlight Background */}
+      <div className="absolute right-[-20%] top-[10%] w-[720px] h-[760px] bg-[#E84925] opacity-10 blur-[120px] rounded-full pointer-events-none -z-10" />
+      
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-2xl relative z-10 items-center">
         {/* Left Column */}
         <motion.div

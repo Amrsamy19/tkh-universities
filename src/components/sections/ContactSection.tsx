@@ -6,7 +6,10 @@ export const ContactSection = () => {
   const screenSize = useScreenSize();
 
   return (
-    <section className="py-2xl lg:py-4xl w-[calc(100%+var(--spacing-s)*2)] -ml-s overflow-hidden relative">
+    <section className="py-2xl lg:py-4xl w-[calc(100%+var(--spacing-s)*2)] -ml-s relative">
+      {/* Blue Spotlight Background */}
+      <div className="absolute left-[-20%] top-[10%] w-[1100px] h-[1050px] bg-[#5B83C2] opacity-10 blur-[120px] rounded-[100%] pointer-events-none -z-10" />
+      
       <div className="flex flex-col lg:flex-row gap-2xl lg:gap-xl p-m lg:p-4xl lg:py-20 justify-between items-start rounded-[40px] relative z-10 w-full max-w-375 mx-auto">
         {/* Intro */}
         <motion.div

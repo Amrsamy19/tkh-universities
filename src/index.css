@@ -148,7 +148,7 @@
   --font-inter: "Inter", sans-serif;
 
   /* Theme Tokens (from site.css) */
-  --color-surface-primary: var(--color-neutral-50);
+  --color-surface-primary: var(--color-neutral-100);
   --color-surface-invert: var(--color-neutral-900);
   --color-surface-tkh-primary: var(--color-brand-orange-200);
   --color-surface-uni-secondary: var(--color-brand-blue-200);
