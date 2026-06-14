@@ -63,7 +63,7 @@ export const DesktopMegaMenu = ({ activeDropdown }: DesktopMegaMenuProps) => {
 
   return (
     <div
-      className={`grid transition-[grid-template-rows,opacity] duration-300 ease-out ${
+      className={`grid transition-[grid-template-rows,opacity] duration-300 ease-out px-s ${
         activeDropdown
           ? "grid-rows-[1fr] opacity-100"
           : "grid-rows-[0fr] opacity-0"

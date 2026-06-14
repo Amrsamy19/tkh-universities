@@ -8,9 +8,9 @@ export const HeroSection = () => {
   return (
     <section className="relative w-full h-[calc(100vh-var(--spacing-xl))] min-h-150 flex items-end">
       {/* Video Background */}
-      <div className="absolute px-2 rounded-[40px] inset-0 w-full h-full overflow-hidden">
+      <div className="absolute inset-0 overflow-hidden mx-m rounded-[32px]">
         {/* Overlay to ensure text readability */}
-        <div className="absolute px-2 inset-0 bg-surface-invert/40 z-10"></div>
+        <div className="absolute inset-0 bg-surface-invert/40 z-10 rounded-[32px]"></div>
         <video
           autoPlay
           loop
@@ -23,17 +23,17 @@ export const HeroSection = () => {
       </div>
 
       {/* Hero Content */}
-      <div className="relative z-20 w-full max-w-480 mx-auto p-l xl:p-20 pt-30 xl:pt-30 flex flex-col xl:flex-row xl:justify-between gap-l">
+      <div className="relative z-20 w-full p-l xl:p-7xl flex flex-col xl:flex-row xl:flex-wrap xl:items-end gap-l">
         {/* Left Side: Headline */}
-        <h1 className="text-h1 dt:whitespace-pre max-w-70 xl:max-w-none xl:min-w-200 font-bold xl:flex-1 text-text-invert">
+        <h1 className="text-h1 lg:min-w-125 font-bold lg:flex-1 text-text-invert">
           Your Gateway To
           <br />
           Global Education
         </h1>
 
         {/* Right Side: Description and CTAs */}
-        <div className="gap-l dt:whitespace-pre flex flex-col xl:min-w-125 xl:flex-1">
-          <p className="text-text-invert text-body-2 xl:text-body-1">
+        <div className="gap-l flex flex-col xl:min-w-125 xl:flex-1">
+          <p className="text-text-invert text-body-1">
             Earn a globally recognized degree from top-ranked partnered
             universities on our state-of-the-art campus located in Egypt.
           </p>

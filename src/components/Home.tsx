@@ -15,7 +15,7 @@ import { HeroSection } from "./sections/HeroSection";
 export const Home = () => {
   return (
     <div className="min-h-full flex flex-col font-sans relative bg-surface-primary">
-      <div className="relative w-full flex-1 overflow-hidden flex rounded-t-[40px] flex-col p-m pb-0">
+      <div className="relative w-full flex-1 overflow-hidden flex rounded-t-[40px] flex-col pt-m">
         <Navbar />
         <HeroSection />
         <CampusSection />

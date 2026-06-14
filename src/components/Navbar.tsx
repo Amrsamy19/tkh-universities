@@ -78,7 +78,7 @@ export const Navbar = () => {
             <Logo />
 
             {/* Links */}
-            <div className="flex items-center gap-xl">
+            <div className="flex items-center gap-m">
               {mainLinks.map((link) => (
                 <div key={link.label} className="group relative">
                   <a

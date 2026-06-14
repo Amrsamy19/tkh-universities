@@ -107,13 +107,13 @@ export const PartnersSection = () => {
   const getPositionClasses = (position: string) => {
     switch (position) {
       case "top-left":
-        return "top-[-12%] left-[-35%] origin-center";
+        return "top-[-12%] left-[-40%] origin-center";
       case "top-right":
-        return "top-[-12%] right-[-35%] origin-center";
+        return "top-[-12%] right-[-40%] origin-center";
       case "bottom-left":
-        return "bottom-[-15%] left-[-35%] origin-center";
+        return "bottom-[-12%] left-[-40%] origin-center";
       case "bottom-right":
-        return "bottom-[-15%] right-[-35%] origin-center";
+        return "bottom-[-12%] right-[-40%] origin-center";
       default:
         return "";
     }
@@ -182,12 +182,12 @@ export const PartnersSection = () => {
       </div>
 
       {/* Desktop Layout (Interactive Hover Expansion) */}
-      <div className="hidden lg:block relative w-full h-screen mt-xl">
+      <div className="hidden lg:block relative w-full h-200 mt-xl">
         {/* Center Text */}
         <motion.div
           animate={{ opacity: hoveredCard ? 0 : 1 }}
           transition={{ duration: 0.25 }}
-          className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none z-10"
+          className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none"
         >
           <span className="text-subtitle-1 font-medium tracking-[1px] text-white bg-brand-blue-200 mb-m px-m py-s">
             Partner with Excellence
@@ -213,8 +213,8 @@ export const PartnersSection = () => {
               onMouseLeave={() => setHoveredCard(null)}
               className={`absolute overflow-hidden cursor-pointer rounded-[40px] ${
                 isHovered
-                  ? `${getHoveredClasses(p.position)} z-50`
-                  : `${getPositionClasses(p.position)} w-[67%] h-[58%] z-20`
+                  ? `${getHoveredClasses(p.position)}`
+                  : `${getPositionClasses(p.position)} w-[70%] h-[55%]`
               }`}
               animate={{
                 rotate: isHovered ? 0 : p.rotation,
@@ -311,7 +311,7 @@ export const PartnersSection = () => {
                           key={i}
                           className="flex flex-col gap-2 max-w-full text-white"
                         >
-                          <span className="text-[14px] leading-2 font-bold">
+                          <span className="text-subtitle-2 leading-2 font-bold">
                             {stat.title}
                           </span>
                           <span className="text-[10px] leading-3 max-w-45 text-white/80">
