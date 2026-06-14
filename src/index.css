@@ -141,8 +141,11 @@
   --radius-full: var(--rad-full);
 
   /* Font Families */
-  --font-futura: "Futura", "Cairo", sans-serif;
-  --font-inter: "Inter", "Cairo", sans-serif;
+  --font-futura: "Futura", sans-serif;
+  --font-futura-bt: "Futura BT", sans-serif;
+  --font-futura-md: "Futura Md BT", sans-serif;
+  --font-futura-bk: "Futura Bk BT", sans-serif;
+  --font-inter: "Inter", sans-serif;
 
   /* Theme Tokens (from site.css) */
   --color-surface-primary: var(--color-neutral-50);
@@ -193,76 +196,89 @@
     font-family: var(--font-futura);
     font-size: var(--fs-h1);
     line-height: 1;
+    font-weight: 700;
   }
   .text-h2 {
     font-family: var(--font-futura);
     font-size: var(--fs-h2);
     line-height: 1;
+    font-weight: 700;
   }
   .text-h3 {
     font-family: var(--font-futura);
     font-size: var(--fs-h3);
     line-height: 1;
+    font-weight: 700;
   }
   .text-h4 {
     font-family: var(--font-futura);
     font-size: var(--fs-h4);
     line-height: 1;
+    font-weight: 700;
   }
   .text-h5 {
     font-family: var(--font-futura);
     font-size: var(--fs-h5);
     line-height: 1;
+    font-weight: 700;
   }
   .text-h6 {
     font-family: var(--font-futura);
     font-size: var(--fs-h6);
     line-height: 1.2;
+    font-weight: 700;
   }
   .text-subtitle-1 {
     font-family: var(--font-futura);
     font-size: var(--fs-sub1);
     line-height: 1.4;
+    font-weight: 500;
   }
   .text-subtitle-2 {
     font-family: var(--font-futura);
     font-size: var(--fs-sub2);
     line-height: 1.4;
+    font-weight: 500;
   }
   .text-body-1 {
     font-family: var(--font-futura);
     font-size: var(--fs-body1);
     line-height: 1.4;
+    font-weight: 400;
   }
   .text-body-2 {
     font-family: var(--font-futura);
     font-size: var(--fs-body2);
     line-height: 1.4;
+    font-weight: 400;
   }
   .text-button-1 {
     font-family: var(--font-futura);
     font-size: var(--fs-btn1);
-    line-height: 1.4;
+    font-weight: 500;
   }
   .text-button-2 {
     font-family: var(--font-futura);
     font-size: var(--fs-btn2);
-    line-height: 1.4;
+    font-weight: 500;
   }
   .text-caption-1 {
     font-family: var(--font-inter);
     font-size: var(--fs-cap1);
     line-height: 1.4;
+    font-weight: 600;
   }
   .text-caption-2 {
     font-family: var(--font-inter);
     font-size: var(--fs-cap2);
     line-height: 1.4;
+    font-weight: 500;
   }
   .text-overline {
     font-family: var(--font-futura);
     font-size: var(--fs-over);
     line-height: 1.4;
     text-transform: uppercase;
+    font-weight: 500;
   }
 }

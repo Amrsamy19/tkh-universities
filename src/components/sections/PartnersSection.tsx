@@ -122,20 +122,20 @@ export const PartnersSection = () => {
   const getHoveredClasses = (position: string) => {
     switch (position) {
       case "top-left":
-        return "top-[2%] left-[5%] w-[60%] h-[58%]";
+        return "-top-[4%] left-[5%] w-[70%] h-[65%]";
       case "top-right":
-        return "top-[2%] right-[5%] w-[60%] h-[58%]";
+        return "-top-[4%] right-[5%] w-[70%] h-[65%]";
       case "bottom-left":
-        return "bottom-[2%] left-[5%] w-[60%] h-[58%]";
+        return "-bottom-[5%] left-[5%] w-[70%] h-[65%]";
       case "bottom-right":
-        return "bottom-[2%] right-[5%] w-[60%] h-[58%]";
+        return "-bottom-[5%] right-[5%] w-[70%] h-[65%]";
       default:
         return "";
     }
   };
 
   return (
-    <section className="py-2xl lg:py-4xl w-full px-m xl:px-30 max-w-480 mx-auto overflow-hidden">
+    <section className="py-2xl lg:py-4xl w-full px-m xl:px-0 max-w-480 mx-auto overflow-hidden">
       {/* Mobile Layout (Flex Column) */}
       <div className="lg:hidden flex flex-col gap-l">
         <div className="mx-auto flex w-full max-w-120 flex-col items-center gap-10 text-center lg:max-w-143">
@@ -182,7 +182,7 @@ export const PartnersSection = () => {
       </div>
 
       {/* Desktop Layout (Interactive Hover Expansion) */}
-      <div className="hidden lg:block relative w-full h-225 mt-xl">
+      <div className="hidden lg:block relative w-full h-screen mt-xl">
         {/* Center Text */}
         <motion.div
           animate={{ opacity: hoveredCard ? 0 : 1 }}
@@ -214,7 +214,7 @@ export const PartnersSection = () => {
               className={`absolute overflow-hidden cursor-pointer rounded-[40px] ${
                 isHovered
                   ? `${getHoveredClasses(p.position)} z-50`
-                  : `${getPositionClasses(p.position)} w-[60%] h-[58%] z-20`
+                  : `${getPositionClasses(p.position)} w-[67%] h-[58%] z-20`
               }`}
               animate={{
                 rotate: isHovered ? 0 : p.rotation,
@@ -297,27 +297,30 @@ export const PartnersSection = () => {
                   </motion.div>
 
                   {/* Stats (Right Side) */}
-                  <motion.div
-                    animate={{
-                      opacity:
-                        isHovered || p.smallOverlayType === "stats" ? 1 : 0,
-                    }}
-                    className="flex gap-4 items-stretch bg-black/50 rounded-2xl p-4 backdrop-blur-md"
-                  >
+                  <div className="flex gap-2">
                     {p.stats.map((stat, i) => (
-                      <div
+                      <motion.div
                         key={i}
-                        className="flex flex-col gap-1 max-w-32 text-white"
+                        animate={{
+                          opacity:
+                            isHovered || p.smallOverlayType === "stats" ? 1 : 0,
+                        }}
+                        className="flex h-18 bg-black/50 rounded-2xl p-4 backdrop-blur-md"
                       >
-                        <span className="text-[14px] leading-4 font-bold">
-                          {stat.title}
-                        </span>
-                        <span className="text-[10px] leading-3 text-white/80">
-                          {stat.desc}
-                        </span>
-                      </div>
+                        <div
+                          key={i}
+                          className="flex flex-col gap-2 max-w-full text-white"
+                        >
+                          <span className="text-[14px] leading-2 font-bold">
+                            {stat.title}
+                          </span>
+                          <span className="text-[10px] leading-3 max-w-45 text-white/80">
+                            {stat.desc}
+                          </span>
+                        </div>
+                      </motion.div>
                     ))}
-                  </motion.div>
+                  </div>
                 </div>
               </motion.div>
             </motion.div>

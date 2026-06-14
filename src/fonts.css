@@ -38,7 +38,7 @@
   font-style: normal;
 }
 @font-face {
-  font-family: 'Futura';
+  font-family: 'Futura Md BT';
   src: url('./assets/fonts/futura medium condensed bt.ttf') format('truetype');
   font-weight: 500;
   font-style: normal;
@@ -51,7 +51,7 @@
   font-style: normal;
 }
 @font-face {
-  font-family: 'Futura';
+  font-family: 'Futura Bk BT';
   src: url('./assets/fonts/Futura XBlkCnIt BT.ttf') format('truetype');
   font-weight: 900;
   font-style: italic;

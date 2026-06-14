@@ -134,7 +134,7 @@ export const CampusSection = () => {
                   onClick={() => handleTabClick(index)}
                 >
                   <h3
-                    className={`text-h4 font-bold mb-xs transition-colors ${
+                    className={`text-h4 mb-xs transition-colors ${
                       isActive ? "text-text-primary" : "text-text-secondary/50"
                     }`}
                   >
@@ -149,7 +149,7 @@ export const CampusSection = () => {
                         exit={{ height: 0, opacity: 0 }}
                         className="overflow-hidden"
                       >
-                        <p className="text-body-2 text-text-secondary leading-relaxed pt-xs pb-s">
+                        <p className="text-body-2 text-text-secondary leading-normal pt-xs pb-s">
                           {tab.content}
                         </p>
                       </motion.div>
