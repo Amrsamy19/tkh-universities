@@ -58,7 +58,7 @@ export const Navbar = () => {
                 </React.Fragment>
               ))}
             </div>
-            <div className="flex items-center gap-6">
+            <div className="flex items-center gap-6 font-futura-md">
               <span className="flex items-center gap-xs text-caption-1 font-normal text-text-primary hover:text-text-tkh-primary bg-transparent hover:bg-transparent transition-colors cursor-pointer">
                 <Search className="size-4.5" />
                 Search
